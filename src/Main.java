@@ -4,6 +4,5 @@ public class Main {
 
 		Interface Test = new Interface();
 		Test.CreateWindow();
-		System.out.println("PTSD");
 	}
 }

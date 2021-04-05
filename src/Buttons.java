@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -7,6 +9,7 @@ public class Buttons {
 
     JButton Boton = new JButton(Contenido);
     Boton.setBounds(x, y, 155, 30);
+    Boton.setBackground(Color.decode(color));
     Window.add(Boton);
 
   }

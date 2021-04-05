@@ -5,7 +5,18 @@ public class DrawAtom {
 	
 	public void paint(Graphics g, Point location) {
 		
-		g.drawArc(location.x, location.y, 50, 50, 0, 360);
+		int X = 0;
+		int Y = 0;
+		
+		if(location == null) {
+			X = 0;
+			Y = 0;
+		} else {
+			X = location.x;
+			Y = location.y;
+		}
+		
+		g.drawArc(X, Y, 50, 50, 0, 360);
 		
 	}
 

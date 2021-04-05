@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -18,6 +19,15 @@ public class Interface {
 		Equipo.setLocation(2,2);
 		
 		Window.add(Equipo);
+		DrawAtom Atom = new DrawAtom();
+		
+		while(Window.isActive()) {
+			
+			Window.repaint();
+			Point location = Window.getMousePosition();
+			Atom.paint(Window.getGraphics(), location);
+			
+		}
 		
 	}
 

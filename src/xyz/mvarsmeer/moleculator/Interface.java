@@ -33,6 +33,7 @@ public class Interface {
 		Boton.CrearBoton(Window, 30, 240, "No Metales", "#E1D5E7");
 		Boton.CrearBoton(Window, 30, 270, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 30, 300, "Gases Nobles", "#DAE8FC");
+		Boton.CrearBoton(Window, 30, 330, "Custom", "#E9E4E3");
 		
 		JPanel DrawingZone = new JPanel();
 		DrawingZone.setBounds(220, 30, 586, 380);
@@ -42,13 +43,19 @@ public class Interface {
 		Window.setVisible(true);
 		
 		DrawAtom Atom = new DrawAtom();
-
+		
 		while(true) {
 			
-			Window.repaint();
+			try {
+				Thread.sleep(16);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 			Point location = DrawingZone.getMousePosition();
 			Atom.paint(DrawingZone.getGraphics(), location);
-
+			DrawingZone.repaint();
+			
 		}
 
 	}

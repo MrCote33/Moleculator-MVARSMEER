@@ -1,7 +1,9 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Interface {
 
@@ -11,15 +13,12 @@ public class Interface {
 		Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Window.setSize(new Dimension(854, 480));
 		Window.setLocationRelativeTo(null);
-		Window.setVisible(true);
 		Window.setLayout(null);
+		Window.setResizable(false);
 
 		JLabel Equipo = new JLabel("MVARSMEER", JLabel.CENTER);
-		Equipo.setSize(80, 15);
-		Equipo.setLocation(2, 2);
-
+		Equipo.setBounds(750, 420, 80, 15);
 		Window.add(Equipo);
-		DrawAtom Atom = new DrawAtom();
 
 		Buttons Boton = new Buttons();
 		Boton.CrearBoton(Window, 30, 30, "Alcalinos", "#FFC8B0");
@@ -32,12 +31,21 @@ public class Interface {
 		Boton.CrearBoton(Window, 30, 240, "No Metales", "#E1D5E7");
 		Boton.CrearBoton(Window, 30, 270, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 30, 300, "Gases Nobles", "#DAE8FC");
+		
+		JPanel DrawingZone = new JPanel();
+		DrawingZone.setBounds(220, 30, 586, 380);
+		DrawingZone.setBackground(Color.decode("#000000"));
+		Window.add(DrawingZone);
+		
+		Window.setVisible(true);
+		
+		DrawAtom Atom = new DrawAtom();
 
-		while (Window.isActive()) {
-
+		while(true) {
+			
 			Window.repaint();
-			Point location = Window.getMousePosition();
-			Atom.paint(Window.getGraphics(), location);
+			Point location = DrawingZone.getMousePosition();
+			Atom.paint(DrawingZone.getGraphics(), location);
 
 		}
 

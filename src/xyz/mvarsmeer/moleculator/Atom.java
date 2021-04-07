@@ -1,3 +1,5 @@
+package xyz.mvarsmeer.moleculator;
+
 public class Atom {
 
   private String Nombre;

@@ -1,3 +1,5 @@
+package xyz.mvarsmeer.moleculator;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;

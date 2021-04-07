@@ -1,3 +1,5 @@
+package xyz.mvarsmeer.moleculator;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;

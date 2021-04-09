@@ -64,6 +64,12 @@ public class Interface {
 			
 			if(x != AnteriorX || y != AnteriorY) {
 				
+				try {
+					Thread.sleep(17);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
 				Circle.paint(DrawingZone.getGraphics(), x, y);
 				AnteriorX = x;
 				AnteriorY = y;

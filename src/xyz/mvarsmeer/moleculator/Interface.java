@@ -42,19 +42,33 @@ public class Interface {
 		
 		Window.setVisible(true);
 		
-		DrawAtom Atom = new DrawAtom();
+		DrawAtom Circle = new DrawAtom();
+		
+		int x;
+		int y;
+		
+		int AnteriorX = 0;
+		int AnteriorY = 0;
 		
 		while(true) {
 			
-			try {
-				Thread.sleep(16);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			Point ubicacion = DrawingZone.getMousePosition();
+			
+			if(ubicacion == null) {
+				x = 5;
+				y = 5;
+			} else {
+				x = ubicacion.x;
+				y = ubicacion.y;
 			}
 			
-			Point location = DrawingZone.getMousePosition();
-			Atom.paint(DrawingZone.getGraphics(), location);
-			DrawingZone.repaint();
+			if(x != AnteriorX || y != AnteriorY) {
+				
+				Circle.paint(DrawingZone.getGraphics(), x, y);
+				AnteriorX = x;
+				AnteriorY = y;
+				
+			}
 			
 		}
 

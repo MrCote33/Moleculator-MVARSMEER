@@ -13,6 +13,7 @@ Calcio,C,0
 Estroncio,Sr,0
 Bario,Ba,0
 Radio,Ra,0
+
 Otros metales
 Aluminio,Al,0
 Galio,Ga,0
@@ -113,6 +114,7 @@ Oxigeno,O,0
 Fosforo,P,0
 Azufre,S,0
 Selenio,Se,0
+
 Halogenos
 Fluor,F,0
 Cloro,Cl,0
@@ -120,6 +122,7 @@ Bromo,Br,0
 Yodo,I,0
 Astato,At,0
 Teneso,Ts,0
+
 Gases nobles
 Helio,He,0
 Neon,Ne,0

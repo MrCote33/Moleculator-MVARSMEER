@@ -23,8 +23,8 @@ public class Interface {
 		Window.add(Equipo);
 
 		Buttons Boton = new Buttons();
-		Boton.CrearBoton(Window, 30, 30, "Alcalinos", "#FFC8B0");
-		Boton.CrearBoton(Window, 30, 60, "Terreos", "#FFE6CC");
+		Boton.CrearBoton(Window, 30, 30, "Metales alcainos", "#FFC8B0");
+		Boton.CrearBoton(Window, 30, 60, "Alcalinoterreos", "#FFE6CC");
 		Boton.CrearBoton(Window, 30, 90, "Otros Metales", "#FFF2CC");
 		Boton.CrearBoton(Window, 30, 120, "Metales de transicion", "#D0E882");
 		Boton.CrearBoton(Window, 30, 150, "Lantanidos", "#D1E8A2");
@@ -34,42 +34,45 @@ public class Interface {
 		Boton.CrearBoton(Window, 30, 270, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 30, 300, "Gases Nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 30, 330, "Custom", "#E9E4E3");
-		
+
 		JPanel DrawingZone = new JPanel();
 		DrawingZone.setBounds(220, 30, 586, 380);
 		DrawingZone.setBackground(Color.decode("#000000"));
 		Window.add(DrawingZone);
-		
+
 		Window.setVisible(true);
-		
+
+		File archivo = new File();
+		archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
+
 		DrawAtom Circle = new DrawAtom();
-		
+
 		int x;
 		int y;
-		
+
 		int AnteriorX = 0;
 		int AnteriorY = 0;
-		
-		while(true) {
-			
+
+		while (true) {
+
 			Point ubicacion = DrawingZone.getMousePosition();
-			
-			if(ubicacion == null) {
+
+			if (ubicacion == null) {
 				x = 5;
 				y = 5;
 			} else {
 				x = ubicacion.x;
 				y = ubicacion.y;
 			}
-			
-			if(x != AnteriorX || y != AnteriorY) {
-				
+
+			if (x != AnteriorX || y != AnteriorY) {
+
 				Circle.paint(DrawingZone.getGraphics(), x, y);
 				AnteriorX = x;
 				AnteriorY = y;
-				
+
 			}
-			
+
 		}
 
 	}

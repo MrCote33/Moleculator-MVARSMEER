@@ -41,7 +41,7 @@ public class Atom {
     System.out.print("Simbolo: ");
     System.out.println(getSimbolo());
     System.out.print("Enlaces Libres: ");
-    System.out.println(getEnlTotales());
+    System.out.println(getEnlTotales() + "\n");
 
   }
 

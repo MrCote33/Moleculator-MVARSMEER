@@ -64,9 +64,15 @@ public class Interface {
 				x = ubicacion.x;
 				y = ubicacion.y;
 			}
-
-			if (x != AnteriorX || y != AnteriorY) {
-
+			
+			if(x != AnteriorX || y != AnteriorY) {
+				
+				try {
+					Thread.sleep(17);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
 				Circle.paint(DrawingZone.getGraphics(), x, y);
 				AnteriorX = x;
 				AnteriorY = y;

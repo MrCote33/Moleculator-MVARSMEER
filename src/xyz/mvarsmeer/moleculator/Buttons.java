@@ -23,8 +23,9 @@ public class Buttons implements ActionListener {
 		
 		//Detecta que boton se presiono!
 		JButton Actual = (JButton) e.getSource();
-		Color color = Actual.getBackground();
-		Actual.setBackground(color.darker());
+		Color color = Actual.getBackground(); 
+		Windows Atomos = new Windows();
+		Atomos.CreateWindow(Actual.getText()); // Pasa el color tambien porfa.
 	  
 	}
   

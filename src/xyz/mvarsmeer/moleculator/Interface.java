@@ -1,15 +1,15 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Interface {
 
-	public void CreateWindow() {
+	public void initInterface() {
 
 		JFrame Window = new JFrame("Moleculator");
 		Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +35,7 @@ public class Interface {
 		Boton.CrearBoton(Window, 30, 300, "Gases Nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 30, 330, "Custom", "#E9E4E3");
 
-		JPanel DrawingZone = new JPanel();
+		Canvas DrawingZone = new Canvas();
 		DrawingZone.setBounds(220, 30, 586, 380);
 		DrawingZone.setBackground(Color.decode("#000000"));
 		Window.add(DrawingZone);
@@ -46,6 +46,8 @@ public class Interface {
 		archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
 
 		DrawAtom Circle = new DrawAtom();
+		DrawAtom hs = new DrawAtom();
+		hs.paint(DrawingZone.getGraphics(), 0, 0);
 
 		int x;
 		int y;

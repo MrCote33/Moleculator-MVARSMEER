@@ -1,9 +1,7 @@
 package xyz.mvarsmeer.moleculator;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -37,48 +35,9 @@ public class Interface {
 
 		Canvas DrawingZone = new Canvas();
 		DrawingZone.setBounds(220, 30, 586, 380);
-		DrawingZone.setBackground(Color.decode("#000000"));
 		Window.add(DrawingZone);
 
 		Window.setVisible(true);
-
-		DrawAtom Circle = new DrawAtom();
-		DrawAtom hs = new DrawAtom();
-		hs.paint(DrawingZone.getGraphics(), 0, 0);
-
-		int x;
-		int y;
-
-		int AnteriorX = 0;
-		int AnteriorY = 0;
-
-		while (true) {
-
-			Point ubicacion = DrawingZone.getMousePosition();
-
-			if (ubicacion == null) {
-				x = 5;
-				y = 5;
-			} else {
-				x = ubicacion.x;
-				y = ubicacion.y;
-			}
-
-			if (x != AnteriorX || y != AnteriorY) {
-
-				try {
-					Thread.sleep(17);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				Circle.paint(DrawingZone.getGraphics(), x, y);
-				AnteriorX = x;
-				AnteriorY = y;
-
-			}
-
-		}
 
 	}
 

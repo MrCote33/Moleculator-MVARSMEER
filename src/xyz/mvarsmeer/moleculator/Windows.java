@@ -6,27 +6,25 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class Windows {
+	
+	ArrayList<Atom> Elementos = new ArrayList<Atom>();
+	
+	public Windows() {
+		
+		File archivo = new File();
+		Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
+		
+	}
 
-  public void CreateWindow(String Seccion, Color color) {
-
-    JFrame Window = new JFrame(Seccion);
-    Window.setSize(new Dimension(427, 240));
-    Window.setLocationRelativeTo(null);
-    Window.setLayout(null);
-    Window.setResizable(false);
-    Window.setVisible(true);
-
-    ArrayList<Atom> Lista = new ArrayList<Atom>();
-
-    File archivo = new File();
-    Lista = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
-
-    for (int i = 0; i < Lista.size(); i++) {
-
-      System.out.println(Lista.get(i).getTipo());
-
-    }
-
-  }
-
+	public void CreateWindow(String Seccion, Color color) {
+		
+		JFrame Window = new JFrame(Seccion);
+		Window.setSize(new Dimension(480, 335));
+		Window.setLocationRelativeTo(null);
+		Window.setLayout(null);
+		Window.setResizable(false);
+		Window.setVisible(true);
+		
+	}
+	
 }

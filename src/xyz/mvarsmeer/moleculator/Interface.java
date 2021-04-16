@@ -25,14 +25,14 @@ public class Interface {
 		Buttons Boton = new Buttons();
 		Boton.CrearBoton(Window, 30, 30, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 30, 60, "Alcalinoterreos", "#FFE6CC");
-		Boton.CrearBoton(Window, 30, 90, "Otros Metales", "#FFF2CC");
+		Boton.CrearBoton(Window, 30, 90, "Otros metales", "#FFF2CC");
 		Boton.CrearBoton(Window, 30, 120, "Metales de transicion", "#D0E882");
 		Boton.CrearBoton(Window, 30, 150, "Lantanidos", "#D1E8A2");
 		Boton.CrearBoton(Window, 30, 180, "Actinidos", "#B8E8B3");
 		Boton.CrearBoton(Window, 30, 210, "Metaloides", "#D5E8D4");
-		Boton.CrearBoton(Window, 30, 240, "No Metales", "#E1D5E7");
+		Boton.CrearBoton(Window, 30, 240, "No metales", "#E1D5E7");
 		Boton.CrearBoton(Window, 30, 270, "Halogenos", "#D8A4DE");
-		Boton.CrearBoton(Window, 30, 300, "Gases Nobles", "#DAE8FC");
+		Boton.CrearBoton(Window, 30, 300, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 30, 330, "Custom", "#E9E4E3");
 
 		Canvas DrawingZone = new Canvas();
@@ -41,9 +41,6 @@ public class Interface {
 		Window.add(DrawingZone);
 
 		Window.setVisible(true);
-
-		File archivo = new File();
-		archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
 
 		DrawAtom Circle = new DrawAtom();
 		DrawAtom hs = new DrawAtom();
@@ -66,15 +63,15 @@ public class Interface {
 				x = ubicacion.x;
 				y = ubicacion.y;
 			}
-			
-			if(x != AnteriorX || y != AnteriorY) {
-				
+
+			if (x != AnteriorX || y != AnteriorY) {
+
 				try {
 					Thread.sleep(17);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				
+
 				Circle.paint(DrawingZone.getGraphics(), x, y);
 				AnteriorX = x;
 				AnteriorY = y;

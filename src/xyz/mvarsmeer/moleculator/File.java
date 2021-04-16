@@ -1,12 +1,15 @@
 package xyz.mvarsmeer.moleculator;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class File {
 
-  public void LeerArchivo(String Path) {
+  public ArrayList<Atom> LeerArchivo(String Path) {
 
     FileReader Archivo;
+
+    ArrayList<Atom> ListaDeAtomos = new ArrayList<Atom>();
 
     try {
 
@@ -33,13 +36,14 @@ public class File {
           int Enlaces = Integer.parseInt(Datos[2]);
 
           Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);
-          Atomo.Imprimir();
+          ListaDeAtomos.add(Atomo);
 
         }
 
       }
 
       Lector.close();
+      return ListaDeAtomos;
 
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -48,6 +52,8 @@ public class File {
       e.printStackTrace();
 
     }
+
+    return ListaDeAtomos;
 
   }
 

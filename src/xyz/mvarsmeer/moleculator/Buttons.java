@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Buttons implements ActionListener {
-	
+
 	public void CrearBoton(JFrame Window, int x, int y, String Contenido, String color) {
 
 		JButton Boton = new JButton(Contenido);
@@ -18,15 +18,14 @@ public class Buttons implements ActionListener {
 		Window.add(Boton);
 
 	}
-  
+
 	public void actionPerformed(ActionEvent e) {
-		
-		//Detecta que boton se presiono!
+
+		// Detecta que boton se presiono!
 		JButton Actual = (JButton) e.getSource();
-		Color color = Actual.getBackground(); 
 		Windows Atomos = new Windows();
-		Atomos.CreateWindow(Actual.getText()); // Pasa el color tambien porfa.
-	  
+		Atomos.CreateWindow(Actual.getText(), Actual.getBackground());
+
 	}
-  
+
 }

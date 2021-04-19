@@ -2,13 +2,14 @@ package xyz.mvarsmeer.moleculator;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
 
 public class Windows {
 	
 	ArrayList<Atom> Elementos = new ArrayList<Atom>();
+	Boolean Active = false;
+	JFrame WindowActive;
 	
 	public Windows() {
 		
@@ -20,23 +21,25 @@ public class Windows {
 	public void CreateWindow(String Seccion, Color color) {
 		
 		JFrame Window = new JFrame(Seccion);
+		
+		if(Active == false) {
+			WindowActive = Window;
+			Active = true;
+		}
+		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Window.setSize(new Dimension(480, 340));
 		Window.setLocationRelativeTo(null);
+		Window.setIgnoreRepaint(true);
 		Window.setResizable(false);
 		Window.setLayout(null);
-		
-		Canvas DrawingZone = new Canvas();
-		DrawingZone.setBounds(0,0,480,300);
-		DrawingZone.setIgnoreRepaint(true);
-		Window.add(DrawingZone);
 		
 		Window.setVisible(true);
 		
 		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
 		
-		int x = 15;
-		int y = 15;
+		int x = 20;
+		int y = 45;
 		
 		for(int cont = 0; cont < Elementos.size(); cont++) {
 			
@@ -47,11 +50,11 @@ public class Windows {
 				DrawAtom Atomo = new DrawAtom(x,y,color,Actual);
 				Atomos.add(Atomo);
 				
-				if(x < 350) {
+				if(x < 370) {
 					x += 55;
 				} else {
-					x = 15;
-					y += 55;
+					x = 20;
+					y += 56;
 				}
 				
 			}
@@ -60,7 +63,7 @@ public class Windows {
 		
 		for(int cont = 0; cont < Atomos.size(); cont++) {
 				
-			Atomos.get(cont).paint(DrawingZone.getGraphics());
+			Atomos.get(cont).paint(Window.getGraphics());
 				
 		}
 		

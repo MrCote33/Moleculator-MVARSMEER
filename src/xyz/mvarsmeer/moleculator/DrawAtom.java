@@ -34,8 +34,21 @@ public class DrawAtom {
 		g2.drawArc(this.x, this.y, 49, 49, 0, 360);
 		
 		g2.setColor(Color.decode("#000000"));
-		g2.setFont(new Font("Arial", Font.BOLD, 17));
-		g2.drawString(this.Atomo.getSimbolo(), this.x+19, this.y+30);
+		g2.setFont(new Font("Courier", Font.PLAIN, 17));
+		
+		if(Atomo.getSimbolo().length() == 2) {
+			g2.drawString(this.Atomo.getSimbolo(), this.x+15, this.y+25);
+		} else {
+			g2.drawString(this.Atomo.getSimbolo(), this.x+20, this.y+25);
+		}
+		
+		g2.setFont(new Font("Courier", Font.PLAIN, 12));
+		
+		if(Atomo.getEnlTotales() >= 10) {
+			g2.drawString(String.valueOf(this.Atomo.getEnlTotales()), this.x+17, this.y+37);
+		} else {
+			g2.drawString(String.valueOf(this.Atomo.getEnlTotales()), this.x+21, this.y+37);
+		}
 		
 	}
 	

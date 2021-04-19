@@ -1,8 +1,9 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import java.awt.Color;
+import javax.swing.JPanel;
 import java.util.ArrayList;
 
 public class Windows {
@@ -34,12 +35,16 @@ public class Windows {
 		Window.setResizable(false);
 		Window.setLayout(null);
 		
+		JPanel DrawZone = new JPanel();
+		DrawZone.setBounds(0,0,480,320);
+		Window.add(DrawZone);
+		
 		Window.setVisible(true);
 		
 		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
 		
-		int x = 20;
-		int y = 45;
+		int x = 15;
+		int y = 15;
 		
 		for(int cont = 0; cont < Elementos.size(); cont++) {
 			
@@ -53,8 +58,8 @@ public class Windows {
 				if(x < 370) {
 					x += 55;
 				} else {
-					x = 20;
-					y += 56;
+					x = 15;
+					y += 55;
 				}
 				
 			}
@@ -63,8 +68,8 @@ public class Windows {
 		
 		for(int cont = 0; cont < Atomos.size(); cont++) {
 				
-			Atomos.get(cont).paint(Window.getGraphics());
-				
+			Atomos.get(cont).paint(DrawZone.getGraphics());
+			
 		}
 		
 	}

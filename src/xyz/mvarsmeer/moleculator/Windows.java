@@ -2,6 +2,7 @@ package xyz.mvarsmeer.moleculator;
 
 import java.awt.Color;
 import java.awt.Dimension;
+//import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.ArrayList;
@@ -35,11 +36,15 @@ public class Windows {
 		Window.setResizable(false);
 		Window.setLayout(null);
 		
+		Window.setVisible(true);
+		
 		JPanel DrawZone = new JPanel();
 		DrawZone.setBounds(0,0,480,320);
 		Window.add(DrawZone);
 		
-		Window.setVisible(true);
+		/*JButton TEST = new JButton("Add");
+		TEST.setBounds(15,15,60,25);
+		Window.add(TEST);*/
 		
 		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
 		
@@ -50,9 +55,10 @@ public class Windows {
 			
 			Atom Actual = Elementos.get(cont);
 			
-			if(Actual.getTipo().equals(Seccion)) {
+			if(Actual.getTipo().equals(Seccion) && !Actual.getSimbolo().equals("")) {
 				
 				DrawAtom Atomo = new DrawAtom(x,y,color,Actual);
+				//Aqui creacion de boton "Add"
 				Atomos.add(Atomo);
 				
 				if(x < 370) {
@@ -66,8 +72,14 @@ public class Windows {
 			
 		}
 		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		for(int cont = 0; cont < Atomos.size(); cont++) {
-				
+			
 			Atomos.get(cont).paint(DrawZone.getGraphics());
 			
 		}

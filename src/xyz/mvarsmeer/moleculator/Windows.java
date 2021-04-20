@@ -1,14 +1,15 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import java.awt.Canvas;
-import java.awt.Color;
 import java.util.ArrayList;
 
 public class Windows {
 	
 	ArrayList<Atom> Elementos = new ArrayList<Atom>();
+	Boolean Active = false;
+	JFrame WindowActive;
 	
 	public Windows() {
 		
@@ -20,23 +21,26 @@ public class Windows {
 	public void CreateWindow(String Seccion, Color color) {
 		
 		JFrame Window = new JFrame(Seccion);
+		
+		if(Active == false) {
+
+			WindowActive = Window;
+			Active = true;
+
+		}
+		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Window.setSize(new Dimension(480, 340));
+		Window.setSize(new Dimension(510, 360));
 		Window.setLocationRelativeTo(null);
+		Window.setIgnoreRepaint(false);
 		Window.setResizable(false);
 		Window.setLayout(null);
-		
-		Canvas DrawingZone = new Canvas();
-		DrawingZone.setBounds(0,0,480,300);
-		DrawingZone.setIgnoreRepaint(true);
-		Window.add(DrawingZone);
-		
 		Window.setVisible(true);
 		
-		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
+		Selection boton = new Selection();
 		
-		int x = 15;
-		int y = 15;
+		int x = 10;
+		int y = 13;
 		
 		for(int cont = 0; cont < Elementos.size(); cont++) {
 			
@@ -44,24 +48,21 @@ public class Windows {
 			
 			if(Actual.getTipo().equals(Seccion)) {
 				
-				DrawAtom Atomo = new DrawAtom(x,y,color,Actual);
-				Atomos.add(Atomo);
+				boton.CrearBoton(Window, x, y, Actual.getSimbolo(), color);
 				
-				if(x < 350) {
-					x += 55;
+				if(x < 375) {
+
+					x += 60;
+
 				} else {
-					x = 15;
-					y += 55;
+
+					x = 10;
+					y += 60;
+
 				}
 				
 			}
 			
-		}
-		
-		for(int cont = 0; cont < Atomos.size(); cont++) {
-				
-			Atomos.get(cont).paint(DrawingZone.getGraphics());
-				
 		}
 		
 	}

@@ -24,6 +24,14 @@ public class Buttons implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		JButton Actual = (JButton) e.getSource();
+
+		if(Atomos.Active) {
+
+            Atomos.WindowActive.dispose();
+            Atomos.Active = false;
+
+        }
+		
 		Atomos.CreateWindow(Actual.getText(), Actual.getBackground());
 
 	}

@@ -43,12 +43,15 @@ public class File {
       }
 
       Lector.close();
+      
       return ListaDeAtomos;
 
     } catch (FileNotFoundException e) {
+
       e.printStackTrace();
 
     } catch (IOException e) {
+
       e.printStackTrace();
 
     }

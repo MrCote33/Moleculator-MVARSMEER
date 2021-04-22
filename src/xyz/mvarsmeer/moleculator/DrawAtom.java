@@ -34,7 +34,7 @@ public class DrawAtom {
 		g2.drawArc(this.x, this.y, 49, 49, 0, 360);
 		
 		g2.setColor(Color.decode("#000000"));
-		g2.setFont(new Font("Arial", Font.BOLD, 17));
+		g2.setFont(new Font("Courier", Font.PLAIN, 12));
 		g2.drawString(this.Atomo.getSimbolo(), this.x+19, this.y+30);
 		
 	}

@@ -34,10 +34,26 @@ public class Selection implements ActionListener  {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
-		//this.Dibujar.add(this.Asignado);
-		this.Activo.dispose();
 
+		JButton Actual = (JButton) e.getSource();
+
+		File archivo = new File();
+		ArrayList<Atom> Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
+
+		for(int i=0; i < Elementos.size() ;i++){
+
+			if(Actual.getText().equals(Elementos.get(i).getSimbolo())){
+
+				Atom Atomo = Elementos.get(i);
+				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), Actual.getBackground(), Atomo);
+				this.Dibujar.add(Dibujo);
+				
+			}
+
+		}
+
+		this.Activo.dispose();
+		
 	}
-    
+
 }

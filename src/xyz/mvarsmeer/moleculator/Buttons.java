@@ -1,5 +1,6 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -9,16 +10,19 @@ import javax.swing.JButton;
 
 public class Buttons implements ActionListener {
 	
+	ArrayList<DrawAtom> Dibujar = new ArrayList<DrawAtom>();	
 	Windows Atomos = new Windows();
-	ArrayList<DrawAtom> Dibujar = new ArrayList<DrawAtom>();
+	Custom NewAtom = new Custom();
+
 
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));
-		Boton.setBounds(x, y, 160, 30);
+		Boton.setBounds(x-5, y, 165, 30);
+		Boton.setFont(new Font("Courier", Font.BOLD, 13));
 		Boton.addActionListener(this);
-		Boton.setFocusPainted(false);
+		
 		Window.add(Boton);
 
 	}
@@ -27,14 +31,29 @@ public class Buttons implements ActionListener {
 		
 		JButton Actual = (JButton) e.getSource();
 
-		if(Atomos.Active) {
+		if(Atomos.Active ) {
 
             Atomos.WindowActive.dispose();
             Atomos.Active = false;
 
         }
+
+		if(NewAtom.Active) {
+
+            NewAtom.WindowActive.dispose();
+            NewAtom.Active = false;
+
+        }
 		
-		Atomos.CreateWindow(Actual.getText(), Actual.getBackground(), Dibujar);
+		if(Actual.getText() == "Custom"){
+
+			NewAtom.CreateWindow(Actual.getText(),Dibujar);
+
+		}else{
+
+			Atomos.CreateWindow(Actual.getText(), Actual.getBackground(), Dibujar);
+
+		}
 
 	}
 

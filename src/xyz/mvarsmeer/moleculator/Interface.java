@@ -46,6 +46,13 @@ public class Interface {
 				e.printStackTrace();
 			}
 			
+			for(int cont = 0; cont < Boton.Dibujar.size(); cont++ ) {
+				
+				DrawAtom Actual = Boton.Dibujar.get(cont);
+				Actual.paint(DrawingZone.getGraphics());
+				
+			}
+			
 		}
 
 	}

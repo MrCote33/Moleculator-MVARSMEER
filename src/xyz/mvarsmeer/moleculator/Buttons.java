@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 
 public class Buttons implements ActionListener {
 	
 	Windows Atomos = new Windows();
+	ArrayList<DrawAtom> Dibujar = new ArrayList<DrawAtom>();
 
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
@@ -32,7 +34,7 @@ public class Buttons implements ActionListener {
 
         }
 		
-		Atomos.CreateWindow(Actual.getText(), Actual.getBackground());
+		Atomos.CreateWindow(Actual.getText(), Actual.getBackground(), Dibujar);
 
 	}
 

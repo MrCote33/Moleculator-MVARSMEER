@@ -18,7 +18,7 @@ public class Windows {
 		
 	}
 
-	public void CreateWindow(String Seccion, Color color) {
+	public void CreateWindow(String Seccion, Color color, ArrayList<DrawAtom> Dibujar) {
 		
 		JFrame Window = new JFrame(Seccion);
 		
@@ -37,7 +37,7 @@ public class Windows {
 		Window.setLayout(null);
 		Window.setVisible(true);
 		
-		Selection boton = new Selection();
+		Selection boton = new Selection(Dibujar, Window);
 		
 		int x = 10;
 		int y = 13;
@@ -48,7 +48,8 @@ public class Windows {
 			
 			if(Actual.getTipo().equals(Seccion)) {
 				
-				boton.CrearBoton(Window, x, y, Actual.getSimbolo(), color);
+				DrawAtom Elemento = new DrawAtom(x, y, color, Actual);
+				boton.CrearBoton(x, y, Actual.getSimbolo(), color, Elemento);
 				
 				if(x < 375) {
 

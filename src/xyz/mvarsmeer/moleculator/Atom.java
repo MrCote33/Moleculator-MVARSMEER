@@ -17,19 +17,27 @@ public class Atom {
   }
 
   public String getTipo() {
+
     return this.Tipo;
+    
   }
 
   public String getNombre() {
+
     return this.Nombre;
+
   }
 
   public String getSimbolo() {
+
     return this.Simbolo;
+
   }
 
   public int getEnlTotales() {
+
     return this.Enlaces_Totales;
+
   }
 
   public void Imprimir() {

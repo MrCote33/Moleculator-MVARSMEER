@@ -14,7 +14,6 @@ public class Buttons implements ActionListener {
 	Windows Atomos = new Windows();
 	Custom NewAtom = new Custom();
 
-
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
 		JButton Boton = new JButton(Contenido);

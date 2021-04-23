@@ -17,7 +17,7 @@ public class Interface {
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);
-
+		
 		Buttons Boton = new Buttons();
 		Boton.CrearBoton(Window, 35, 60, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 35, 90, "Alcalinoterreos", "#FFE6CC");
@@ -41,11 +41,15 @@ public class Interface {
 		while(true) {
 			
 			try {
+
 				Thread.sleep(17);
+
 			} catch (InterruptedException e) {
+
 				e.printStackTrace();
+
 			}
-			
+
 			for(int cont = 0; cont < Boton.Dibujar.size(); cont++ ) {
 				
 				DrawAtom Actual = Boton.Dibujar.get(cont);
@@ -58,11 +62,13 @@ public class Interface {
 	}
 	
 	static class WindowListener extends WindowAdapter {
-		
+
 		public void windowClosing(WindowEvent e) {
+
 			System.exit(0);
+
 		}
-		
+
 	}
 
 }

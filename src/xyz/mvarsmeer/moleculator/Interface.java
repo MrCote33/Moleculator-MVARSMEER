@@ -53,7 +53,13 @@ public class Interface {
 			for(int cont = 0; cont < Boton.Dibujar.size(); cont++ ) {
 				
 				DrawAtom Actual = Boton.Dibujar.get(cont);
-				Actual.paint(DrawingZone.getGraphics());
+				
+				if(Actual.Active) {
+					
+					Actual.paint(DrawingZone.getGraphics());
+					Actual.Active = false;
+					
+				}
 				
 			}
 			

@@ -12,18 +12,19 @@ public class Selection implements ActionListener  {
     
 	JFrame Activo;
     ArrayList<DrawAtom> Dibujar;
+    ArrayList<Atom> Elementos;
     
-    public Selection(ArrayList<DrawAtom> Lista, JFrame Window) {
+    public Selection(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
     	
     	this.Dibujar = Lista;
+    	this.Elementos = Elementos;
     	this.Activo = Window;
     	
     }
 
-    public void CrearBoton(int x, int y, String Contenido, Color color, DrawAtom Elemento) {
+    public void CrearBoton(int x, int y, String Contenido, Color color) {
 
 		JButton Boton = new JButton(Contenido);
-		
 		Boton.setBounds(x, y, 55, 55);
         Boton.setBackground(color);
         Boton.setFont(new Font("Courier", Font.PLAIN, 12));
@@ -36,9 +37,6 @@ public class Selection implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 
 		JButton Actual = (JButton) e.getSource();
-
-		File archivo = new File();
-		ArrayList<Atom> Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
 
 		for(int i=0; i < Elementos.size() ;i++){
 

@@ -19,7 +19,8 @@ public class Buttons implements ActionListener {
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));
 		Boton.setBounds(x-5, y, 165, 30);
-		Boton.setFont(new Font("Courier", Font.BOLD, 13));
+		Boton.setFocusPainted(false);
+		Boton.setFont(new Font("Arial", Font.BOLD, 12));
 		Boton.addActionListener(this);
 		
 		Window.add(Boton);
@@ -48,7 +49,7 @@ public class Buttons implements ActionListener {
 
 			NewAtom.CreateWindow(Actual.getText(),Dibujar);
 
-		}else{
+		} else {
 
 			Atomos.CreateWindow(Actual.getText(), Actual.getBackground(), Dibujar);
 

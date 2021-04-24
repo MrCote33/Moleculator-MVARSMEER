@@ -12,7 +12,7 @@ public class Buttons implements ActionListener {
 	
 	ArrayList<DrawAtom> Dibujar = new ArrayList<DrawAtom>();	
 	Windows Atomos = new Windows();
-	Custom NewAtom = new Custom();
+	Custom NewAtom = new Custom(Dibujar);
 
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 

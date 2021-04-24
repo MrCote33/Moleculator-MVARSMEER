@@ -1,6 +1,8 @@
 package xyz.mvarsmeer.moleculator;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -13,6 +15,13 @@ public class Custom {
 
     Boolean Active = false;
 	JFrame WindowActive;
+	ArrayList<DrawAtom> Dibujar;
+	
+	public Custom(ArrayList<DrawAtom> Lista) {
+    	
+    	this.Dibujar = Lista;
+    	
+    }
 
 	public void CreateWindow(String Seccion, ArrayList<DrawAtom> Dibujar) {
 		
@@ -72,8 +81,32 @@ public class Custom {
 		Window.add(Boton);
 		
 		Window.setVisible(true);
+		
+		Boton.addActionListener(new ActionListener() {
+			
+		    public void actionPerformed(ActionEvent e) {
+		    	
+		    	if(Rellenar.getText().length() > 0 && Rellenar2.getText().matches("[0-9]+") && Rellenar3.getText().length() > 0) {
+		    		
+		    		Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+					DrawAtom Dibujo = new DrawAtom(15,15, Color.decode("#E9E4E3"), Atomo);
+					Dibujar.add(Dibujo);
+					
+					Active = false;
+					WindowActive.dispose();
+		    		
+		    	} else {
+		    		
+		    		Rellenar.setText("");
+		    		Rellenar2.setText("");
+		    		Rellenar3.setText("");
+		    		
+		    	}
+		    	
+		    }
+		    
+		});
 
     }
 
 }
-

@@ -86,22 +86,28 @@ public class Custom {
 			
 		    public void actionPerformed(ActionEvent e) {
 		    	
-		    	if(Rellenar.getText().length() > 0 && Rellenar2.getText().matches("[0-9]+") && Rellenar3.getText().length() > 0) {
+		    	if(Rellenar.getText().length() > 0) {
 		    		
-		    		Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-					DrawAtom Dibujo = new DrawAtom(15,15, Color.decode("#E9E4E3"), Atomo);
-					Dibujar.add(Dibujo);
-					
-					Active = false;
-					WindowActive.dispose();
-		    		
-		    	} else {
-		    		
-		    		Rellenar.setText("");
-		    		Rellenar2.setText("");
-		    		Rellenar3.setText("");
+		    		if(Rellenar2.getText().matches("[0-9]+")) {
+		    			
+		    			if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
+		    				
+		    				Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+							DrawAtom Dibujo = new DrawAtom(15,15, Color.decode("#E9E4E3"), Atomo);
+							Dibujar.add(Dibujo);
+							
+							Active = false;
+							WindowActive.dispose();
+		    				
+		    			}
+		    			
+		    		}
 		    		
 		    	}
+		    	
+		    	Rellenar.setText("");
+	    		Rellenar2.setText("");
+	    		Rellenar3.setText("");
 		    	
 		    }
 		    

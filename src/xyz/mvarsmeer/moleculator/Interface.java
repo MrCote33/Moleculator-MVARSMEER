@@ -4,6 +4,9 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -30,9 +33,12 @@ public class Interface {
 		Boton.CrearBoton(Window, 35, 300, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 35, 330, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 35, 360, "Custom", "#E9E4E3");
-
+		
+		MouseButtons Click = new MouseButtons();
+		
 		Canvas DrawingZone = new Canvas();
 		DrawingZone.setBounds(225, 60, 586, 380);
+		DrawingZone.addMouseListener(Click);
 		DrawingZone.setBackground(Color.decode("#0F0F0F"));
 		Window.add(DrawingZone);
 
@@ -49,15 +55,40 @@ public class Interface {
 				e.printStackTrace();
 
 			}
+			
+			Point location = DrawingZone.getMousePosition();
 
-			for(int cont = 0; cont < Boton.Dibujar.size(); cont++ ) {
+			for(int cont1 = 0; cont1 < Boton.Dibujar.size(); cont1++ ) {
 				
-				DrawAtom Actual = Boton.Dibujar.get(cont);
+				DrawAtom Actual = Boton.Dibujar.get(cont1);
 				
 				if(Actual.Active) {
 					
-					Actual.paint(DrawingZone.getGraphics());
-					Actual.Active = false;
+					Click.updateActive(Actual);
+					
+					if(location != null) {
+						
+						Actual.x = location.x;
+						Actual.y = location.y;
+						
+					}
+					
+					Actual.Repaint = true;
+					
+				}
+				
+				if(Actual.Repaint) {
+					
+					Actual.repaint(DrawingZone.getGraphics());
+					
+					for(int cont2 = 0; cont2 < Boton.Dibujar.size(); cont2++) {
+						
+						DrawAtom Repintar = Boton.Dibujar.get(cont2);
+						Repintar.paint(DrawingZone.getGraphics());
+						
+					}
+					
+					Actual.Repaint = false;
 					
 				}
 				
@@ -76,5 +107,27 @@ public class Interface {
 		}
 
 	}
-
+	
+	static class MouseButtons extends MouseAdapter {
+		
+		DrawAtom Elemento;
+		
+		public void updateActive(DrawAtom Elemento) {
+			this.Elemento = Elemento;
+		}
+		
+		public void mouseClicked(MouseEvent event) {
+			
+			if(event.getButton() == MouseEvent.BUTTON1) {
+				Elemento.Active = false;
+			}
+			
+			if(event.getButton() == MouseEvent.BUTTON3) {
+				System.out.println("Click Derecho");
+			}
+			
+		}
+		
+	}
+	
 }

@@ -5,14 +5,14 @@ public class Atom {
   private String Tipo;
   private String Nombre;
   private String Simbolo;
-  private int Enlaces_Totales;
+  private int Enlaces;
 
-  public Atom(String Tipo, String Nombre, String Simbolo, int Enlaces_Totales) {
+  public Atom(String Tipo, String Nombre, String Simbolo, int Enlaces) {
 
     this.Tipo = Tipo;
     this.Nombre = Nombre;
     this.Simbolo = Simbolo;
-    this.Enlaces_Totales = Enlaces_Totales;
+    this.Enlaces = Enlaces;
 
   }
 
@@ -34,9 +34,9 @@ public class Atom {
 
   }
 
-  public int getEnlTotales() {
+  public int getEnlaces() {
 
-    return this.Enlaces_Totales;
+    return this.Enlaces;
 
   }
 
@@ -49,7 +49,7 @@ public class Atom {
     System.out.print("Simbolo: ");
     System.out.println(getSimbolo());
     System.out.print("Enlaces Libres: ");
-    System.out.println(getEnlTotales() + "\n");
+    System.out.println(getEnlaces() + "\n");
 
   }
 

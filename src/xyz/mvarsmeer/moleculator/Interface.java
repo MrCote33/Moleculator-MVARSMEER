@@ -4,13 +4,14 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
-
 import javax.swing.JLabel;
 
 public class Interface {
@@ -49,14 +50,18 @@ public class Interface {
 		DrawingZone.addMouseListener(Click);
 		DrawingZone.setBackground(Color.decode("#0F0F0F"));
 		Window.add(DrawingZone);
-
+		
 		Window.setVisible(true);
+		
+		DrawingZone.createBufferStrategy(2);
+		BufferStrategy Buffer = DrawingZone.getBufferStrategy();
+		Graphics Drawing = Buffer.getDrawGraphics();
 		
 		while(true) {
 			
 			try {
 
-				Thread.sleep(17);
+				Thread.sleep(10);
 
 			} catch (InterruptedException e) {
 
@@ -87,16 +92,18 @@ public class Interface {
 				
 				if(Actual.Repaint) {
 					
-					Actual.repaint(DrawingZone.getGraphics());
+					Actual.repaint(Drawing);
 					
 					for(int cont2 = 0; cont2 < Boton.Dibujar.size(); cont2++) {
 						
 						DrawAtom Repintar = Boton.Dibujar.get(cont2);
-						Repintar.paint(DrawingZone.getGraphics());
+						Repintar.paint(Drawing);
 						
 					}
 					
 					Actual.Repaint = false;
+					
+					Buffer.show();
 					
 				}
 				

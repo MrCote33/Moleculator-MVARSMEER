@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JLabel;
+
 public class Interface {
 
 	public void initInterface() {
@@ -20,19 +22,24 @@ public class Interface {
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);
+
+		JLabel Equipo = new JLabel("MVARSMEER");
+		Equipo.setBounds(730, 450, 100, 20);
+		Equipo.setForeground(Color.BLACK);
+		Window.add(Equipo);
 		
 		Buttons Boton = new Buttons();
-		Boton.CrearBoton(Window, 35, 60, "Metales alcainos", "#FFC8B0");
-		Boton.CrearBoton(Window, 35, 90, "Alcalinoterreos", "#FFE6CC");
-		Boton.CrearBoton(Window, 35, 120, "Otros metales", "#FFF2CC");
-		Boton.CrearBoton(Window, 35, 150, "Metales de transicion", "#D0E882");
-		Boton.CrearBoton(Window, 35, 180, "Lantanidos", "#D1E8A2");
-		Boton.CrearBoton(Window, 35, 210, "Actinidos", "#B8E8B3");
-		Boton.CrearBoton(Window, 35, 240, "Metaloides", "#D5E8D4");
-		Boton.CrearBoton(Window, 35, 270, "No metales", "#E1D5E7");
-		Boton.CrearBoton(Window, 35, 300, "Halogenos", "#D8A4DE");
-		Boton.CrearBoton(Window, 35, 330, "Gases nobles", "#DAE8FC");
-		Boton.CrearBoton(Window, 35, 360, "Custom", "#E9E4E3");
+		Boton.CrearBoton(Window, 35, 82, "Metales alcainos", "#FFC8B0");
+		Boton.CrearBoton(Window, 35, 112, "Alcalinoterreos", "#FFE6CC");
+		Boton.CrearBoton(Window, 35, 142, "Otros metales", "#FFF2CC");
+		Boton.CrearBoton(Window, 35, 172, "Metales de transicion", "#D0E882");
+		Boton.CrearBoton(Window, 35, 202, "Lantanidos", "#D1E8A2");
+		Boton.CrearBoton(Window, 35, 232, "Actinidos", "#B8E8B3");
+		Boton.CrearBoton(Window, 35, 262, "Metaloides", "#D5E8D4");
+		Boton.CrearBoton(Window, 35, 292, "No metales", "#E1D5E7");
+		Boton.CrearBoton(Window, 35, 322, "Halogenos", "#D8A4DE");
+		Boton.CrearBoton(Window, 35, 352, "Gases nobles", "#DAE8FC");
+		Boton.CrearBoton(Window, 35, 382, "Custom", "#E9E4E3");
 		
 		MouseButtons Click = new MouseButtons();
 		
@@ -113,17 +120,23 @@ public class Interface {
 		DrawAtom Elemento;
 		
 		public void updateActive(DrawAtom Elemento) {
+
 			this.Elemento = Elemento;
+
 		}
 		
 		public void mouseClicked(MouseEvent event) {
 			
 			if(event.getButton() == MouseEvent.BUTTON1) {
+
 				Elemento.Active = false;
+
 			}
 			
 			if(event.getButton() == MouseEvent.BUTTON3) {
-				System.out.println("Click Derecho");
+
+				Menu.Pop(Elemento.Atomo, Elemento.Paint, event);
+				
 			}
 			
 		}

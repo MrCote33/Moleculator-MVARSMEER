@@ -1,15 +1,18 @@
 package xyz.mvarsmeer.moleculator;
 
-import java.awt.Color;
+import java.awt.Canvas;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu {
     
-	public static void Pop(DrawAtom Element,Color color, MouseEvent e) {
+	public static void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
+		
+		DrawAtom Element = Elements.get(Active);
 
         JPopupMenu Menu = new JPopupMenu();
 
@@ -32,12 +35,17 @@ public class Menu {
 
 		});
 
-
         Delete.addActionListener(new ActionListener() {
 
 		    public void actionPerformed(ActionEvent e) {
-
-                System.out.println("Se ha borrado el atomo");
+		    	
+		    	Elements.remove(Active);
+		    	
+		    	if(Elements.size() > 0) {
+		    		Elements.get(0).Repaint = true;
+		    	} else {
+		    		Dibujo.repaint();
+		    	}
 
             }
 
@@ -46,7 +54,6 @@ public class Menu {
         Menu.add(Nombre);
         Menu.add(Link);
         Menu.add(Delete);
-        Menu.setBackground(color);
         Menu.show(e.getComponent(), e.getX(), e.getY());
 
 	}

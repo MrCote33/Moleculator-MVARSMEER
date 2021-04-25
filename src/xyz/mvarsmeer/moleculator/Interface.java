@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
@@ -24,7 +25,7 @@ public class Interface {
 		Window.setLayout(null);
 
 		JLabel Equipo = new JLabel("MVARSMEER");
-		Equipo.setBounds(730, 450, 100, 20);
+		Equipo.setBounds(735, 445, 100, 20);
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);
 		
@@ -41,9 +42,9 @@ public class Interface {
 		Boton.CrearBoton(Window, 35, 352, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 35, 382, "Custom", "#E9E4E3");
 		
-		MouseButtons Click = new MouseButtons();
-		
 		Canvas DrawingZone = new Canvas();
+		MouseButtons Click = new MouseButtons(Boton.Dibujar, DrawingZone);
+		
 		DrawingZone.setBounds(225, 60, 586, 380);
 		DrawingZone.addMouseListener(Click);
 		DrawingZone.setBackground(Color.decode("#0F0F0F"));
@@ -117,10 +118,19 @@ public class Interface {
 	
 	static class MouseButtons extends MouseAdapter {
 		
+		Canvas DrawingZone;
+		ArrayList<DrawAtom> ListaElemento;
 		DrawAtom Elemento;
 		
+		public MouseButtons(ArrayList<DrawAtom> ListaElemento, Canvas DrawingZone) {
+			
+			this.ListaElemento = ListaElemento;
+			this.DrawingZone = DrawingZone;
+			
+		}
+		
 		public void updateActive(DrawAtom Elemento) {
-
+			
 			this.Elemento = Elemento;
 
 		}
@@ -135,7 +145,23 @@ public class Interface {
 			
 			if(event.getButton() == MouseEvent.BUTTON3) {
 
-				Menu.Pop(Elemento, Elemento.Paint, event);
+				for(int i = 0; i < ListaElemento.size(); i++) {
+					
+					int x = ListaElemento.get(i).x;
+					int y = ListaElemento.get(i).y;
+					
+					if(event.getX() >= x+7 && event.getX() <= x+35) {
+						
+						if(event.getY() >= y+7 && event.getY() <= y+35) {
+							
+							this.Elemento = ListaElemento.get(i);
+							Menu.Pop(ListaElemento, i, DrawingZone, event);
+							
+						}
+						
+					}
+					
+				}
 				
 			}
 			

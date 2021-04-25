@@ -7,9 +7,9 @@ Cesio,Cs,1
 Francio,Fr,1
 
 Alcalinoterreos
-Berilio,Br,2
+Berilio,Be,2
 Magnesio,Mg,2
-Calcio,C,2
+Calcio,Ca,2
 Estroncio,Sr,2
 Bario,Ba,2
 Radio,Ra,2

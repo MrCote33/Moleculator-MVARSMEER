@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu {
-
-	public static void Pop(Atom Element,Color color, MouseEvent e) {
+    
+	public static void Pop(DrawAtom Element,Color color, MouseEvent e) {
 
         JPopupMenu Menu = new JPopupMenu();
 
-        JMenuItem Nombre = new JMenuItem(Element.getNombre(), JMenuItem.CENTER);
+        JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
                   Nombre.setEnabled(false);
         JMenuItem Link = new JMenuItem("Link atom");
         JMenuItem Delete = new JMenuItem("Delete atom");
@@ -22,7 +22,11 @@ public class Menu {
 
 		    public void actionPerformed(ActionEvent e) {
 
-                System.out.println("Escoja otro atomo");
+                if(Element.Atomo.getEnlaces() > 0){
+
+                    System.out.println("Escoja otro atomo para enlazar");
+
+                }
 
             }
 

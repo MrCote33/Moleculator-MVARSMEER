@@ -135,7 +135,7 @@ public class Interface {
 			
 			if(event.getButton() == MouseEvent.BUTTON3) {
 
-				Menu.Pop(Elemento.Atomo, Elemento.Paint, event);
+				Menu.Pop(Elemento, Elemento.Paint, event);
 				
 			}
 			

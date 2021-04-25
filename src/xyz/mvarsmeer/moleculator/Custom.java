@@ -56,7 +56,7 @@ public class Custom {
 		
 		JTextField Rellenar2 = new JTextField();
 		Rellenar2.setFont(Fuente);
-		Rellenar2.setBounds(185, 130, 110, 20);
+		Rellenar2.setBounds(210, 130, 60, 20);
 
 		JLabel Texto3 = new JLabel("Diminutivo del elemento", JLabel.CENTER);
 		Texto3.setFont(Fuente);
@@ -64,7 +64,7 @@ public class Custom {
 
 		JTextField Rellenar3 = new JTextField();
 		Rellenar3.setFont(Fuente);
-		Rellenar3.setBounds(185, 200, 110, 20);
+		Rellenar3.setBounds(210, 200, 60, 20);
 
 		JButton Boton = new JButton("Create a new Atom");
 		Boton.setFont(Fuente);
@@ -83,34 +83,34 @@ public class Custom {
 		Window.setVisible(true);
 		
 		Boton.addActionListener(new ActionListener() {
-			
+
 		    public void actionPerformed(ActionEvent e) {
-		    	
+
 		    	if(Rellenar.getText().length() > 0) {
-		    		
+
 		    		if(Rellenar2.getText().matches("[0-9]+")) {
-		    			
+
 		    			if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
-		    				
+
 		    				Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
 							DrawAtom Dibujo = new DrawAtom(15,15, Color.decode("#E9E4E3"), Atomo);
 							Dibujar.add(Dibujo);
-							
+
 							Active = false;
 							WindowActive.dispose();
-		    				
+
 		    			}
-		    			
+
 		    		}
-		    		
+
 		    	}
-		    	
+
 		    	Rellenar.setText("");
 	    		Rellenar2.setText("");
 	    		Rellenar3.setText("");
-		    	
+
 		    }
-		    
+
 		});
 
     }

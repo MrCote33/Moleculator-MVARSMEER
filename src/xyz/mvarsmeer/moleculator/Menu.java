@@ -9,13 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu {
+	
+	ArrayList<DrawLine> Lineas;
+	DrawLine Linea;
+	
+	public Menu(ArrayList<DrawLine> Lineas) {
+		
+		this.Lineas = Lineas;
+		
+	}
     
-	public static void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
+	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 		
 		DrawAtom Element = Elements.get(Active);
-
-        ArrayList<DrawAtom> Union = new ArrayList<DrawAtom>();
-
         JPopupMenu Menu = new JPopupMenu();
 
         JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
@@ -27,11 +33,28 @@ public class Menu {
 
 		    public void actionPerformed(ActionEvent e) {
 
-                if(Element.Atomo.getEnlaces() > 0){
+                if(Element.Enlaces > 0){
 
-                    Union.add(Element);
-                    Union.add(0,Element);
-                    System.out.println(Union);
+                    if(Linea == null) {
+                    	Linea = new DrawLine();
+                    }
+                    
+                    if(Linea.Primero == null) {
+                    	Linea.setFirst(Element);
+                    } else {
+                    	
+                    	if(Linea.Segundo == null && Linea.Primero != Element) {
+                    		
+                    		Linea.setSecond(Element);
+                    		Linea.Primero.Enlaces -= 1;
+                    		Linea.Segundo.Enlaces -= 1;
+                    		
+                    		Lineas.add(Linea);
+                    		Linea = null;
+                    		
+                    	}
+                    	
+                    }
 
                 }
 

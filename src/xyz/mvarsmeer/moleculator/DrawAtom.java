@@ -10,6 +10,7 @@ public class DrawAtom {
 	
 	int x;
 	int y;
+	int Enlaces;
 	Color Paint;
 	Atom Atomo;
 	Boolean Active = true;
@@ -21,6 +22,7 @@ public class DrawAtom {
 		this.y = Y;
 		this.Paint = Paint;
 		this.Atomo = Atomo;
+		this.Enlaces = Atomo.getEnlaces();
 		
 	}
 	
@@ -52,11 +54,11 @@ public class DrawAtom {
 		
 		if(Atomo.getEnlaces() >= 10) {
 
-			g2.drawString(String.valueOf(this.Atomo.getEnlaces()), this.x+17, this.y+37);
+			g2.drawString(String.valueOf(this.Enlaces), this.x+17, this.y+37);
 
 		} else {
 
-			g2.drawString(String.valueOf(this.Atomo.getEnlaces()), this.x+21, this.y+37);
+			g2.drawString(String.valueOf(this.Enlaces), this.x+21, this.y+37);
 
 		}
 		

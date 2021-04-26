@@ -1,31 +1,33 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 public class DrawLine {
     
-    int E1x;
-    int E1y;
-    int E2x;
-    int E2y;
-
-    public DrawLine(int E1x, int E1y, int E2x, int E2y){
-
-        this.E1x = E1x;
-        this.E1y = E1y;
-        this.E2x = E2x;
-        this.E2y = E2y;
-
+	DrawAtom Primero;
+    DrawAtom Segundo;
+    
+    public void setFirst(DrawAtom Actual) {
+    	this.Primero = Actual;
+    }
+    
+    public void setSecond(DrawAtom Actual) {
+    	this.Segundo = Actual;
+    	this.Segundo.Repaint = true;
     }
 
     public void paint(Graphics g){
 
         Graphics2D g2 = (Graphics2D) g;
-
-        g2.drawLine(E1x, E1y, E2x, E2y);
+        
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(Color.decode("#FF0000"));
+        g2.setStroke(new BasicStroke(4));
+        g2.drawLine(Primero.x+25, Primero.y+25, Segundo.x+25, Segundo.y+25);
 
     }
 

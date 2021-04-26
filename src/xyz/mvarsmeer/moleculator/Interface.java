@@ -17,6 +17,8 @@ import java.util.ArrayList;
 public class Interface {
 
 	public void initInterface() {
+		
+		ArrayList<DrawLine> Enlaces = new ArrayList<DrawLine>();
 
 		Frame Window = new Frame("Moleculator");
 		Window.addWindowListener(new WindowListener());
@@ -44,7 +46,7 @@ public class Interface {
 		Boton.CrearBoton(Window, 35, 382, "Custom", "#E9E4E3");
 		
 		Canvas DrawingZone = new Canvas();
-		MouseButtons Click = new MouseButtons(Boton.Dibujar, DrawingZone);
+		MouseButtons Click = new MouseButtons(Boton.Dibujar, Enlaces, DrawingZone);
 		
 		DrawingZone.setBounds(225, 60, 586, 380);
 		DrawingZone.addMouseListener(Click);
@@ -75,6 +77,30 @@ public class Interface {
 				
 				DrawAtom Actual = Boton.Dibujar.get(cont1);
 				
+				if(Actual.Repaint) {
+					
+					Actual.repaint(Drawing);
+					
+					for(int cont2 = 0; cont2 < Enlaces.size(); cont2++) {
+						
+						DrawLine Repintar = Enlaces.get(cont2);
+						Repintar.paint(Drawing);
+						
+					}
+					
+					for(int cont2 = 0; cont2 < Boton.Dibujar.size(); cont2++) {
+						
+						DrawAtom Repintar = Boton.Dibujar.get(cont2);
+						Repintar.paint(Drawing);
+						
+					}
+					
+					Actual.Repaint = false;
+					
+					Buffer.show();
+					
+				}
+				
 				if(Actual.Active) {
 					
 					Click.updateActive(Actual);
@@ -87,23 +113,6 @@ public class Interface {
 					}
 					
 					Actual.Repaint = true;
-					
-				}
-				
-				if(Actual.Repaint) {
-					
-					Actual.repaint(Drawing);
-					
-					for(int cont2 = 0; cont2 < Boton.Dibujar.size(); cont2++) {
-						
-						DrawAtom Repintar = Boton.Dibujar.get(cont2);
-						Repintar.paint(Drawing);
-						
-					}
-					
-					Actual.Repaint = false;
-					
-					Buffer.show();
 					
 				}
 				
@@ -127,12 +136,16 @@ public class Interface {
 		
 		Canvas DrawingZone;
 		ArrayList<DrawAtom> ListaElemento;
+		ArrayList<DrawLine> ListaLineas;
 		DrawAtom Elemento;
+		Menu Desplegar;
 		
-		public MouseButtons(ArrayList<DrawAtom> ListaElemento, Canvas DrawingZone) {
+		public MouseButtons(ArrayList<DrawAtom> ListaElemento, ArrayList<DrawLine> ListaLineas, Canvas DrawingZone) {
 			
 			this.ListaElemento = ListaElemento;
+			this.ListaLineas = ListaLineas;
 			this.DrawingZone = DrawingZone;
+			this.Desplegar = new Menu(ListaLineas);
 			
 		}
 		
@@ -162,7 +175,7 @@ public class Interface {
 						if(event.getY() >= y+7 && event.getY() <= y+35) {
 							
 							this.Elemento = ListaElemento.get(i);
-							Menu.Pop(ListaElemento, i, DrawingZone, event);
+							Desplegar.Pop(ListaElemento, i, DrawingZone, event);
 							
 						}
 						

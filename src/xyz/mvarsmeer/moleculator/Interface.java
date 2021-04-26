@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Label;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,7 +13,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 
 public class Interface {
 
@@ -25,7 +25,7 @@ public class Interface {
 		Window.setResizable(false);
 		Window.setLayout(null);
 
-		JLabel Equipo = new JLabel("MVARSMEER");
+		Label Equipo = new Label("MVARSMEER");
 		Equipo.setBounds(735, 445, 100, 20);
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);

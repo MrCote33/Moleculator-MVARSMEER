@@ -14,6 +14,8 @@ public class Menu {
 		
 		DrawAtom Element = Elements.get(Active);
 
+        ArrayList<DrawAtom> Union = new ArrayList<DrawAtom>();
+
         JPopupMenu Menu = new JPopupMenu();
 
         JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
@@ -27,7 +29,9 @@ public class Menu {
 
                 if(Element.Atomo.getEnlaces() > 0){
 
-                    System.out.println("Escoja otro atomo para enlazar");
+                    Union.add(Element);
+                    Union.add(0,Element);
+                    System.out.println(Union);
 
                 }
 
@@ -42,9 +46,13 @@ public class Menu {
 		    	Elements.remove(Active);
 		    	
 		    	if(Elements.size() > 0) {
+
 		    		Elements.get(0).Repaint = true;
+
 		    	} else {
+
 		    		Dibujo.repaint();
+
 		    	}
 
             }

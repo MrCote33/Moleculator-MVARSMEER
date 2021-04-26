@@ -25,7 +25,7 @@ public class DrawLine {
         Graphics2D g2 = (Graphics2D) g;
 
         g2.drawLine(E1x, E1y, E2x, E2y);
-        g2.setColor(Color.RED);
+        g2.setColor(Color.decode("#FF0000"));
 
     }
 

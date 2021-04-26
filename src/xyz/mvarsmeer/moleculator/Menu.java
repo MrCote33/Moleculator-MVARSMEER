@@ -40,7 +40,9 @@ public class Menu {
                     }
                     
                     if(Linea.Primero == null) {
+                    	
                     	Linea.setFirst(Element);
+                    	
                     } else {
                     	
                     	if(Linea.Segundo == null && Linea.Primero != Element) {
@@ -66,19 +68,29 @@ public class Menu {
 
 		    public void actionPerformed(ActionEvent e) {
 		    	
-		    	for(int cont = 0; cont < Lineas.size(); cont++) {
+		    	ArrayList<Integer> Eliminar = new ArrayList<Integer>();
+		    	DrawAtom AtomActual = Elements.get(Active);
+		    	
+		    	for(int cont1 = 0; cont1 < Lineas.size(); cont1++) {
 		    		
-		    		DrawLine Actual = Lineas.get(cont);
+		    		DrawLine LineaActual = Lineas.get(cont1);
 		    		
-		    		if(Actual.Primero == Elements.get(Active)) {
-		    			Actual.Segundo.Enlaces += 1;
-		    			Lineas.remove(cont);
+		    		if(LineaActual.Primero == AtomActual) {
+		    			LineaActual.Segundo.Enlaces += 1;
+		    			Eliminar.add(cont1);
 		    		}
 		    		
-		    		if(Actual.Segundo == Elements.get(Active)) {
-		    			Actual.Primero.Enlaces += 1;
-		    			Lineas.remove(cont);
+		    		if(LineaActual.Segundo == AtomActual) {
+		    			LineaActual.Primero.Enlaces += 1;
+		    			Eliminar.add(cont1);
 		    		}
+		    		
+		    	}
+		    	
+		    	for(int cont2 = Eliminar.size() - 1; cont2 >= 0; cont2--) {
+		    		
+		    		int num = Eliminar.get(cont2);
+		    		Lineas.remove(num);
 		    		
 		    	}
 		    	

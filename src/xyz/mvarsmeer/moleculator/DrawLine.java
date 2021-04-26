@@ -23,8 +23,8 @@ public class DrawLine {
     public void paint(Graphics g){
 
         Graphics2D g2 = (Graphics2D) g;
-        
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        
         g2.setColor(Color.decode("#FF0000"));
         g2.setStroke(new BasicStroke(4));
         g2.drawLine(Primero.x+25, Primero.y+25, Segundo.x+25, Segundo.y+25);

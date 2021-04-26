@@ -29,13 +29,10 @@ public class DrawAtom {
 	public void paint(Graphics g) {
 		
 		Graphics2D g2 = (Graphics2D) g;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
 		g2.setColor(this.Paint);
 		g2.fillArc(this.x, this.y, 50, 50, 0, 360);
-		
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.drawArc(this.x, this.y, 49, 49, 0, 360);
 		
 		g2.setColor(Color.decode("#000000"));
 		g2.setFont(new Font("Courier", Font.PLAIN, 17));

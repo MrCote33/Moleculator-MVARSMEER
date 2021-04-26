@@ -66,6 +66,22 @@ public class Menu {
 
 		    public void actionPerformed(ActionEvent e) {
 		    	
+		    	for(int cont = 0; cont < Lineas.size(); cont++) {
+		    		
+		    		DrawLine Actual = Lineas.get(cont);
+		    		
+		    		if(Actual.Primero == Elements.get(Active)) {
+		    			Actual.Segundo.Enlaces += 1;
+		    			Lineas.remove(cont);
+		    		}
+		    		
+		    		if(Actual.Segundo == Elements.get(Active)) {
+		    			Actual.Primero.Enlaces += 1;
+		    			Lineas.remove(cont);
+		    		}
+		    		
+		    	}
+		    	
 		    	Elements.remove(Active);
 		    	
 		    	if(Elements.size() > 0) {

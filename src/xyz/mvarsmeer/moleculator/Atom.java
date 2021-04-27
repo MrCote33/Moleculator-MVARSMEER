@@ -40,17 +40,4 @@ public class Atom {
 
   }
 
-  public void Imprimir() {
-
-    System.out.print("Tipo: ");
-    System.out.println(getTipo());
-    System.out.print("Nombre: ");
-    System.out.println(getNombre());
-    System.out.print("Simbolo: ");
-    System.out.println(getSimbolo());
-    System.out.print("Enlaces Libres: ");
-    System.out.println(getEnlaces() + "\n");
-
-  }
-
 }

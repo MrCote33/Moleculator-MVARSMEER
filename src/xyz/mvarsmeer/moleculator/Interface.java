@@ -26,7 +26,7 @@ public class Interface {
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);
-
+		
 		Label Equipo = new Label("MVARSMEER");
 		Equipo.setBounds(735, 445, 100, 20);
 		Equipo.setForeground(Color.BLACK);
@@ -159,7 +159,9 @@ public class Interface {
 			
 			if(event.getButton() == MouseEvent.BUTTON1) {
 
-				Elemento.Active = false;
+				if(this.Elemento != null) {
+					Elemento.Active = false;
+				}
 
 			}
 			

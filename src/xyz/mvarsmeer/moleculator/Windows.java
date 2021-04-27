@@ -2,7 +2,6 @@ package xyz.mvarsmeer.moleculator;
 
 import java.awt.Color;
 import java.awt.Dimension;
-//import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ public class Windows {
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Window.setSize(new Dimension(510, 360));
 		Window.setLocationRelativeTo(null);
-		Window.setIgnoreRepaint(true);
 		Window.setResizable(false);
 		Window.setLayout(null);
 		Window.setVisible(true);
@@ -47,7 +45,7 @@ public class Windows {
 			
 			Atom Actual = Elementos.get(cont);
 			
-			if(Actual.getTipo().equals(Seccion) && !Actual.getSimbolo().equals("")) {
+			if(Actual.getTipo().equals(Seccion)) {
 				
 				boton.CrearBoton(x, y, Actual.getSimbolo(), color);
 				

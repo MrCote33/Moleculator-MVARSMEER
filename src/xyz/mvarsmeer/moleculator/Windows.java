@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 //import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.util.ArrayList;
 
 public class Windows {
@@ -20,36 +19,29 @@ public class Windows {
 		
 	}
 
-	public void CreateWindow(String Seccion, Color color) {
+	public void CreateWindow(String Seccion, Color color, ArrayList<DrawAtom> Dibujar) {
 		
 		JFrame Window = new JFrame(Seccion);
 		
 		if(Active == false) {
+
 			WindowActive = Window;
 			Active = true;
+
 		}
 		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Window.setSize(new Dimension(480, 340));
+		Window.setSize(new Dimension(510, 360));
 		Window.setLocationRelativeTo(null);
 		Window.setIgnoreRepaint(true);
 		Window.setResizable(false);
 		Window.setLayout(null);
-		
 		Window.setVisible(true);
 		
-		JPanel DrawZone = new JPanel();
-		DrawZone.setBounds(0,0,480,320);
-		Window.add(DrawZone);
+		Selection boton = new Selection(Dibujar, Elementos, Window);
 		
-		/*JButton TEST = new JButton("Add");
-		TEST.setBounds(15,15,60,25);
-		Window.add(TEST);*/
-		
-		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
-		
-		int x = 15;
-		int y = 15;
+		int x = 10;
+		int y = 13;
 		
 		for(int cont = 0; cont < Elementos.size(); cont++) {
 			
@@ -57,30 +49,20 @@ public class Windows {
 			
 			if(Actual.getTipo().equals(Seccion) && !Actual.getSimbolo().equals("")) {
 				
-				DrawAtom Atomo = new DrawAtom(x,y,color,Actual);
-				//Aqui creacion de boton "Add"
-				Atomos.add(Atomo);
+				boton.CrearBoton(x, y, Actual.getSimbolo(), color);
 				
-				if(x < 370) {
-					x += 55;
+				if(x < 375) {
+
+					x += 60;
+
 				} else {
-					x = 15;
-					y += 55;
+
+					x = 10;
+					y += 60;
+
 				}
 				
 			}
-			
-		}
-		
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		for(int cont = 0; cont < Atomos.size(); cont++) {
-			
-			Atomos.get(cont).paint(DrawZone.getGraphics());
 			
 		}
 		

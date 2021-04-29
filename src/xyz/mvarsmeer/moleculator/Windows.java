@@ -30,7 +30,7 @@ public class Windows {
 		}
 		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Window.setSize(new Dimension(510, 360));
+		Window.setSize(new Dimension(680, 460));
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);
@@ -39,7 +39,7 @@ public class Windows {
 		Selection boton = new Selection(Dibujar, Elementos, Window);
 		
 		int x = 10;
-		int y = 13;
+		int y = 10;
 		
 		for(int cont = 0; cont < Elementos.size(); cont++) {
 			
@@ -47,16 +47,16 @@ public class Windows {
 			
 			if(Actual.getTipo().equals(Seccion)) {
 				
-				boton.CrearBoton(x, y, Actual.getSimbolo(), color);
+				boton.CrearBoton(x, y, Actual, color);
 				
-				if(x < 375) {
+				if(x < 550) {
 
-					x += 60;
+					x += 81;
 
 				} else {
 
 					x = 10;
-					y += 60;
+					y += 81;
 
 				}
 				

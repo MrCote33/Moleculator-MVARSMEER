@@ -22,12 +22,18 @@ public class Selection implements ActionListener  {
     	
     }
 
-    public void CrearBoton(int x, int y, String Contenido, Color color) {
+    public void CrearBoton(int x, int y, Atom Contenido, Color color) {
 
-		JButton Boton = new JButton(Contenido);
-		Boton.setBounds(x, y, 55, 55);
+		JButton Boton = new JButton();
+
+		String Numero ="<left>"+ Contenido.getEnlaces()+"</left><BR>";
+		String Simbolo = "<center><big>"+Contenido.getSimbolo()+ "</center></big><BR>";
+		String Nombre = "<center>"+ Contenido.getNombre()+"</center>";
+
+		Boton.setText("<html><p>" + Numero + Simbolo + Nombre + "</p></html");
+		Boton.setBounds(x, y, 80, 80);
         Boton.setBackground(color);
-        Boton.setFont(new Font("Courier", Font.PLAIN, 12));
+        Boton.setFont(new Font("Courier", Font.PLAIN, 11));
 		Boton.addActionListener(this);
 		Boton.setFocusPainted(false);
 		this.Activo.add(Boton);

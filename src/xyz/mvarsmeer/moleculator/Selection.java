@@ -31,9 +31,9 @@ public class Selection implements ActionListener  {
 		String Nombre = "<center>"+ Contenido.getNombre()+"</center>";
 
 		Boton.setText("<html><p>" + Numero + Simbolo + Nombre + "</p></html");
-		Boton.setBounds(x, y, 80, 80);
+		Boton.setBounds(x, y, 85, 85);
         Boton.setBackground(color);
-        Boton.setFont(new Font("Courier", Font.PLAIN, 11));
+        Boton.setFont(new Font("Courier", Font.PLAIN, 12));
 		Boton.addActionListener(this);
 		Boton.setFocusPainted(false);
 		this.Activo.add(Boton);

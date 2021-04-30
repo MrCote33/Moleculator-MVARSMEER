@@ -30,7 +30,7 @@ public class Windows {
 		}
 		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Window.setSize(new Dimension(680, 460));
+		Window.setSize(new Dimension(710, 480));
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);
@@ -51,12 +51,12 @@ public class Windows {
 				
 				if(x < 550) {
 
-					x += 81;
+					x += 85;
 
 				} else {
 
 					x = 10;
-					y += 81;
+					y += 85;
 
 				}
 				

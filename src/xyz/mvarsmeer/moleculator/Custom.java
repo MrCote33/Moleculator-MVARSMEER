@@ -5,23 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.util.ArrayList;
 
 public class Custom {
 
     Boolean Active = false;
 	JFrame WindowActive;
 	ArrayList<DrawAtom> Dibujar;
-	
-	public Custom(ArrayList<DrawAtom> Lista) {
-    	
-    	this.Dibujar = Lista;
-    	
-    }
 
 	public void CreateWindow(String Seccion, ArrayList<DrawAtom> Dibujar) {
 		

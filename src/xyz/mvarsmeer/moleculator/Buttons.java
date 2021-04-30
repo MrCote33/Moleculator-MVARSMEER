@@ -5,14 +5,20 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
+import java.util.ArrayList;
 
 public class Buttons implements ActionListener {
 	
-	ArrayList<DrawAtom> Dibujar = new ArrayList<DrawAtom>();	
+	ArrayList<DrawAtom> ListaDibujo;
 	Windows Atomos = new Windows();
-	Custom NewAtom = new Custom(Dibujar);
+	Custom NewAtom = new Custom();
+	
+	public Buttons(ArrayList<DrawAtom> ListaDibujo) {
+		
+		this.ListaDibujo = ListaDibujo;
+		
+	}
 
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
@@ -47,11 +53,11 @@ public class Buttons implements ActionListener {
 		
 		if(Actual.getText() == "Custom"){
 
-			NewAtom.CreateWindow(Actual.getText(),Dibujar);
+			NewAtom.CreateWindow(Actual.getText(),ListaDibujo);
 
 		} else {
 
-			Atomos.CreateWindow(Actual.getText(), Actual.getBackground(), Dibujar);
+			Atomos.CreateWindow(Actual.getText(),Actual.getBackground(),ListaDibujo);
 
 		}
 

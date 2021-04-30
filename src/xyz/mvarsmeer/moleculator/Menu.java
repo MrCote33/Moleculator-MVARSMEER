@@ -1,12 +1,12 @@
 package xyz.mvarsmeer.moleculator;
 
 import java.awt.Canvas;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import java.util.ArrayList;
 
 public class Menu {
 	
@@ -97,17 +97,17 @@ public class Menu {
 		    	Elements.remove(Active);
 		    	
 		    	if(Elements.size() > 0) {
-
+		    		
 		    		Elements.get(0).Repaint = true;
-
+		    		
 		    	} else {
-
+		    		
 		    		Dibujo.repaint();
-
+		    		
 		    	}
-
+		    	
             }
-
+		    
 		});
 
         Menu.add(Nombre);

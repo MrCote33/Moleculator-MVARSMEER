@@ -7,9 +7,9 @@ Cesio,Cs,1
 Francio,Fr,1
 
 Alcalinoterreos
-Berilio,Br,2
+Berilio,Be,2
 Magnesio,Mg,2
-Calcio,C,2
+Calcio,Ca,2
 Estroncio,Sr,2
 Bario,Ba,2
 Radio,Ra,2
@@ -22,6 +22,10 @@ Estaño,Sn,4
 Talio,Tl,3
 Plomo,Pb,4
 Bismuto,Bi,5
+Nihonio,Nh,3
+Flerovio,Fl,4
+Moscovio,Mc,5
+Livermorio,Lv,6
 
 Metales de transicion
 Escandio,Sc,3
@@ -121,7 +125,7 @@ Cloro,Cl,7
 Bromo,Br,7
 Yodo,I,7
 Astato,At,7
-Teneso,Ts,0
+Teneso,Ts,7
 
 Gases nobles
 Helio,He,2

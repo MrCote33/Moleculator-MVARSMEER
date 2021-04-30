@@ -18,6 +18,7 @@ public class Interface {
 
 	public void initInterface() {
 		
+		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
 		ArrayList<DrawLine> Enlaces = new ArrayList<DrawLine>();
 
 		Frame Window = new Frame("Moleculator");
@@ -32,7 +33,7 @@ public class Interface {
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);
 		
-		Buttons Boton = new Buttons();
+		Buttons Boton = new Buttons(Atomos);
 		Boton.CrearBoton(Window, 35, 82, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 35, 112, "Alcalinoterreos", "#FFE6CC");
 		Boton.CrearBoton(Window, 35, 142, "Otros metales", "#FFF2CC");
@@ -46,7 +47,7 @@ public class Interface {
 		Boton.CrearBoton(Window, 35, 382, "Custom", "#E9E4E3");
 		
 		Canvas DrawingZone = new Canvas();
-		MouseButtons Click = new MouseButtons(Boton.Dibujar, Enlaces, DrawingZone);
+		MouseButtons Click = new MouseButtons(Atomos, Enlaces, DrawingZone);
 		
 		DrawingZone.setBounds(225, 60, 586, 380);
 		DrawingZone.addMouseListener(Click);
@@ -70,12 +71,10 @@ public class Interface {
 				e.printStackTrace();
 
 			}
-			
-			Point location = DrawingZone.getMousePosition();
 
-			for(int cont1 = 0; cont1 < Boton.Dibujar.size(); cont1++ ) {
+			for(int cont1 = 0; cont1 < Atomos.size(); cont1++ ) {
 				
-				DrawAtom Actual = Boton.Dibujar.get(cont1);
+				DrawAtom Actual = Atomos.get(cont1);
 				
 				if(Actual.Repaint) {
 					
@@ -88,9 +87,9 @@ public class Interface {
 						
 					}
 					
-					for(int cont2 = 0; cont2 < Boton.Dibujar.size(); cont2++) {
+					for(int cont2 = 0; cont2 < Atomos.size(); cont2++) {
 						
-						DrawAtom Repintar = Boton.Dibujar.get(cont2);
+						DrawAtom Repintar = Atomos.get(cont2);
 						Repintar.paint(Drawing);
 						
 					}
@@ -104,6 +103,7 @@ public class Interface {
 				if(Actual.Active) {
 					
 					Click.updateActive(Actual);
+					Point location = DrawingZone.getMousePosition();
 					
 					if(location != null) {
 						
@@ -134,9 +134,9 @@ public class Interface {
 	
 	static class MouseButtons extends MouseAdapter {
 		
-		Canvas DrawingZone;
 		ArrayList<DrawAtom> ListaElemento;
 		ArrayList<DrawLine> ListaLineas;
+		Canvas DrawingZone;
 		DrawAtom Elemento;
 		Menu Desplegar;
 		

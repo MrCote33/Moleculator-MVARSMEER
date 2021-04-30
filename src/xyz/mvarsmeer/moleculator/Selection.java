@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.util.ArrayList;
 
 public class Selection implements ActionListener  {
     
@@ -46,7 +46,7 @@ public class Selection implements ActionListener  {
 
 		for(int i=0; i < Elementos.size() ;i++){
 
-			if(Actual.getText().equals(Elementos.get(i).getSimbolo())){
+			if(Actual.getText().contains(">"+Elementos.get(i).getSimbolo()+"<")){
 
 				Atom Atomo = Elementos.get(i);
 				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), Actual.getBackground(), Atomo);

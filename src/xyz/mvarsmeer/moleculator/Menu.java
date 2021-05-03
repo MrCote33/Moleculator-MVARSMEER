@@ -38,9 +38,14 @@ public class Menu {
 			public void actionPerformed(ActionEvent e){
 
 				DrawAtom AtomActual = Elements.get(Active);
-				AtomActual.Radio = AtomActual.Radio+5;
-				AtomActual.Repaint = true;
 
+				if(AtomActual.Diametro < 80){
+
+					AtomActual.Diametro = AtomActual.Diametro + 4;
+					AtomActual.Repaint = true;
+
+				}
+				
 			}
 
 		});
@@ -50,8 +55,13 @@ public class Menu {
 			public void actionPerformed(ActionEvent e){
 
 				DrawAtom AtomActual = Elements.get(Active);
-				AtomActual.Radio = AtomActual.Radio - 5;
-				AtomActual.Repaint = true;
+
+				if(AtomActual.Diametro > 20){
+
+					AtomActual.Diametro = AtomActual.Diametro - 4;
+					AtomActual.Repaint = true;
+
+				}
 
 			}
 
@@ -65,7 +75,9 @@ public class Menu {
 				if(Element.Enlaces > 0){
 
 					if(Linea == null) {
+
 						Linea = new DrawLine();
+
 					}
 					
 					if(Linea.Primero == null) {

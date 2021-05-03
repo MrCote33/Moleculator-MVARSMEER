@@ -125,7 +125,7 @@ Cloro,Cl,7
 Bromo,Br,7
 Yodo,I,7
 Astato,At,7
-Teneso,Ts,0
+Teneso,Ts,7
 
 Gases nobles
 Helio,He,2

@@ -18,102 +18,137 @@ public class Menu {
 		this.Lineas = Lineas;
 		
 	}
-    
+	
 	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 		
 		DrawAtom Element = Elements.get(Active);
-        JPopupMenu Menu = new JPopupMenu();
+		JPopupMenu Menu = new JPopupMenu();
 
-        JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
-                  Nombre.setEnabled(false);
-        JMenuItem Link = new JMenuItem("Link atom");
-        JMenuItem Delete = new JMenuItem("Delete atom");
+		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
+				  Nombre.setEnabled(false);
 
-        Link.addActionListener(new ActionListener() {
+		JMenuItem Magnify = new JMenuItem("Magnify");
+		JMenuItem Minimize = new JMenuItem("Minimize");
+		JMenuItem Link = new JMenuItem("Link atom");
+		JMenuItem Delete = new JMenuItem("Delete "+ Element.Atomo.getNombre());
 
-		    public void actionPerformed(ActionEvent e) {
 
-                if(Element.Enlaces > 0){
+		Magnify.addActionListener(new ActionListener(){
 
-                    if(Linea == null) {
-                    	Linea = new DrawLine();
-                    }
-                    
-                    if(Linea.Primero == null) {
-                    	
-                    	Linea.setFirst(Element);
-                    	
-                    } else {
-                    	
-                    	if(Linea.Segundo == null && Linea.Primero != Element) {
-                    		
-                    		Linea.setSecond(Element);
-                    		Linea.Primero.Enlaces -= 1;
-                    		Linea.Segundo.Enlaces -= 1;
-                    		
-                    		Lineas.add(Linea);
-                    		Linea = null;
-                    		
-                    	}
-                    	
-                    }
+			public void actionPerformed(ActionEvent e){
 
-                }
+				DrawAtom AtomActual = Elements.get(Active);
+				AtomActual.Radio = AtomActual.Radio+5;
+				AtomActual.Repaint = true;
 
-            }
+			}
 
 		});
 
-        Delete.addActionListener(new ActionListener() {
+		Minimize.addActionListener(new ActionListener(){
 
-		    public void actionPerformed(ActionEvent e) {
-		    	
-		    	ArrayList<Integer> Eliminar = new ArrayList<Integer>();
-		    	DrawAtom AtomActual = Elements.get(Active);
-		    	
-		    	for(int cont1 = 0; cont1 < Lineas.size(); cont1++) {
-		    		
-		    		DrawLine LineaActual = Lineas.get(cont1);
-		    		
-		    		if(LineaActual.Primero == AtomActual) {
-		    			LineaActual.Segundo.Enlaces += 1;
-		    			Eliminar.add(cont1);
-		    		}
-		    		
-		    		if(LineaActual.Segundo == AtomActual) {
-		    			LineaActual.Primero.Enlaces += 1;
-		    			Eliminar.add(cont1);
-		    		}
-		    		
-		    	}
-		    	
-		    	for(int cont2 = Eliminar.size() - 1; cont2 >= 0; cont2--) {
-		    		
-		    		int num = Eliminar.get(cont2);
-		    		Lineas.remove(num);
-		    		
-		    	}
-		    	
-		    	Elements.remove(Active);
-		    	
-		    	if(Elements.size() > 0) {
-		    		
-		    		Elements.get(0).Repaint = true;
-		    		
-		    	} else {
-		    		
-		    		Dibujo.repaint();
-		    		
-		    	}
-		    	
-            }
-		    
+			public void actionPerformed(ActionEvent e){
+
+				DrawAtom AtomActual = Elements.get(Active);
+				AtomActual.Radio = AtomActual.Radio - 5;
+				AtomActual.Repaint = true;
+
+			}
+
 		});
 
-        Menu.add(Nombre);
-        Menu.add(Link);
-        Menu.add(Delete);
-        Menu.show(e.getComponent(), e.getX(), e.getY());
+
+		Link.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				if(Element.Enlaces > 0){
+
+					if(Linea == null) {
+						Linea = new DrawLine();
+					}
+					
+					if(Linea.Primero == null) {
+						
+						Linea.setFirst(Element);
+						
+					} else {
+						
+						if(Linea.Segundo == null && Linea.Primero != Element) {
+							
+							Linea.setSecond(Element);
+							Linea.Primero.Enlaces -= 1;
+							Linea.Segundo.Enlaces -= 1;
+							
+							Lineas.add(Linea);
+							Linea = null;
+							
+						}
+						
+					}
+
+				}
+
+			}
+
+		});
+
+		Delete.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				ArrayList<Integer> Eliminar = new ArrayList<Integer>();
+				DrawAtom AtomActual = Elements.get(Active);
+				
+				for(int cont1 = 0; cont1 < Lineas.size(); cont1++) {
+					
+					DrawLine LineaActual = Lineas.get(cont1);
+					
+					if(LineaActual.Primero == AtomActual) {
+
+						LineaActual.Segundo.Enlaces += 1;
+						Eliminar.add(cont1);
+
+					}
+					
+					if(LineaActual.Segundo == AtomActual) {
+
+						LineaActual.Primero.Enlaces += 1;
+						Eliminar.add(cont1);
+						
+					}
+					
+				}
+				
+				for(int cont2 = Eliminar.size() - 1; cont2 >= 0; cont2--) {
+					
+					int num = Eliminar.get(cont2);
+					Lineas.remove(num);
+					
+				}
+				
+				Elements.remove(Active);
+				
+				if(Elements.size() > 0) {
+					
+					Elements.get(0).Repaint = true;
+					
+				} else {
+					
+					Dibujo.repaint();
+					
+				}
+				
+			}
+			
+		});
+
+		Menu.add(Nombre);
+		Menu.add(Magnify);
+		Menu.add(Minimize);
+		Menu.add(Link);
+		Menu.add(Delete);
+		Menu.show(e.getComponent(), e.getX(), e.getY());
 
 	}
 

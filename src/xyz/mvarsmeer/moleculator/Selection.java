@@ -9,20 +9,20 @@ import javax.swing.JFrame;
 import java.util.ArrayList;
 
 public class Selection implements ActionListener  {
-    
+	
 	JFrame Activo;
-    ArrayList<DrawAtom> Dibujar;
-    ArrayList<Atom> Elementos;
-    
-    public Selection(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
-    	
-    	this.Dibujar = Lista;
-    	this.Elementos = Elementos;
-    	this.Activo = Window;
-    	
-    }
+	ArrayList<DrawAtom> Dibujar;
+	ArrayList<Atom> Elementos;
+	
+	public Selection(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
+		
+		this.Dibujar = Lista;
+		this.Elementos = Elementos;
+		this.Activo = Window;
+		
+	}
 
-    public void CrearBoton(int x, int y, Atom Contenido, Color color) {
+	public void CrearBoton(int x, int y, Atom Contenido, Color color) {
 
 		JButton Boton = new JButton();
 
@@ -32,8 +32,8 @@ public class Selection implements ActionListener  {
 
 		Boton.setText("<html><p>" + Numero + Simbolo + Nombre + "</p></html");
 		Boton.setBounds(x, y, 85, 85);
-        Boton.setBackground(color);
-        Boton.setFont(new Font("Courier", Font.PLAIN, 12));
+		Boton.setBackground(color);
+		Boton.setFont(new Font("Courier", Font.PLAIN, 11));
 		Boton.addActionListener(this);
 		Boton.setFocusPainted(false);
 		this.Activo.add(Boton);
@@ -49,7 +49,7 @@ public class Selection implements ActionListener  {
 			if(Actual.getText().contains(">"+Elementos.get(i).getSimbolo()+"<")){
 
 				Atom Atomo = Elementos.get(i);
-				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), Actual.getBackground(), Atomo);
+				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), 50 , Actual.getBackground(), Atomo);
 				this.Dibujar.add(Dibujo);
 				
 			}

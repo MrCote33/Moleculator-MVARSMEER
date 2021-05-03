@@ -87,7 +87,7 @@ public class Custom {
 		    			if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
 
 		    				Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-							DrawAtom Dibujo = new DrawAtom(15,15, Color.decode("#E9E4E3"), Atomo);
+							DrawAtom Dibujo = new DrawAtom(15,15, 50,Color.decode("#E9E4E3"), Atomo);
 							Dibujar.add(Dibujo);
 
 							Active = false;

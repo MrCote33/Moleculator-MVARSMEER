@@ -10,16 +10,18 @@ public class DrawAtom {
 	
 	int x;
 	int y;
+	int Radio;
 	int Enlaces;
 	Color Paint;
 	Atom Atomo;
 	Boolean Active = true;
 	Boolean Repaint = false;
 	
-	public DrawAtom(int X, int Y, Color Paint, Atom Atomo) {
+	public DrawAtom(int X, int Y,int Radio, Color Paint, Atom Atomo) {
 		
 		this.x = X;
 		this.y = Y;
+		this.Radio = Radio;
 		this.Paint = Paint;
 		this.Atomo = Atomo;
 		this.Enlaces = Atomo.getEnlaces();
@@ -32,7 +34,7 @@ public class DrawAtom {
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		g2.setColor(this.Paint);
-		g2.fillArc(this.x, this.y, 50, 50, 0, 360);
+		g2.fillArc(this.x, this.y, Radio, Radio, 0, 360);
 		
 		g2.setColor(Color.decode("#000000"));
 		g2.setFont(new Font("Courier", Font.PLAIN, 17));

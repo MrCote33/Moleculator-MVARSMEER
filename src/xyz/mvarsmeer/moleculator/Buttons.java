@@ -39,17 +39,17 @@ public class Buttons implements ActionListener {
 
 		if(Atomos.Active ) {
 
-            Atomos.WindowActive.dispose();
-            Atomos.Active = false;
+			Atomos.WindowActive.dispose();
+			Atomos.Active = false;
 
-        }
+		}
 
 		if(NewAtom.Active) {
 
-            NewAtom.WindowActive.dispose();
-            NewAtom.Active = false;
+			NewAtom.WindowActive.dispose();
+			NewAtom.Active = false;
 
-        }
+		}
 		
 		if(Actual.getText() == "Custom"){
 

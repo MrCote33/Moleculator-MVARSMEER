@@ -49,15 +49,15 @@ public class DrawAtom {
 
 		}
 		
-		g2.setFont(new Font("Courier", Font.PLAIN, Diametro/4));
+		g2.setFont(new Font("Courier", Font.PLAIN, Diametro / 5));
 		
 		if(Atomo.getEnlaces() >= 10) {
 
-			g2.drawString(String.valueOf(this.Enlaces), this.x + Diametro/2 - 8, this.y + Diametro/2 + 18);
+			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + Diametro/2 - 17, this.y + Diametro/2 + 18);
 
 		} else {
 
-			g2.drawString(String.valueOf(this.Enlaces), this.x + Diametro/2 - 4, this.y + Diametro/2 + 18);
+			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + Diametro/2 - 8, this.y + Diametro/2 + 18);
 
 		}
 		

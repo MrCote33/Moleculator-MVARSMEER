@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 public class SelectColor {
 
 	Color color;
+    Boolean Active = false;
+	JFrame WindowActive;
 
 	public SelectColor(Color Base){
 
@@ -34,19 +36,27 @@ public class SelectColor {
 	public void NewColor() {
 
 		JFrame Window = new JFrame("Seleccione un color");
-		Window.setSize(new Dimension(510, 360));
+		Window.setSize(new Dimension(624, 390));
 		Window.setLocationRelativeTo(null);
 		Window.setIgnoreRepaint(false);
 		Window.setResizable(false);
 		Window.setLayout(null);
 		Window.setVisible(true);
 
+		if(Active == false) {
+
+			WindowActive = Window;
+			Active = true;
+
+		}
+
 		JColorChooser Options = new JColorChooser();
-		Options.setSize(510, 240);
+		Options.setSize(610, 310);
 
 		JButton Select = new JButton("Seleccionar color");
-		Select.setFont(new Font("Courier", Font.PLAIN, 11));
-		Select.setBounds(155, 250, 200, 40);
+		Select.setFont(new Font("Arial", Font.BOLD, 12));
+		Select.setBounds(205, 310, 200, 40);
+		Select.setBackground(Color.WHITE);
 
 		Select.addActionListener(new ActionListener(){
 
@@ -54,6 +64,8 @@ public class SelectColor {
 
 				Color Seleccionado = Options.getColor();
 				setColor(Seleccionado);
+				Active = false;
+				WindowActive.dispose();
 
 			}
 
@@ -61,6 +73,7 @@ public class SelectColor {
 
 		Window.add(Options);
 		Window.add(Select);
+
 	}
 
 }

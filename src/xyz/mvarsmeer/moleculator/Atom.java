@@ -5,6 +5,7 @@ public class Atom {
 	private String Tipo;
 	private String Nombre;
 	private String Simbolo;
+	private int TotalEnl;
 	private int Enlaces;
 
 	public Atom(String Tipo, String Nombre, String Simbolo, int Enlaces) {
@@ -13,6 +14,7 @@ public class Atom {
 		this.Nombre = Nombre;
 		this.Simbolo = Simbolo;
 		this.Enlaces = Enlaces;
+		this.TotalEnl = Enlaces;
 
 	}
 
@@ -37,6 +39,12 @@ public class Atom {
 	public int getEnlaces() {
 
 		return this.Enlaces;
+
+	}
+
+	public int getTotalEnl(){
+
+		return this.TotalEnl;
 
 	}
 

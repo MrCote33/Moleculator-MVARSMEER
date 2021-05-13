@@ -58,7 +58,7 @@ public class Interface {
 		
 		DrawingZone.createBufferStrategy(2);
 		BufferStrategy Buffer = DrawingZone.getBufferStrategy();
-		Graphics Drawing = Buffer.getDrawGraphics();
+		Graphics Drawing = Buffer.getDrawGraphics();  
 		
 		int WindowsX = Window.getBounds().width;
 		int WindowsY = Window.getBounds().height;

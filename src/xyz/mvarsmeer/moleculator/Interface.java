@@ -23,13 +23,13 @@ public class Interface {
 
 		Frame Window = new Frame("Moleculator");
 		Window.addWindowListener(new WindowListener());
-		Window.setSize(new Dimension(854, 480));
+		Window.setSize(854,480);
+		Window.setMinimumSize(new Dimension(854,480));
 		Window.setLocationRelativeTo(null);
-		Window.setResizable(false);
 		Window.setLayout(null);
 		
 		Label Equipo = new Label("MVARSMEER");
-		Equipo.setBounds(735, 445, 100, 20);
+		Equipo.setBounds(80, 60, 100, 20);
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);
 		
@@ -58,7 +58,10 @@ public class Interface {
 		
 		DrawingZone.createBufferStrategy(2);
 		BufferStrategy Buffer = DrawingZone.getBufferStrategy();
-		Graphics Drawing = Buffer.getDrawGraphics();
+		Graphics Drawing = Buffer.getDrawGraphics();  
+		
+		int WindowsX = Window.getBounds().width;
+		int WindowsY = Window.getBounds().height;
 		
 		while(true) {
 			
@@ -70,6 +73,16 @@ public class Interface {
 
 				e.printStackTrace();
 
+			}
+			
+			if(WindowsX != Window.getBounds().width || WindowsY != Window.getBounds().height) {
+				
+				WindowsX = Window.getBounds().width;
+				WindowsY = Window.getBounds().height;
+				DrawingZone.setBounds(225,60,WindowsX-268,WindowsY-100);
+				Buffer = DrawingZone.getBufferStrategy();
+				Drawing = Buffer.getDrawGraphics();
+				
 			}
 
 			for(int cont1 = 0; cont1 < Atomos.size(); cont1++ ) {

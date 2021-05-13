@@ -76,6 +76,7 @@ public class Custom {
 				Colores.setBackground(ColorSeleccionado.getColor());
 				Colores.repaint();
 				Window.repaint();
+				
 			}
 			
 		});

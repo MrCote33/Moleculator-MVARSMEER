@@ -66,7 +66,7 @@ public class DrawAtom {
 	public void repaint(Graphics g) {
 		
 		Graphics2D g2 = (Graphics2D) g;
-		g2.fillRect(0, 0, 586, 380);
+		g2.clearRect(0, 0, 8000, 8000);;
 		
 	}
 	

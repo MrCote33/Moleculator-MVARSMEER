@@ -31,7 +31,7 @@ public class DrawLine {
 		
 		g2.setColor(Color.decode("#FF0000"));
 		g2.setStroke(new BasicStroke(6));
-		g2.drawLine(Primero.x+25, Primero.y+25, Segundo.x+25, Segundo.y+25);
+		g2.drawLine(Primero.x+(Primero.Diametro/2), Primero.y+(Primero.Diametro/2), Segundo.x+(Segundo.Diametro/2), Segundo.y+(Segundo.Diametro/2));
 
 	}
 

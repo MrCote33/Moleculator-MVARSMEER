@@ -107,9 +107,8 @@ public class Interface {
 						
 					}
 					
-					Actual.Repaint = false;
-					
 					Buffer.show();
+					Actual.Repaint = false;
 					
 				}
 				
@@ -185,9 +184,9 @@ public class Interface {
 					int x = ListaElemento.get(i).x;
 					int y = ListaElemento.get(i).y;
 					
-					if(event.getX() >= x+7 && event.getX() <= x+35) {
+					if(event.getX() >= x+7 && event.getX() <= x+(ListaElemento.get(i).Diametro-14)) {
 						
-						if(event.getY() >= y+7 && event.getY() <= y+35) {
+						if(event.getY() >= y+7 && event.getY() <= y+(ListaElemento.get(i).Diametro-14)) {
 							
 							this.Elemento = ListaElemento.get(i);
 							Desplegar.Pop(ListaElemento, i, DrawingZone, event);

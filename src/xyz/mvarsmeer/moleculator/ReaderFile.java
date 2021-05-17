@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class File {
+public class ReaderFile {
 
   public ArrayList<Atom> LeerArchivo(String Path) {
 

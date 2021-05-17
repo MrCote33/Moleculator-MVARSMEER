@@ -13,20 +13,24 @@ public class Buttons implements ActionListener {
 	ArrayList<DrawAtom> ListaDibujo;
 	Windows Atomos = new Windows();
 	Custom NewAtom = new Custom();
-	
+	Font Fuente;
+
 	public Buttons(ArrayList<DrawAtom> ListaDibujo) {
-		
+
 		this.ListaDibujo = ListaDibujo;
 		
 	}
 
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
+		FontReader SetFont = new FontReader();
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 11);
+
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));
-		Boton.setBounds(x-5, y, 165, 30);
+		Boton.setBounds(x-5, y, 170, 30);
 		Boton.setFocusPainted(false);
-		Boton.setFont(new Font("Arial", Font.BOLD, 12));
+		Boton.setFont(Fuente);
 		Boton.addActionListener(this);
 		
 		Window.add(Boton);

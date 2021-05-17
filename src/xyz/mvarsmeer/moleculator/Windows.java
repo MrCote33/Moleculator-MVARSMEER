@@ -13,7 +13,7 @@ public class Windows {
 	
 	public Windows() {
 		
-		File archivo = new File();
+		ReaderFile archivo = new ReaderFile();
 		Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
 		
 	}

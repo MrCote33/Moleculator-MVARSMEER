@@ -9,7 +9,8 @@ import javax.swing.JPopupMenu;
 import java.util.ArrayList;
 
 public class Menu {
-	
+
+	ErrorMessage Error = new ErrorMessage();
 	ArrayList<DrawLine> Lineas;
 	DrawLine Linea;
 	
@@ -27,11 +28,22 @@ public class Menu {
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
 				  Nombre.setEnabled(false);
 
+		JMenuItem Move = new JMenuItem("Move");
 		JMenuItem Magnify = new JMenuItem("Magnify");
 		JMenuItem Minimize = new JMenuItem("Minimize");
 		JMenuItem Link = new JMenuItem("Link atom");
 		JMenuItem Delete = new JMenuItem("Delete "+ Element.Atomo.getNombre());
-
+		
+		Move.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				DrawAtom AtomActual = Elements.get(Active);
+				AtomActual.Active = true;
+				
+			}
+			
+		});
 
 		Magnify.addActionListener(new ActionListener(){
 
@@ -41,8 +53,12 @@ public class Menu {
 
 				if(AtomActual.Diametro < 80){
 
-					AtomActual.Diametro = AtomActual.Diametro + 4;
+					AtomActual.Diametro = AtomActual.Diametro + 5;
 					AtomActual.Repaint = true;
+
+				}else{
+
+					Error.NewMessage("Magnify");
 
 				}
 				
@@ -56,10 +72,14 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro > 20){
+				if(AtomActual.Diametro > 40){
 
-					AtomActual.Diametro = AtomActual.Diametro - 4;
+					AtomActual.Diametro = AtomActual.Diametro - 5;
 					AtomActual.Repaint = true;
+
+				}else{
+
+					Error.NewMessage("Minimaze");
 
 				}
 
@@ -98,6 +118,11 @@ public class Menu {
 						}
 						
 					}
+
+				}else{
+
+					
+					Error.NewMessage("Link Atom");
 
 				}
 
@@ -156,6 +181,7 @@ public class Menu {
 		});
 
 		Menu.add(Nombre);
+		Menu.add(Move);
 		Menu.add(Magnify);
 		Menu.add(Minimize);
 		Menu.add(Link);

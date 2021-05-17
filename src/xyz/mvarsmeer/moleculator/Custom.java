@@ -19,8 +19,11 @@ public class Custom {
 
 	public void CreateWindow(String Seccion, ArrayList<DrawAtom> Dibujar) {
 		
-		Font Fuente1 = new Font("Arial", Font.BOLD, 12);
-		Font Fuente2 = new Font("Courier", Font.PLAIN, 12);
+		FontReader Fuente = new FontReader();
+
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 11);
+		Font Fuente2 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 12);
+
 		JFrame Window = new JFrame(Seccion);
 		SelectColor ColorSeleccionado = new SelectColor(Color.decode("#E9E4E3"));
 
@@ -65,7 +68,7 @@ public class Custom {
 		JButton Colores = new JButton("Seleccione un color");
 		Colores.setFont(Fuente1);
 		Colores.setBackground(ColorSeleccionado.getColor());
-		Colores.setBounds(165, 200, 150, 30);
+		Colores.setBounds(162, 200, 157, 30);
 		Colores.setFocusPainted(false);
 		Colores.addActionListener(new ActionListener(){
 

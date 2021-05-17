@@ -14,6 +14,9 @@ public class ErrorMessage {
 	JFrame WindowActive;
 
 	public void NewMessage(String Area){
+		
+		FontReader SetFont = new FontReader();
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 12);
 
 		JFrame Window = new JFrame("Error");
 		Window.setSize(new Dimension(300, 190));
@@ -31,8 +34,8 @@ public class ErrorMessage {
 		}
 
 		JLabel Error = new JLabel("No se puede realizar la accion", JLabel.CENTER);
-		Error.setFont(new Font("Arial", Font.BOLD, 12));
-		Error.setBounds(40, 0, 200, 100);
+		Error.setFont(Fuente);
+		Error.setBounds(20, 0, 250, 100);
 
 		if(Area == "Magnify"){
 
@@ -53,8 +56,8 @@ public class ErrorMessage {
 		}
 		
 		JButton Acept = new JButton("Aceptar");
-		Acept.setFont(new Font("Arial", Font.BOLD, 12));
-		Acept.setBounds(100, 85, 80, 30);
+		Acept.setFont(Fuente);
+		Acept.setBounds(90, 85, 90, 30);
 
 		Acept.addActionListener(new ActionListener(){
 

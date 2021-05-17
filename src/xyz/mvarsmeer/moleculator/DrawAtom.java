@@ -16,8 +16,10 @@ public class DrawAtom {
 	Atom Atomo;
 	Boolean Active = true;
 	Boolean Repaint = false;
+
 	
 	public DrawAtom(int X, int Y,int Diametro, Color Paint, Atom Atomo) {
+		
 		
 		this.x = X;
 		this.y = Y;
@@ -29,7 +31,11 @@ public class DrawAtom {
 	}
 	
 	public void paint(Graphics g) {
-		
+
+		FontReader Fuente = new FontReader();
+		Font FuenteSimbolo = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", Diametro/3);
+		Font FuenteEnl = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", Diametro/6);
+
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
@@ -37,7 +43,7 @@ public class DrawAtom {
 		g2.fillArc(this.x, this.y, Diametro, Diametro, 0, 360);
 		
 		g2.setColor(Color.decode("#000000"));
-		g2.setFont(new Font("Courier", Font.PLAIN, Diametro/3));
+		g2.setFont(FuenteSimbolo);
 		
 		if(Atomo.getSimbolo().length() == 2) {
 
@@ -49,15 +55,15 @@ public class DrawAtom {
 
 		}
 		
-		g2.setFont(new Font("Courier", Font.PLAIN, Diametro / 6));
+		g2.setFont(FuenteEnl);
 		
 		if(Atomo.getEnlaces() >= 10) {
 
-			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + 2*Diametro/7, this.y + 4*Diametro/5);
+			g2.drawString(String.valueOf(this.Enlaces + "/" + this.Atomo.getTotalEnl()), this.x + 2*Diametro/7, this.y + 4*Diametro/5);
 
 		} else {
 
-			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + 3*Diametro/8 , this.y + 4*Diametro/5);
+			g2.drawString(String.valueOf(this.Enlaces + "/" + this.Atomo.getTotalEnl()), this.x + 3*Diametro/8 , this.y + 4*Diametro/5);
 
 		}
 		

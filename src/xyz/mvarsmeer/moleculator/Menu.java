@@ -28,11 +28,22 @@ public class Menu {
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
 				  Nombre.setEnabled(false);
 
+		JMenuItem Move = new JMenuItem("Move");
 		JMenuItem Magnify = new JMenuItem("Magnify");
 		JMenuItem Minimize = new JMenuItem("Minimize");
 		JMenuItem Link = new JMenuItem("Link atom");
 		JMenuItem Delete = new JMenuItem("Delete "+ Element.Atomo.getNombre());
-
+		
+		Move.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				DrawAtom AtomActual = Elements.get(Active);
+				AtomActual.Active = true;
+				
+			}
+			
+		});
 
 		Magnify.addActionListener(new ActionListener(){
 
@@ -170,6 +181,7 @@ public class Menu {
 		});
 
 		Menu.add(Nombre);
+		Menu.add(Move);
 		Menu.add(Magnify);
 		Menu.add(Minimize);
 		Menu.add(Link);

@@ -13,7 +13,7 @@ public class ErrorMessage {
     Boolean Active = false;
 	JFrame WindowActive;
 
-	public void NewMessage(){
+	public void NewMessage(String Area){
 
 		JFrame Window = new JFrame("Error");
 		Window.setSize(new Dimension(300, 190));
@@ -30,10 +30,28 @@ public class ErrorMessage {
 
 		}
 
-		JLabel Error = new JLabel("La accion no es posible", JLabel.CENTER);
+		JLabel Error = new JLabel("No se puede realizar la accion", JLabel.CENTER);
 		Error.setFont(new Font("Arial", Font.BOLD, 12));
 		Error.setBounds(40, 0, 200, 100);
 
+		if(Area == "Magnify"){
+
+			Error.setText("Ya llego al tamaño maximo");
+
+		}
+
+		if(Area == "Minimaze"){
+
+			Error.setText("Ya llego al tamaño minimo");
+
+		}
+
+		if(Area == "Link Atom"){
+
+			Error.setText("El atomo no tiene enlaces libres");
+
+		}
+		
 		JButton Acept = new JButton("Aceptar");
 		Acept.setFont(new Font("Arial", Font.BOLD, 12));
 		Acept.setBounds(100, 85, 80, 30);

@@ -41,23 +41,23 @@ public class DrawAtom {
 		
 		if(Atomo.getSimbolo().length() == 2) {
 
-			g2.drawString(this.Atomo.getSimbolo(), this.x + Diametro/2 - 9, this.y + Diametro/2);
+			g2.drawString(this.Atomo.getSimbolo(), this.x + 3*Diametro/9 , this.y + Diametro/2);
 
 		} else {
 
-			g2.drawString(this.Atomo.getSimbolo(), this.x + Diametro/2 - 5, this.y + Diametro/2);
+			g2.drawString(this.Atomo.getSimbolo(), this.x + 2*Diametro/5 , this.y + Diametro/2);
 
 		}
 		
-		g2.setFont(new Font("Courier", Font.PLAIN, Diametro / 5));
+		g2.setFont(new Font("Courier", Font.PLAIN, Diametro / 6));
 		
 		if(Atomo.getEnlaces() >= 10) {
 
-			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + Diametro/2 - 17, this.y + Diametro/2 + 18);
+			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + 2*Diametro/7, this.y + 4*Diametro/5);
 
 		} else {
 
-			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + Diametro/2 - 8, this.y + Diametro/2 + 18);
+			g2.drawString(String.valueOf(this.Enlaces + " / " + this.Atomo.getTotalEnl()), this.x + 3*Diametro/8 , this.y + 4*Diametro/5);
 
 		}
 		

@@ -9,7 +9,8 @@ import javax.swing.JPopupMenu;
 import java.util.ArrayList;
 
 public class Menu {
-	
+
+	ErrorMessage Error = new ErrorMessage();
 	ArrayList<DrawLine> Lineas;
 	DrawLine Linea;
 	
@@ -41,8 +42,12 @@ public class Menu {
 
 				if(AtomActual.Diametro < 80){
 
-					AtomActual.Diametro = AtomActual.Diametro + 4;
+					AtomActual.Diametro = AtomActual.Diametro + 5;
 					AtomActual.Repaint = true;
+
+				}else{
+
+					Error.NewMessage("Magnify");
 
 				}
 				
@@ -56,10 +61,14 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro > 20){
+				if(AtomActual.Diametro > 40){
 
-					AtomActual.Diametro = AtomActual.Diametro - 4;
+					AtomActual.Diametro = AtomActual.Diametro - 5;
 					AtomActual.Repaint = true;
+
+				}else{
+
+					Error.NewMessage("Minimaze");
 
 				}
 
@@ -100,8 +109,10 @@ public class Menu {
 					}
 
 				}else{
-					ErrorMessage Error = new ErrorMessage();
-					Error.NewMessage();
+
+					
+					Error.NewMessage("Link Atom");
+
 				}
 
 			}

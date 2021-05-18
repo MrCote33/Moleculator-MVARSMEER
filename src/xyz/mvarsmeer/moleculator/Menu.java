@@ -120,7 +120,6 @@ public class Menu {
 					}
 
 				}else{
-
 					
 					Error.NewMessage("Link Atom");
 
@@ -136,6 +135,14 @@ public class Menu {
 				
 				ArrayList<Integer> Eliminar = new ArrayList<Integer>();
 				DrawAtom AtomActual = Elements.get(Active);
+				
+				if(Linea != null) {
+					
+					if(Linea.Primero != null && Linea.Primero == AtomActual) {
+						Linea.Primero = null;
+					}
+					
+				}
 				
 				for(int cont1 = 0; cont1 < Lineas.size(); cont1++) {
 					

@@ -11,7 +11,8 @@ public class DrawLine {
 	
 	DrawAtom Primero;
 	DrawAtom Segundo;
-	int EnlEfectivos = 0;
+	int EnlEfectivos;
+
 	
 	public void setFirst(DrawAtom Actual) {
 
@@ -23,6 +24,7 @@ public class DrawLine {
 
 		this.Segundo = Actual;
 		this.Segundo.Repaint = true;
+		this.EnlEfectivos = EnlEfectivos+1;
 
 	}
 
@@ -41,8 +43,9 @@ public class DrawLine {
 
 		g2.drawLine(Primero.x+(Primero.Diametro/2), Primero.y+(Primero.Diametro/2), Segundo.x+(Segundo.Diametro/2), Segundo.y+(Segundo.Diametro/2));
 		g2.setColor(Color.WHITE);
-		g2.drawString(String.valueOf(EnlEfectivos), Primero.x+Primero.Diametro,  Primero.y+10);
-		g2.drawString(String.valueOf(EnlEfectivos), Segundo.x+Segundo.Diametro,  Segundo.y+10);
+
+		g2.drawString(String.valueOf(EnlEfectivos), Primero.x+Primero.Diametro,  Primero.y);
+		g2.drawString(String.valueOf(EnlEfectivos), Segundo.x+Segundo.Diametro,  Segundo.y);
 
 	}
 

@@ -25,7 +25,6 @@ public class Menu {
 	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 
 		FontReader Fuente = new FontReader();
-
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
 
 		DrawAtom Element = Elements.get(Active);
@@ -38,12 +37,16 @@ public class Menu {
 
 		JMenuItem Move = new JMenuItem("Move");
 		Move.setFont(Fuente1);
+
 		JMenuItem Magnify = new JMenuItem("Magnify");
 		Magnify.setFont(Fuente1);
+
 		JMenuItem Minimize = new JMenuItem("Minimize");
 		Minimize.setFont(Fuente1);
+
 		JMenuItem Link = new JMenuItem("Link atom");
 		Link.setFont(Fuente1);
+
 		JMenuItem Delete = new JMenuItem("Delete ");
 		Delete.setFont(Fuente1);
 		
@@ -110,7 +113,6 @@ public class Menu {
 					if(Linea == null) {
 
 						Linea = new DrawLine();
-						Linea.EnlEfectivos += 1;
 
 					}
 					
@@ -125,7 +127,24 @@ public class Menu {
 							Linea.setSecond(Element);
 							Linea.Primero.Enlaces -= 1;
 							Linea.Segundo.Enlaces -= 1;
-							
+
+							for(int cont=0;cont<Lineas.size();cont++){
+
+								if(Linea.Primero.equals(Lineas.get(cont).Primero)){
+
+									if(Linea.Segundo.equals(Lineas.get(cont).Segundo)){
+
+										System.out.println("Hay un enlace aca");
+										System.out.println("N° Enlaces: "+ Lineas.get(cont).EnlEfectivos);
+
+										Lineas.get(cont).EnlEfectivos = Lineas.get(cont).EnlEfectivos+1;
+
+									}
+
+								}
+
+							}
+
 							Lineas.add(Linea);
 							Linea = null;
 							

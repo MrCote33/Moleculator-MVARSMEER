@@ -20,7 +20,6 @@ public class DrawAtom {
 	
 	public DrawAtom(int X, int Y,int Diametro, Color Paint, Atom Atomo) {
 		
-		
 		this.x = X;
 		this.y = Y;
 		this.Diametro = Diametro;

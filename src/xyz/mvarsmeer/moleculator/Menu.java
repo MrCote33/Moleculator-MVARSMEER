@@ -1,11 +1,13 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Font;
 import java.awt.Canvas;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+
 import java.util.ArrayList;
 
 public class Menu {
@@ -21,18 +23,29 @@ public class Menu {
 	}
 	
 	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
-		
+
+		FontReader Fuente = new FontReader();
+
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
+
 		DrawAtom Element = Elements.get(Active);
 		JPopupMenu Menu = new JPopupMenu();
 
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
-				  Nombre.setEnabled(false);
+		Nombre.setFont(Fuente1.deriveFont(13f));	
+		Nombre.setBackground(Elements.get(Active).Paint);
+		Nombre.setEnabled(false);
 
 		JMenuItem Move = new JMenuItem("Move");
+		Move.setFont(Fuente1);
 		JMenuItem Magnify = new JMenuItem("Magnify");
+		Magnify.setFont(Fuente1);
 		JMenuItem Minimize = new JMenuItem("Minimize");
+		Minimize.setFont(Fuente1);
 		JMenuItem Link = new JMenuItem("Link atom");
-		JMenuItem Delete = new JMenuItem("Delete "+ Element.Atomo.getNombre());
+		Link.setFont(Fuente1);
+		JMenuItem Delete = new JMenuItem("Delete ");
+		Delete.setFont(Fuente1);
 		
 		Move.addActionListener(new ActionListener(){
 			
@@ -97,6 +110,7 @@ public class Menu {
 					if(Linea == null) {
 
 						Linea = new DrawLine();
+						Linea.EnlEfectivos += 1;
 
 					}
 					

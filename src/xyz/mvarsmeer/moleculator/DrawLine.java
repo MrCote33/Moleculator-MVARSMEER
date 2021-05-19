@@ -1,5 +1,6 @@
 package xyz.mvarsmeer.moleculator;
 
+import java.awt.Font;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,6 +11,7 @@ public class DrawLine {
 	
 	DrawAtom Primero;
 	DrawAtom Segundo;
+	int EnlEfectivos = 0;
 	
 	public void setFirst(DrawAtom Actual) {
 
@@ -26,12 +28,21 @@ public class DrawLine {
 
 	public void paint(Graphics g){
 
+		FontReader Fuente = new FontReader();
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 12);
+
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
+		g2.setFont(Fuente1);
 		g2.setColor(Color.decode("#FF0000"));
+
 		g2.setStroke(new BasicStroke(6));
+
 		g2.drawLine(Primero.x+(Primero.Diametro/2), Primero.y+(Primero.Diametro/2), Segundo.x+(Segundo.Diametro/2), Segundo.y+(Segundo.Diametro/2));
+		g2.setColor(Color.WHITE);
+		g2.drawString(String.valueOf(EnlEfectivos), Primero.x+Primero.Diametro,  Primero.y+10);
+		g2.drawString(String.valueOf(EnlEfectivos), Segundo.x+Segundo.Diametro,  Segundo.y+10);
 
 	}
 

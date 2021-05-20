@@ -79,6 +79,16 @@ public class Interface {
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
 				
+				try {
+					Thread.sleep(250);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				if(Atomos.size() > 0) {
+					Atomos.get(0).Repaint = true;
+				}
+				
 			}
 
 			for(int cont1 = 0; cont1 < Atomos.size(); cont1++ ) {

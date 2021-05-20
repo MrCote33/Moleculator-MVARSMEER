@@ -17,6 +17,7 @@ public class DrawLine {
 	public void setFirst(DrawAtom Actual) {
 
 		this.Primero = Actual;
+		this.EnlEfectivos = 0;
 		
 	}
 	
@@ -30,7 +31,7 @@ public class DrawLine {
 		int B = (this.Primero.Paint.getBlue() + this.Segundo.Paint.getBlue()) / 2;
 		
 		this.Paint = Color.decode("#"+Integer.toHexString(R)+Integer.toHexString(G)+Integer.toHexString(B));
-		this.EnlEfectivos = EnlEfectivos+1;
+		this.EnlEfectivos += 1;
 
 	}
 
@@ -46,12 +47,15 @@ public class DrawLine {
 		g2.setColor(Paint);
 
 		g2.setStroke(new BasicStroke(6));
-
 		g2.drawLine(Primero.x+(Primero.Diametro/2), Primero.y+(Primero.Diametro/2), Segundo.x+(Segundo.Diametro/2), Segundo.y+(Segundo.Diametro/2));
-		g2.setColor(Color.WHITE);
-
-		g2.drawString(String.valueOf(EnlEfectivos), Primero.x+Primero.Diametro,  Primero.y);
-		g2.drawString(String.valueOf(EnlEfectivos), Segundo.x+Segundo.Diametro,  Segundo.y);
+		
+		int MedioX = ((Primero.x + (Primero.Diametro/2)) + (Segundo.x + (Segundo.Diametro/2))) / 2;
+		int MedioY = ((Primero.y + (Primero.Diametro/2)) + (Segundo.y + (Segundo.Diametro/2))) / 2;
+		
+		g2.fillArc(MedioX-14, MedioY-13, 30, 30, 0, 360);
+		
+		g2.setColor(Color.BLACK);
+		g2.drawString(String.valueOf(this.EnlEfectivos), MedioX-2, MedioY+5);
 
 	}
 

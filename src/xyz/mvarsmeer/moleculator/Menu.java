@@ -128,19 +128,26 @@ public class Menu {
 							Linea.Primero.Enlaces -= 1;
 							Linea.Segundo.Enlaces -= 1;
 
-							for(int cont=0;cont<Lineas.size();cont++){
+							for(int cont = 0 ;cont < Lineas.size(); cont++){
 
 								if(Linea.Primero.equals(Lineas.get(cont).Primero)){
 
 									if(Linea.Segundo.equals(Lineas.get(cont).Segundo)){
-
-										System.out.println("Hay un enlace aca");
-										System.out.println("N° Enlaces: "+ Lineas.get(cont).EnlEfectivos);
-
-										Lineas.get(cont).EnlEfectivos = Lineas.get(cont).EnlEfectivos+1;
+										
+										Lineas.get(cont).EnlEfectivos += 1;
 
 									}
 
+								}
+								
+								if(Linea.Primero.equals(Lineas.get(cont).Segundo)) {
+									
+									if(Linea.Segundo.equals(Lineas.get(cont).Primero)) {
+										
+										Lineas.get(cont).EnlEfectivos += 1;
+										
+									}
+									
 								}
 
 							}

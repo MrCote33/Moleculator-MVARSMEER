@@ -25,7 +25,6 @@ public class Menu {
 	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 
 		FontReader Fuente = new FontReader();
-
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
 
 		DrawAtom Element = Elements.get(Active);
@@ -38,12 +37,16 @@ public class Menu {
 
 		JMenuItem Move = new JMenuItem("Move");
 		Move.setFont(Fuente1);
+
 		JMenuItem Magnify = new JMenuItem("Magnify");
 		Magnify.setFont(Fuente1);
+
 		JMenuItem Minimize = new JMenuItem("Minimize");
 		Minimize.setFont(Fuente1);
+
 		JMenuItem Link = new JMenuItem("Link atom");
 		Link.setFont(Fuente1);
+
 		JMenuItem Delete = new JMenuItem("Delete ");
 		Delete.setFont(Fuente1);
 		
@@ -69,7 +72,7 @@ public class Menu {
 					AtomActual.Diametro = AtomActual.Diametro + 5;
 					AtomActual.Repaint = true;
 
-				}else{
+				} else {
 
 					Error.NewMessage("Magnify");
 
@@ -90,7 +93,7 @@ public class Menu {
 					AtomActual.Diametro = AtomActual.Diametro - 5;
 					AtomActual.Repaint = true;
 
-				}else{
+				} else {
 
 					Error.NewMessage("Minimaze");
 
@@ -105,26 +108,53 @@ public class Menu {
 
 			public void actionPerformed(ActionEvent e) {
 
-				if(Element.Enlaces > 0){
-
+				if(Element.Enlaces > 0) {
+					
 					if(Linea == null) {
-
+						
 						Linea = new DrawLine();
-						Linea.EnlEfectivos += 1;
-
+						
 					}
 					
 					if(Linea.Primero == null) {
 						
 						Linea.setFirst(Element);
 						
-					} else {
+					}
 						
-						if(Linea.Segundo == null && Linea.Primero != Element) {
+					if(Linea.Segundo == null && Linea.Primero != Element) {
+						
+						Linea.setSecond(Element);
+						Linea.Primero.Enlaces -= 1;
+						Linea.Segundo.Enlaces -= 1;
+						
+						for(int cont = 0; cont < Lineas.size(); cont++) {
 							
-							Linea.setSecond(Element);
-							Linea.Primero.Enlaces -= 1;
-							Linea.Segundo.Enlaces -= 1;
+							if(Linea.Primero.equals(Lineas.get(cont).Primero)) {
+								
+								if(Linea.Segundo.equals(Lineas.get(cont).Segundo)) {
+									
+									Lineas.get(cont).EnlEfectivos += 1;
+									Linea = null;
+									
+								}
+								
+							}
+								
+							if(Linea != null && Linea.Primero.equals(Lineas.get(cont).Segundo)) {
+								
+								if(Linea.Segundo.equals(Lineas.get(cont).Primero)) {
+									
+									Lineas.get(cont).EnlEfectivos += 1;
+									Linea = null;
+									
+								}
+								
+							}
+							
+						}
+						
+						if(Linea != null) {
 							
 							Lineas.add(Linea);
 							Linea = null;
@@ -132,11 +162,11 @@ public class Menu {
 						}
 						
 					}
-
-				}else{
+					
+				} else {
 					
 					Error.NewMessage("Link Atom");
-
+					
 				}
 
 			}
@@ -164,14 +194,14 @@ public class Menu {
 					
 					if(LineaActual.Primero == AtomActual) {
 
-						LineaActual.Segundo.Enlaces += 1;
+						LineaActual.Segundo.Enlaces += LineaActual.EnlEfectivos;
 						Eliminar.add(cont1);
 
 					}
 					
 					if(LineaActual.Segundo == AtomActual) {
 
-						LineaActual.Primero.Enlaces += 1;
+						LineaActual.Primero.Enlaces += LineaActual.EnlEfectivos;
 						Eliminar.add(cont1);
 						
 					}

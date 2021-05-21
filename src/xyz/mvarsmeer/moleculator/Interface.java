@@ -66,13 +66,9 @@ public class Interface {
 		while(true) {
 			
 			try {
-
 				Thread.sleep(10);
-
 			} catch (InterruptedException e) {
-
 				e.printStackTrace();
-
 			}
 			
 			if(WindowsX != Window.getBounds().width || WindowsY != Window.getBounds().height) {
@@ -82,6 +78,16 @@ public class Interface {
 				DrawingZone.setBounds(225,60,WindowsX-268,WindowsY-100);
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
+				
+				try {
+					Thread.sleep(250);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				if(Atomos.size() > 0) {
+					Atomos.get(0).Repaint = true;
+				}
 				
 			}
 

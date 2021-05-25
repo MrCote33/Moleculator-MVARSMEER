@@ -13,9 +13,23 @@ import java.util.ArrayList;
 
 public class Custom {
 
+	String Nombre;
+	int Enl;
+	String Simbolo;
+	Color color;
+
 	Boolean Active = false;
 	JFrame WindowActive;
 	ArrayList<DrawAtom> Dibujar;
+
+	public Custom(String Nombre, int Enl, Color color,String Simbolo){
+
+		this.Nombre = Nombre;
+		this.Enl = Enl;
+		this.color = color;
+		this.Simbolo = Simbolo;
+
+	}
 
 	public void CreateWindow(String Seccion, ArrayList<DrawAtom> Dibujar) {
 		
@@ -25,7 +39,7 @@ public class Custom {
 		Font Fuente2 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 12);
 
 		JFrame Window = new JFrame(Seccion);
-		SelectColor ColorSeleccionado = new SelectColor(Color.decode("#E9E4E3"));
+		SelectColor ColorSeleccionado = new SelectColor(color);
 
 		if(Active == false) {
 
@@ -45,7 +59,7 @@ public class Custom {
 		Texto.setFont(Fuente1);
 		Texto.setBounds(128, 20, 220, 20);
 
-		JTextField Rellenar = new JTextField();
+		JTextField Rellenar = new JTextField(Nombre);
 		Rellenar.setFont(Fuente2);
 		Rellenar.setBounds(128, 40, 220, 20);
 
@@ -53,7 +67,8 @@ public class Custom {
 		Texto2.setFont(Fuente1);
 		Texto2.setBounds(128, 80, 220, 20);
 		
-		JTextField Rellenar2 = new JTextField();
+		JTextField Rellenar2 = new JTextField(Enl);
+		Rellenar2.setText(String.valueOf(Enl));
 		Rellenar2.setFont(Fuente2);
 		Rellenar2.setBounds(210, 100, 60, 20);
 
@@ -61,7 +76,7 @@ public class Custom {
 		Texto3.setFont(Fuente1);
 		Texto3.setBounds(128, 140, 220, 20);
 
-		JTextField Rellenar3 = new JTextField();
+		JTextField Rellenar3 = new JTextField(Simbolo);
 		Rellenar3.setFont(Fuente2);
 		Rellenar3.setBounds(210, 160, 60, 20);
 

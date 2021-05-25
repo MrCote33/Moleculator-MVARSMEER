@@ -12,22 +12,36 @@ import javax.swing.JTextField;
 import java.util.ArrayList;
 
 public class Custom {
-
+	
+	DrawAtom Elemento;
 	String Nombre;
-	int Enl;
 	String Simbolo;
 	Color color;
+	int Enl;
 
 	Boolean Active = false;
 	JFrame WindowActive;
 	ArrayList<DrawAtom> Dibujar;
 
-	public Custom(String Nombre, int Enl, Color color,String Simbolo){
+	public Custom(DrawAtom Elemento){
+		
+		this.Elemento = Elemento; 
 
-		this.Nombre = Nombre;
-		this.Enl = Enl;
-		this.color = color;
-		this.Simbolo = Simbolo;
+		if(Elemento != null) {
+			
+			this.Nombre = Elemento.Atomo.getNombre();
+			this.Simbolo = Elemento.Atomo.getSimbolo();
+			this.color = Elemento.Paint;
+			this.Enl = Elemento.Atomo.getTotalEnl();
+			
+		} else {
+			
+			this.Nombre = "";
+			this.Simbolo = "";
+			this.color = Color.decode("#E9E4E3");
+			this.Enl = 0;
+			
+		}
 
 	}
 
@@ -114,31 +128,63 @@ public class Custom {
 
 						if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
 
-							Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-							DrawAtom Dibujo = new DrawAtom(15, 15, 60, ColorSeleccionado.getColor(), Atomo);
-							Dibujar.add(Dibujo);
-							Active = false;
-							WindowActive.dispose();
+							if(Nombre.length() == 0) {
+								
+								Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+								DrawAtom Dibujo = new DrawAtom(15, 15, 60, ColorSeleccionado.getColor(), Atomo);
+								Dibujar.add(Dibujo);
+								Active = false;
+								WindowActive.dispose();
+								
+							} else {
+								
+								if(Elemento.Enlaces == Elemento.Atomo.getTotalEnl()) {
+									
+									Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+									Elemento.Enlaces = Elemento.Atomo.getTotalEnl();
+									Elemento.Repaint = true;
+									Active = false;
+									WindowActive.dispose();
+									
+								} else {
+									
+									if(Integer.parseInt(Rellenar2.getText()) >= (Elemento.Atomo.getTotalEnl()-Elemento.Enlaces)) {
+										
+										Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+										Elemento.Enlaces = Elemento.Atomo.getEnlaces() - Elemento.Enlaces;
+										Elemento.Repaint = true;
+										Active = false;
+										WindowActive.dispose();
+										
+									} else {
+										
+										Rellenar2.setText("Error");
+										
+									}
+									
+								}
+								
+							}
 
-						}else{
+						} else {
 
 							Rellenar3.setText("Error");
 
 						}
 
-					}else{
+					} else {
 
 						Rellenar2.setText("Error");
 						
 
 					}
 
-				}else{
+				} else {
 
 					Rellenar.setText("Error");
 
 				}
-
+				
 			}
 
 		});	

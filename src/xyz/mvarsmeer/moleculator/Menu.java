@@ -180,8 +180,8 @@ public class Menu {
 
 			public void actionPerformed(ActionEvent e){
 
-				Custom ModAtom = new Custom(Element.Atomo.getNombre(), Element.Atomo.getEnlaces(),Elements.get(Active).Paint, Element.Atomo.getSimbolo());
-				ModAtom.CreateWindow("Modificar " + Element.Atomo.getNombre() , Elements);
+				Custom ModAtom = new Custom(Element);
+				ModAtom.CreateWindow("Modificar " + Element.Atomo.getNombre(), Elements);
 
 
 			}

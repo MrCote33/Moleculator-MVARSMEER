@@ -142,6 +142,7 @@ public class Custom {
 									
 									Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
 									Elemento.Enlaces = Elemento.Atomo.getTotalEnl();
+									Elemento.Paint = ColorSeleccionado.getColor();
 									Elemento.Repaint = true;
 									Active = false;
 									WindowActive.dispose();
@@ -152,6 +153,7 @@ public class Custom {
 										
 										Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
 										Elemento.Enlaces = Elemento.Atomo.getEnlaces() - Elemento.Enlaces;
+										Elemento.Paint = ColorSeleccionado.getColor();
 										Elemento.Repaint = true;
 										Active = false;
 										WindowActive.dispose();

@@ -113,7 +113,14 @@ public class Custom {
 			
 		});
 
-		JButton Boton = new JButton("Create a new Atom");
+		JButton Boton = new JButton();
+		
+		if(Nombre.length() == 0) {
+			Boton.setText("Create a new Atom");
+		} else {
+			Boton.setText("Modify Atom");
+		}
+		
 		Boton.setFont(Fuente1);
 		Boton.setBackground(Color.decode("#E9E4E3"));
 		Boton.setBounds(140, 260, 200, 30);
@@ -124,7 +131,7 @@ public class Custom {
 
 				if(Rellenar.getText().length() > 0) {
 
-					if(Rellenar2.getText().matches("[0-9]+")) {
+					if(Rellenar2.getText().matches("[0-9]+") && Integer.parseInt(Rellenar2.getText()) < 100) {
 
 						if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
 
@@ -149,10 +156,12 @@ public class Custom {
 									
 								} else {
 									
-									if(Integer.parseInt(Rellenar2.getText()) >= (Elemento.Atomo.getTotalEnl()-Elemento.Enlaces)) {
+									int Usados = Elemento.Atomo.getTotalEnl()-Elemento.Enlaces;
+									
+									if(Integer.parseInt(Rellenar2.getText()) >= Usados) {
 										
 										Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-										Elemento.Enlaces = Elemento.Atomo.getEnlaces() - Elemento.Enlaces;
+										Elemento.Enlaces = Elemento.Atomo.getEnlaces() - Usados;
 										Elemento.Paint = ColorSeleccionado.getColor();
 										Elemento.Repaint = true;
 										Active = false;

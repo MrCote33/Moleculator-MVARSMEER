@@ -34,8 +34,8 @@ public class ReaderFile {
 
           String Datos[] = Actual.split(",", 3);
 
-          String Nombre = Datos[0];
-          String Simbolo = Datos[1];
+          String Nombre = new String(Datos[0].getBytes("ISO-8859-1"),"UTF-8");
+          String Simbolo = new String(Datos[1].getBytes("ISO-8859-1"),"UTF-8");
           int Enlaces = Integer.parseInt(Datos[2]);
 
           Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);

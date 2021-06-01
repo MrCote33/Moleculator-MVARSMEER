@@ -102,6 +102,7 @@ public class Interface {
 					for(int cont2 = 0; cont2 < Enlaces.size(); cont2++) {
 						
 						DrawLine Repintar = Enlaces.get(cont2);
+						Repintar.updateColor();
 						Repintar.paint(Drawing);
 						
 					}

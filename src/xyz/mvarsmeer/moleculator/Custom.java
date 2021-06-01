@@ -12,10 +12,38 @@ import javax.swing.JTextField;
 import java.util.ArrayList;
 
 public class Custom {
+	
+	DrawAtom Elemento;
+	String Nombre;
+	String Simbolo;
+	Color color;
+	int Enl;
 
 	Boolean Active = false;
 	JFrame WindowActive;
 	ArrayList<DrawAtom> Dibujar;
+
+	public Custom(DrawAtom Elemento){
+		
+		this.Elemento = Elemento; 
+
+		if(Elemento != null) {
+			
+			this.Nombre = Elemento.Atomo.getNombre();
+			this.Simbolo = Elemento.Atomo.getSimbolo();
+			this.color = Elemento.Paint;
+			this.Enl = Elemento.Atomo.getTotalEnl();
+			
+		} else {
+			
+			this.Nombre = "";
+			this.Simbolo = "";
+			this.color = Color.decode("#E9E4E3");
+			this.Enl = 0;
+			
+		}
+
+	}
 
 	public void CreateWindow(String Seccion, ArrayList<DrawAtom> Dibujar) {
 		
@@ -25,7 +53,7 @@ public class Custom {
 		Font Fuente2 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 12);
 
 		JFrame Window = new JFrame(Seccion);
-		SelectColor ColorSeleccionado = new SelectColor(Color.decode("#E9E4E3"));
+		SelectColor ColorSeleccionado = new SelectColor(color);
 
 		if(Active == false) {
 
@@ -45,7 +73,7 @@ public class Custom {
 		Texto.setFont(Fuente1);
 		Texto.setBounds(128, 20, 220, 20);
 
-		JTextField Rellenar = new JTextField();
+		JTextField Rellenar = new JTextField(Nombre);
 		Rellenar.setFont(Fuente2);
 		Rellenar.setBounds(128, 40, 220, 20);
 
@@ -53,7 +81,8 @@ public class Custom {
 		Texto2.setFont(Fuente1);
 		Texto2.setBounds(128, 80, 220, 20);
 		
-		JTextField Rellenar2 = new JTextField();
+		JTextField Rellenar2 = new JTextField(Enl);
+		Rellenar2.setText(String.valueOf(Enl));
 		Rellenar2.setFont(Fuente2);
 		Rellenar2.setBounds(210, 100, 60, 20);
 
@@ -61,7 +90,7 @@ public class Custom {
 		Texto3.setFont(Fuente1);
 		Texto3.setBounds(128, 140, 220, 20);
 
-		JTextField Rellenar3 = new JTextField();
+		JTextField Rellenar3 = new JTextField(Simbolo);
 		Rellenar3.setFont(Fuente2);
 		Rellenar3.setBounds(210, 160, 60, 20);
 
@@ -84,7 +113,14 @@ public class Custom {
 			
 		});
 
-		JButton Boton = new JButton("Create a new Atom");
+		JButton Boton = new JButton();
+		
+		if(Nombre.length() == 0) {
+			Boton.setText("Create a new Atom");
+		} else {
+			Boton.setText("Modify Atom");
+		}
+		
 		Boton.setFont(Fuente1);
 		Boton.setBackground(Color.decode("#E9E4E3"));
 		Boton.setBounds(140, 260, 200, 30);
@@ -95,35 +131,71 @@ public class Custom {
 
 				if(Rellenar.getText().length() > 0) {
 
-					if(Rellenar2.getText().matches("[0-9]+")) {
+					if(Rellenar2.getText().matches("[0-9]+") && Integer.parseInt(Rellenar2.getText()) < 100) {
 
 						if(Rellenar3.getText().length() > 0 && Rellenar3.getText().length() <= 2) {
 
-							Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-							DrawAtom Dibujo = new DrawAtom(15, 15, 60, ColorSeleccionado.getColor(), Atomo);
-							Dibujar.add(Dibujo);
-							Active = false;
-							WindowActive.dispose();
+							if(Nombre.length() == 0) {
+								
+								Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+								DrawAtom Dibujo = new DrawAtom(15, 15, 60, ColorSeleccionado.getColor(), Atomo);
+								Dibujar.add(Dibujo);
+								Active = false;
+								WindowActive.dispose();
+								
+							} else {
+								
+								if(Elemento.Enlaces == Elemento.Atomo.getTotalEnl()) {
+									
+									Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+									Elemento.Enlaces = Elemento.Atomo.getTotalEnl();
+									Elemento.Paint = ColorSeleccionado.getColor();
+									Elemento.Repaint = true;
+									Active = false;
+									WindowActive.dispose();
+									
+								} else {
+									
+									int Usados = Elemento.Atomo.getTotalEnl()-Elemento.Enlaces;
+									
+									if(Integer.parseInt(Rellenar2.getText()) >= Usados) {
+										
+										Elemento.Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
+										Elemento.Enlaces = Elemento.Atomo.getEnlaces() - Usados;
+										Elemento.Paint = ColorSeleccionado.getColor();
+										Elemento.Repaint = true;
+										Active = false;
+										WindowActive.dispose();
+										
+									} else {
+										
+										Rellenar2.setText("Error");
+										
+									}
+									
+								}
+								
+							}
 
-						}else{
+						} else {
 
 							Rellenar3.setText("Error");
 
 						}
 
-					}else{
+					} else {
 
 						Rellenar2.setText("Error");
 						
 
 					}
 
-				}else{
+				} else {
 
 					Rellenar.setText("Error");
 
 				}
-
+				
 			}
 
 		});	

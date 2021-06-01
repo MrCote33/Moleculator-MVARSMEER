@@ -12,7 +12,7 @@ public class Buttons implements ActionListener {
 	
 	ArrayList<DrawAtom> ListaDibujo;
 	Windows Atomos = new Windows();
-	Custom NewAtom = new Custom();
+	Custom NewAtom = new Custom(null);
 	Font Fuente;
 
 	public Buttons(ArrayList<DrawAtom> ListaDibujo) {

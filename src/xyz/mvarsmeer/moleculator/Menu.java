@@ -47,6 +47,9 @@ public class Menu {
 		JMenuItem Link = new JMenuItem("Link atom");
 		Link.setFont(Fuente1);
 
+		JMenuItem Modify = new JMenuItem("Modify");
+		Modify.setFont(Fuente1);
+
 		JMenuItem Delete = new JMenuItem("Delete ");
 		Delete.setFont(Fuente1);
 		
@@ -173,6 +176,18 @@ public class Menu {
 
 		});
 
+		Modify.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e){
+
+				Custom ModAtom = new Custom(Element);
+				ModAtom.CreateWindow("Modificar " + Element.Atomo.getNombre(), Elements);
+
+
+			}
+
+		});
+
 		Delete.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -236,6 +251,7 @@ public class Menu {
 		Menu.add(Magnify);
 		Menu.add(Minimize);
 		Menu.add(Link);
+		Menu.add(Modify);
 		Menu.add(Delete);
 		Menu.show(e.getComponent(), e.getX(), e.getY());
 

@@ -25,14 +25,19 @@ public class DrawLine {
 
 		this.Segundo = Actual;
 		this.Segundo.Repaint = true;
+		updateColor();
+		this.EnlEfectivos += 1;
+
+	}
+	
+	public void updateColor() {
 		
 		int R = (this.Primero.Paint.getRed() + this.Segundo.Paint.getRed()) / 2;
 		int G = (this.Primero.Paint.getGreen() + this.Segundo.Paint.getGreen()) / 2;
 		int B = (this.Primero.Paint.getBlue() + this.Segundo.Paint.getBlue()) / 2;
 		
 		this.Paint = Color.decode("#"+Integer.toHexString(R)+Integer.toHexString(G)+Integer.toHexString(B));
-		this.EnlEfectivos += 1;
-
+		
 	}
 
 	public void paint(Graphics g){

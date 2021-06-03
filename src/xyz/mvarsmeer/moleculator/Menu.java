@@ -22,13 +22,16 @@ public class Menu {
 		
 	}
 	
-	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
+	public void Pop(ArrayList<DrawAtom> Elements, int Active, ArrayList<ArrayList<DrawAtom>> Groups, ArrayList<String> Formulas, Canvas Dibujo, MouseEvent e) {
 
 		FontReader Fuente = new FontReader();
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
 
 		DrawAtom Element = Elements.get(Active);
 		JPopupMenu Menu = new JPopupMenu();
+		
+		Grupos Group = new Grupos(Groups);
+		Formula ListFormula = new Formula(Formulas);
 
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
 		Nombre.setFont(Fuente1.deriveFont(13f));	
@@ -162,6 +165,9 @@ public class Menu {
 							Lineas.add(Linea);
 							Linea = null;
 							
+							Group.getGrupo(Lineas);
+							ListFormula.getFormula(Groups);
+							
 						}
 						
 					}
@@ -182,7 +188,6 @@ public class Menu {
 
 				Custom ModAtom = new Custom(Element);
 				ModAtom.CreateWindow("Modificar " + Element.Atomo.getNombre(), Elements);
-
 
 			}
 
@@ -231,6 +236,8 @@ public class Menu {
 				}
 				
 				Elements.remove(Active);
+				Group.getGrupo(Lineas);
+				ListFormula.getFormula(Groups);
 				
 				if(Elements.size() > 0) {
 					

@@ -24,7 +24,7 @@ public class Buttons implements ActionListener {
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
 		FontReader SetFont = new FontReader();
-		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 11);
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 10);
 
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));

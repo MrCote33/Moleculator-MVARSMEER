@@ -34,29 +34,29 @@ public class ErrorMessage {
 
 		}
 
-		JLabel Error = new JLabel("the action cannot be executed", JLabel.CENTER);
+		JLabel Error = new JLabel("La accion no pudo ser ejecutada", JLabel.CENTER);
 		Error.setFont(Fuente);
 		Error.setBounds(20, 0, 350, 100);
 
 		if(Area == "Magnify"){
 
-			Error.setText("It has already reached the maximum size");
+			Error.setText("El atomo ha alcanzado su tamaño maximo");
 
 		}
 
 		if(Area == "Minimaze"){
 
-			Error.setText("It has already reached the minimum size");
+			Error.setText("El atomo ha alcanzado su tamaño minimo");
 
 		}
 
 		if(Area == "Link Atom"){
 
-			Error.setText("The atom has no free bonds");
+			Error.setText("El atomo ya no tiene enlaces libres");
 
 		}
 		
-		JButton Acept = new JButton("Acept");
+		JButton Acept = new JButton("Aceptar");
 		Acept.setFont(Fuente);
 		Acept.setFocusPainted(false);
 		Acept.setBackground(Color.WHITE);

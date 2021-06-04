@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import java.awt.event.ActionEvent;
@@ -51,7 +53,19 @@ public class SelectColor {
 		}
 
 		JColorChooser Options = new JColorChooser();
+		AbstractColorChooserPanel[] panels = Options.getChooserPanels();
+		
+		for (AbstractColorChooserPanel Nombre : panels) {
+			if(!Nombre.getDisplayName().equals("RGB")) {
+
+			   Options.removeChooserPanel(Nombre);
+			   
+			} 
+		}
+
+		Options.setPreviewPanel(new JPanel());
 		Options.setSize(610, 310);
+		
 
 		JButton Select = new JButton("Seleccionar color");
 		Select.setFont(new Font("Arial", Font.BOLD, 12));

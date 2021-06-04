@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Panel;
 import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.Point;
@@ -30,9 +31,14 @@ public class Interface {
 		Window.setLayout(null);
 		
 		Label Equipo = new Label("MVARSMEER");
-		Equipo.setBounds(78, 60, 100, 20);
+		Equipo.setBounds(78, 51, 100, 20);
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);
+
+		Label Group = new Label("Grupos de moleculas");
+		Group.setBounds(870, 51, 150, 20);
+		Group.setForeground(Color.BLACK);
+		Window.add(Group);
 		
 		Buttons Boton = new Buttons(Atomos);
 		Boton.CrearBoton(Window, 37, 82, "Metales alcainos", "#FFC8B0");
@@ -80,6 +86,7 @@ public class Interface {
 				WindowsX = Window.getBounds().width;
 				WindowsY = Window.getBounds().height;
 				DrawingZone.setBounds(226,55,WindowsX-452,WindowsY-87);
+				Group.setBounds(WindowsX-180, 51, 150, 20);
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
 				

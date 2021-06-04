@@ -30,7 +30,7 @@ public class Windows {
 		}
 		
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		Window.setSize(new Dimension(710, 480));
+		Window.setSize(new Dimension(716, 484));
 		Window.setLocationRelativeTo(null);
 		Window.setResizable(false);
 		Window.setLayout(null);

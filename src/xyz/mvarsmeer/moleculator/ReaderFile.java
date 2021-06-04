@@ -8,59 +8,58 @@ import java.util.ArrayList;
 
 public class ReaderFile {
 
-  public ArrayList<Atom> LeerArchivo(String Path) {
+	public ArrayList<Atom> LeerArchivo(String Path) {
 
-    FileReader Archivo;
+		FileReader Archivo;
 
-    ArrayList<Atom> ListaDeAtomos = new ArrayList<Atom>();
+		ArrayList<Atom> ListaDeAtomos = new ArrayList<Atom>();
 
-    try {
+		try {
 
-      Archivo = new FileReader(Path);
-      BufferedReader Lector = new BufferedReader(Archivo);
+			Archivo = new FileReader(Path);
+			BufferedReader Lector = new BufferedReader(Archivo);
 
-      Atom Atomo = null;
+			Atom Atomo = null;
 
-      String Tipo = "";
-      String Actual = "";
+			String Tipo = "";
+			String Actual = "";
 
-      while ((Actual = Lector.readLine()) != null) {
+			while ((Actual = Lector.readLine()) != null) {
 
-        if (!Actual.contains(",")) {
+			if (!Actual.contains(",")) {
 
-          Tipo = Actual;
+				Tipo = Actual;
 
-        } else {
+			} else {
 
-          String Datos[] = Actual.split(",", 3);
+				String Datos[] = Actual.split(",", 3);
 
-          String Nombre = new String(Datos[0].getBytes("ISO-8859-1"),"UTF-8");
-          String Simbolo = new String(Datos[1].getBytes("ISO-8859-1"),"UTF-8");
-          int Enlaces = Integer.parseInt(Datos[2]);
+				String Nombre = new String(Datos[0].getBytes("ISO-8859-1"),"UTF-8");
+				String Simbolo = new String(Datos[1].getBytes("ISO-8859-1"),"UTF-8");
+				int Enlaces = Integer.parseInt(Datos[2]);
 
-          Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);
-          ListaDeAtomos.add(Atomo);
+				Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);
+				ListaDeAtomos.add(Atomo);
 
-        }
+				}
 
-      }
+			}
 
-      Lector.close();
-      
-      return ListaDeAtomos;
+			Lector.close();
+			return ListaDeAtomos;
 
-    } catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
-      e.printStackTrace();
+			e.printStackTrace();
 
-    } catch (IOException e) {
+		} catch (IOException e) {
 
-      e.printStackTrace();
+			e.printStackTrace();
 
-    }
+		}
 
-    return ListaDeAtomos;
+	return ListaDeAtomos;
 
-  }
+	}
 
 }

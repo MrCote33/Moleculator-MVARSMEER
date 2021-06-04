@@ -34,6 +34,12 @@ public class Buttons implements ActionListener {
 		Boton.addActionListener(this);
 		
 		Window.add(Boton);
+		
+	}
+
+	public void SetDisable(JButton Boton) {
+
+		Boton.setEnabled(false);
 
 	}
 

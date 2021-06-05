@@ -3,6 +3,7 @@ package xyz.mvarsmeer.moleculator;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -28,7 +29,7 @@ public class Buttons implements ActionListener {
 
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));
-		Boton.setBounds(x-5, y, 170, 30);
+		Boton.setBounds(x, y, 170, 30);
 		Boton.setFocusPainted(false);
 		Boton.setFont(Fuente);
 		Boton.addActionListener(this);
@@ -36,11 +37,21 @@ public class Buttons implements ActionListener {
 		Window.add(Boton);
 		
 	}
-
-	public void SetDisable(JButton Boton) {
-
-		Boton.setEnabled(false);
-
+	
+	public void CrearFormula(Panel Zone, int x, int y, String Formula, Color color) {
+		
+		FontReader SetFont = new FontReader();
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 10);
+		
+		JButton Boton = new JButton(Formula);
+		Boton.setBackground(color);
+		Boton.setForeground(Color.BLACK);
+		Boton.setBounds(x, y, 170, 30);
+		Boton.setFocusPainted(false);
+		Boton.setFont(Fuente);
+		
+		Zone.add(Boton);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {

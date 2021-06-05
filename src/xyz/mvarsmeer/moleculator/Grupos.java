@@ -14,6 +14,7 @@ public class Grupos {
 	
 	public void getGrupo(ArrayList<DrawLine> Enlaces) {
 		
+		Grupos.clear();
 		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
 		
 		for(int i = 0; i < Enlaces.size(); i++) {

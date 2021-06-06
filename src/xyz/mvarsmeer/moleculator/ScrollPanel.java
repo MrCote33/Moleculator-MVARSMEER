@@ -3,7 +3,6 @@ package xyz.mvarsmeer.moleculator;
 import java.awt.Color;
 import java.awt.Panel;
 import java.util.ArrayList;
-
 import javax.swing.JScrollBar;
 
 public class ScrollPanel {
@@ -11,12 +10,17 @@ public class ScrollPanel {
 	Panel Contenedor = new Panel();
 	JScrollBar Scroll = new JScrollBar();
 	
-	public Panel getPanel(ArrayList<String> Formulas, ArrayList<ArrayList<DrawAtom>> Grupos) {
+	public void updatePanel() {
 		
-		Contenedor.setBounds(0,0,170,330);
-		Contenedor.removeAll();
+		Contenedor.setBounds(0,0,186,450);
+		Scroll.setBounds(170, 0, 16, 330);
+		
+	}
+	
+	public void showPanel(ArrayList<String> Formulas, ArrayList<ArrayList<DrawAtom>> Grupos) {
 		
 		Buttons Boton = new Buttons(null);
+		Contenedor.removeAll();
 		
 		for(int i = 0; i < Formulas.size(); i++) {
 			
@@ -44,7 +48,7 @@ public class ScrollPanel {
 			
 		}
 		
-		return Contenedor;
+		Contenedor.repaint();
 		
 	}
 

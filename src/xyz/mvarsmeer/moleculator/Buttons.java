@@ -46,7 +46,7 @@ public class Buttons implements ActionListener {
 		JButton Boton = new JButton(Formula);
 		Boton.setBackground(color);
 		Boton.setForeground(Color.BLACK);
-		Boton.setBounds(x, y, 170, 30);
+		Boton.setBounds(x, y, 186, 30);
 		Boton.setFocusPainted(false);
 		Boton.setFont(Fuente);
 		

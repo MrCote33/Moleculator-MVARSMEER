@@ -36,7 +36,7 @@ public class Interface {
 		Window.add(Equipo);
 
 		Label Group = new Label("Grupos de moleculas");
-		Group.setBounds(870, 51, 150, 20);
+		Group.setBounds(878, 51, 150, 20);
 		Group.setForeground(Color.BLACK);
 		Window.add(Group);
 		
@@ -97,11 +97,13 @@ public class Interface {
 				WindowsY = Window.getBounds().height;
 				
 				DrawingZone.setBounds(226,55,WindowsX-468,WindowsY-87);
-				Group.setBounds(WindowsX-196, 51, 150, 20);
+				Group.setBounds(WindowsX-186, 51, 150, 20);
 				Formula.setBounds(WindowsX-218, 82, 186, 330);
 				
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
+				
+				Panel.updatePanel();
 				
 				try {
 					Thread.sleep(250);
@@ -123,7 +125,11 @@ public class Interface {
 					
 					ObjetoGroup.getGrupo(Enlaces);
 					ListFormula.getFormula(Grupos);
-					Formula.add(Panel.getPanel(Formulas,Grupos));
+					Panel.showPanel(Formulas, Grupos);
+					
+					Formula.removeAll();
+					Formula.add(Panel.Contenedor);
+					Panel.updatePanel();
 					
 				}
 				

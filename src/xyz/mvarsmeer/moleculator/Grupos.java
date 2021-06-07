@@ -29,33 +29,25 @@ public class Grupos {
 				for(int k = 0; k < Grupo.size(); k++) {
 					
 					if(Grupo.get(k) == Enlaces.get(i).Primero) {
-
 						uno = true;
-
 					}
 					
 					if(Grupo.get(k) == Enlaces.get(i).Segundo) {
-
 						dos = true;
-
 					}
 					
 				}
 				
 				if(uno && dos == false) {
-
 					Grupo.add(Enlaces.get(i).Segundo);
 					break;
-
 				}
 					
 				if(dos && uno == false) {
-
 					Grupo.add(Enlaces.get(i).Primero);
 					break;
-
 				}
-			
+				
 			}
 			
 			if(uno == false && dos == false) {
@@ -78,22 +70,33 @@ public class Grupos {
 			for(int i = 0; i < LargoGrupos; i++) {
 				
 				ArrayList<DrawAtom> Grupo = Grupos.get(i);
-				DrawAtom Buscar = Grupo.get(Grupo.size() - 1);
 				
 				for(int j = 0; j < LargoGrupos; j++) {
 					
 					ArrayList<DrawAtom> GrupoAux = Grupos.get(j);
 					
-					for(int k = 0; k < GrupoAux.size(); k++) {
+					for(int k = 0; k < Grupo.size(); k++) {
 						
-						if(i != j) {
+						for(int l = 0; l < GrupoAux.size(); l++) {
 							
-							if(Buscar == GrupoAux.get(k)) {
+							if(i != j) {
 								
-								GrupoAux.remove(k);
-								Grupo.addAll(GrupoAux);
-								LargoGrupos--;
-								Grupos.remove(j);
+								if(Grupo.get(k) == GrupoAux.get(l)) {
+									
+									GrupoAux.remove(l);
+									Grupo.addAll(GrupoAux);
+									
+									System.out.println(Grupo);
+									System.out.println(GrupoAux);
+									
+									if(GrupoAux.size() == 0) {
+										
+										Grupos.remove(j);
+										LargoGrupos--;
+										
+									}
+									
+								}
 								
 							}
 							

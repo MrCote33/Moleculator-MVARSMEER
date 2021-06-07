@@ -116,9 +116,13 @@ public class Custom {
 		JButton Boton = new JButton();
 		
 		if(Nombre.length() == 0) {
+
 			Boton.setText("Create a new Atom");
+
 		} else {
+
 			Boton.setText("Modify Atom");
+			
 		}
 		
 		Boton.setFont(Fuente1);
@@ -138,7 +142,7 @@ public class Custom {
 							if(Nombre.length() == 0) {
 								
 								Atom Atomo = new Atom("Custom", Rellenar.getText(), Rellenar3.getText(), Integer.parseInt(Rellenar2.getText()));
-								DrawAtom Dibujo = new DrawAtom(15, 15, 60, ColorSeleccionado.getColor(), Atomo);
+								DrawAtom Dibujo = new DrawAtom(15, 15, 45+Atomo.getTotalEnl(), ColorSeleccionado.getColor(), Atomo);
 								Dibujar.add(Dibujo);
 								Active = false;
 								WindowActive.dispose();

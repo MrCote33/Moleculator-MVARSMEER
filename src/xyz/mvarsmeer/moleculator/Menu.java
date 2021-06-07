@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-
 import java.util.ArrayList;
 
 public class Menu {
@@ -38,19 +37,19 @@ public class Menu {
 		JMenuItem Move = new JMenuItem("Mover");
 		Move.setFont(Fuente1);
 
-		JMenuItem Magnify = new JMenuItem("Magnify");
+		JMenuItem Magnify = new JMenuItem("Aumentar");
 		Magnify.setFont(Fuente1);
 
-		JMenuItem Minimize = new JMenuItem("Minimize");
+		JMenuItem Minimize = new JMenuItem("Reducir");
 		Minimize.setFont(Fuente1);
 
-		JMenuItem Link = new JMenuItem("Link");
+		JMenuItem Link = new JMenuItem("Unir");
 		Link.setFont(Fuente1);
 
-		JMenuItem Modify = new JMenuItem("Modify");
+		JMenuItem Modify = new JMenuItem("Modificar");
 		Modify.setFont(Fuente1);
 
-		JMenuItem Delete = new JMenuItem("Delete ");
+		JMenuItem Delete = new JMenuItem("Borrar");
 		Delete.setFont(Fuente1);
 		
 		Move.addActionListener(new ActionListener(){
@@ -70,7 +69,7 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro < 80){
+				if(AtomActual.Diametro < 75){
 
 					AtomActual.Diametro = AtomActual.Diametro + 5;
 					AtomActual.Repaint = true;
@@ -91,7 +90,7 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro > 40){
+				if(AtomActual.Diametro > 45){
 
 					AtomActual.Diametro = AtomActual.Diametro - 5;
 					AtomActual.Repaint = true;

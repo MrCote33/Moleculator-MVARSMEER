@@ -29,25 +29,33 @@ public class Grupos {
 				for(int k = 0; k < Grupo.size(); k++) {
 					
 					if(Grupo.get(k) == Enlaces.get(i).Primero) {
+
 						uno = true;
+
 					}
 					
 					if(Grupo.get(k) == Enlaces.get(i).Segundo) {
+
 						dos = true;
+
 					}
 					
 				}
 				
 				if(uno && dos == false) {
+
 					Grupo.add(Enlaces.get(i).Segundo);
 					break;
+
 				}
 					
 				if(dos && uno == false) {
+
 					Grupo.add(Enlaces.get(i).Primero);
 					break;
+
 				}
-				
+			
 			}
 			
 			if(uno == false && dos == false) {

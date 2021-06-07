@@ -30,8 +30,13 @@ public class Interface {
 		Window.setLocationRelativeTo(null);
 		Window.setLayout(null);
 		
+		Label Categorias = new Label("Categorias");
+		Categorias.setBounds(86, 51, 100, 20);
+		Categorias.setForeground(Color.BLACK);
+		Window.add(Categorias);
+
 		Label Equipo = new Label("MVARSMEER");
-		Equipo.setBounds(78, 51, 100, 20);
+		Equipo.setBounds((Window.getWidth()/2)-35, 450, 100, 20);
 		Equipo.setForeground(Color.BLACK);
 		Window.add(Equipo);
 
@@ -86,9 +91,13 @@ public class Interface {
 		while(true) {
 			
 			try {
+
 				Thread.sleep(10);
+
 			} catch (InterruptedException e) {
+
 				e.printStackTrace();
+
 			}
 			
 			if(WindowsX != Window.getBounds().width || WindowsY != Window.getBounds().height) {
@@ -99,6 +108,7 @@ public class Interface {
 				DrawingZone.setBounds(226,55,WindowsX-468,WindowsY-87);
 				Group.setBounds(WindowsX-186, 51, 150, 20);
 				Formula.setBounds(WindowsX-218, 82, 186, 330);
+				Equipo.setBounds((WindowsX/2)-35, WindowsY-30, 100, 20);
 				
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
@@ -106,13 +116,19 @@ public class Interface {
 				Panel.updatePanel();
 				
 				try {
+
 					Thread.sleep(250);
+
 				} catch (InterruptedException e) {
+
 					e.printStackTrace();
+
 				}
 				
 				if(Atomos.size() > 0) {
+
 					Atomos.get(0).Repaint = true;
+
 				}
 				
 			}

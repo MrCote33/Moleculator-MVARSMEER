@@ -109,21 +109,21 @@ public class Menu {
 		Link.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				
+				if(Linea == null) {
+					
+					Linea = new DrawLine();
+					
+				}
 
 				if(Element.Enlaces > 0) {
-					
-					if(Linea == null) {
-						
-						Linea = new DrawLine();
-						
-					}
 					
 					if(Linea.Primero == null) {
 						
 						Linea.setFirst(Element);
 						
 					}
-						
+					
 					if(Linea.Segundo == null && Linea.Primero != Element) {
 						
 						Linea.setSecond(Element);

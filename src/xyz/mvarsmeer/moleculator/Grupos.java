@@ -86,9 +86,6 @@ public class Grupos {
 									GrupoAux.remove(l);
 									Grupo.addAll(GrupoAux);
 									
-									System.out.println(Grupo);
-									System.out.println(GrupoAux);
-									
 									if(GrupoAux.size() == 0) {
 										
 										Grupos.remove(j);

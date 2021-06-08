@@ -66,7 +66,7 @@ public class MouseButtons extends MouseAdapter {
 					if(event.getY() >= y+7 && event.getY() <= y+(ListaElemento.get(i).Diametro-14)) {
 						
 						this.Elemento = ListaElemento.get(i);
-						Desplegar.Pop(ListaElemento, i, ListaGrupos, ListaFormulas, DrawingZone, event);
+						Desplegar.Pop(ListaElemento, i, DrawingZone, event);
 						
 					}
 					

@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-
 import java.util.ArrayList;
 
 public class Menu {
@@ -22,38 +21,35 @@ public class Menu {
 		
 	}
 	
-	public void Pop(ArrayList<DrawAtom> Elements, int Active, ArrayList<ArrayList<DrawAtom>> Groups, ArrayList<String> Formulas, Canvas Dibujo, MouseEvent e) {
+	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 
 		FontReader Fuente = new FontReader();
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
 
 		DrawAtom Element = Elements.get(Active);
 		JPopupMenu Menu = new JPopupMenu();
-		
-		Grupos Group = new Grupos(Groups);
-		Formula ListFormula = new Formula(Formulas);
 
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
 		Nombre.setFont(Fuente1.deriveFont(13f));	
 		Nombre.setBackground(Elements.get(Active).Paint);
 		Nombre.setEnabled(false);
 
-		JMenuItem Move = new JMenuItem("Move");
+		JMenuItem Move = new JMenuItem("Mover");
 		Move.setFont(Fuente1);
 
-		JMenuItem Magnify = new JMenuItem("Magnify");
+		JMenuItem Magnify = new JMenuItem("Aumentar");
 		Magnify.setFont(Fuente1);
 
-		JMenuItem Minimize = new JMenuItem("Minimize");
+		JMenuItem Minimize = new JMenuItem("Reducir");
 		Minimize.setFont(Fuente1);
 
-		JMenuItem Link = new JMenuItem("Link atom");
+		JMenuItem Link = new JMenuItem("Unir");
 		Link.setFont(Fuente1);
 
-		JMenuItem Modify = new JMenuItem("Modify");
+		JMenuItem Modify = new JMenuItem("Modificar");
 		Modify.setFont(Fuente1);
 
-		JMenuItem Delete = new JMenuItem("Delete ");
+		JMenuItem Delete = new JMenuItem("Borrar");
 		Delete.setFont(Fuente1);
 		
 		Move.addActionListener(new ActionListener(){
@@ -73,7 +69,7 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro < 80){
+				if(AtomActual.Diametro < 75){
 
 					AtomActual.Diametro = AtomActual.Diametro + 5;
 					AtomActual.Repaint = true;
@@ -94,7 +90,7 @@ public class Menu {
 
 				DrawAtom AtomActual = Elements.get(Active);
 
-				if(AtomActual.Diametro > 40){
+				if(AtomActual.Diametro > 45){
 
 					AtomActual.Diametro = AtomActual.Diametro - 5;
 					AtomActual.Repaint = true;
@@ -113,21 +109,21 @@ public class Menu {
 		Link.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				
+				if(Linea == null) {
+					
+					Linea = new DrawLine();
+					
+				}
 
 				if(Element.Enlaces > 0) {
-					
-					if(Linea == null) {
-						
-						Linea = new DrawLine();
-						
-					}
 					
 					if(Linea.Primero == null) {
 						
 						Linea.setFirst(Element);
 						
 					}
-						
+					
 					if(Linea.Segundo == null && Linea.Primero != Element) {
 						
 						Linea.setSecond(Element);
@@ -165,9 +161,6 @@ public class Menu {
 							Lineas.add(Linea);
 							Linea = null;
 							
-							Group.getGrupo(Lineas);
-							ListFormula.getFormula(Groups);
-							
 						}
 						
 					}
@@ -188,7 +181,7 @@ public class Menu {
 
 				Custom ModAtom = new Custom(Element);
 				ModAtom.CreateWindow("Modificar " + Element.Atomo.getNombre(), Elements);
-
+				
 			}
 
 		});
@@ -236,8 +229,6 @@ public class Menu {
 				}
 				
 				Elements.remove(Active);
-				Group.getGrupo(Lineas);
-				ListFormula.getFormula(Groups);
 				
 				if(Elements.size() > 0) {
 					

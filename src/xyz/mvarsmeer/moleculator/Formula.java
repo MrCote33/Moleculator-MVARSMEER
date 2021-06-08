@@ -54,9 +54,13 @@ public class Formula {
 				}
 				
 				if(Numero == 1) {
+
 					Formula += Elementos.get(j);
+
 				} else {
+
 					Formula += Elementos.get(j)+Numero;
+					
 				}
 				
 			}

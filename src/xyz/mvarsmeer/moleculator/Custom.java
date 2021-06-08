@@ -116,9 +116,13 @@ public class Custom {
 		JButton Boton = new JButton();
 		
 		if(Nombre.length() == 0) {
+
 			Boton.setText("Create a new Atom");
+
 		} else {
+
 			Boton.setText("Modify Atom");
+			
 		}
 		
 		Boton.setFont(Fuente1);

@@ -52,7 +52,7 @@ public class Selection implements ActionListener  {
 			if(Actual.getText().contains(">"+Elementos.get(i).getSimbolo()+"<")){
 
 				Atom Atomo = Elementos.get(i);
-				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), 60 , Actual.getBackground(), Atomo);
+				DrawAtom Dibujo = new DrawAtom(Actual.getX(),Actual.getY(), 60, Actual.getBackground(), Atomo);
 				this.Dibujar.add(Dibujo);
 				
 			}

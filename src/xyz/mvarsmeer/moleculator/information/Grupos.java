@@ -2,6 +2,9 @@ package xyz.mvarsmeer.moleculator.information;
 
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
+
 public class Grupos {
 	
 	ArrayList<ArrayList<DrawAtom>> Grupos;

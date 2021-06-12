@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+
 public class Selection implements ActionListener  {
 	
 	JFrame Activo;
@@ -25,7 +29,7 @@ public class Selection implements ActionListener  {
 	public void CrearBoton(int x, int y, Atom Contenido, Color color) {
 
 		FontReader Fuente = new FontReader();
-		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 10);
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\ParadroidMono-Light.ttf", 10);
 
 		JButton Boton = new JButton();
 

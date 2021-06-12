@@ -5,6 +5,9 @@ import java.awt.Panel;
 import java.util.ArrayList;
 import javax.swing.JScrollBar;
 
+import xyz.mvarsmeer.moleculator.buttons.Buttons;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+
 public class ScrollPanel {
 	
 	Panel Contenedor = new Panel();

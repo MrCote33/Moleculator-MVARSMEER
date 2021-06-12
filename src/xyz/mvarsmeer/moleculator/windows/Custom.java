@@ -11,6 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.addons.SelectColor;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+
 public class Custom {
 	
 	DrawAtom Elemento;
@@ -19,8 +24,8 @@ public class Custom {
 	Color color;
 	int Enl;
 
-	Boolean Active = false;
-	JFrame WindowActive;
+	public Boolean Active = false;
+	public JFrame WindowActive;
 	ArrayList<DrawAtom> Dibujar;
 
 	public Custom(DrawAtom Elemento){
@@ -49,8 +54,8 @@ public class Custom {
 		
 		FontReader Fuente = new FontReader();
 
-		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 11);
-		Font Fuente2 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 12);
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 11);
+		Font Fuente2 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\\\resources\\ParadroidMono-Light.ttf", 12);
 
 		JFrame Window = new JFrame(Seccion);
 		SelectColor ColorSeleccionado = new SelectColor(color);

@@ -9,6 +9,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+import xyz.mvarsmeer.moleculator.windows.Custom;
+import xyz.mvarsmeer.moleculator.windows.ErrorMessage;
+
 public class Menu {
 
 	ErrorMessage Error = new ErrorMessage();
@@ -24,13 +30,13 @@ public class Menu {
 	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
 
 		FontReader Fuente = new FontReader();
-		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf",11);
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf",11);
 
 		DrawAtom Element = Elements.get(Active);
 		JPopupMenu Menu = new JPopupMenu();
 
 		JMenuItem Nombre = new JMenuItem(Element.Atomo.getNombre(), JMenuItem.CENTER);
-		Nombre.setFont(Fuente1.deriveFont(13f));	
+		Nombre.setFont(Fuente1.deriveFont(13f));
 		Nombre.setBackground(Elements.get(Active).Paint);
 		Nombre.setEnabled(false);
 

@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+
 public class ErrorMessage {
 
     Boolean Active = false;
@@ -17,7 +19,7 @@ public class ErrorMessage {
 	public void NewMessage(String Area){
 		
 		FontReader SetFont = new FontReader();
-		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 12);
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 12);
 
 		JFrame Window = new JFrame("Error");
 		Window.setSize(new Dimension(400, 200));
@@ -40,13 +42,13 @@ public class ErrorMessage {
 
 		if(Area == "Magnify"){
 
-			Error.setText("El atomo ha alcanzado su tamaÃ±o maximo");
+			Error.setText("El atomo ha alcanzado su tamaño maximo");
 
 		}
 
 		if(Area == "Minimaze"){
 
-			Error.setText("El atomo ha alcanzado su tamaÃ±o minimo");
+			Error.setText("El atomo ha alcanzado su tamaño minimo");
 
 		}
 

@@ -5,16 +5,21 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.buttons.Selection;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.readers.ReaderFile;
+
 public class Windows {
 	
 	ArrayList<Atom> Elementos = new ArrayList<Atom>();
-	Boolean Active = false;
-	JFrame WindowActive;
+	public Boolean Active = false;
+	public JFrame WindowActive;
 	
 	public Windows() {
 		
 		ReaderFile archivo = new ReaderFile();
-		Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\Elements.txt");
+		Elementos = archivo.LeerArchivo("src\\xyz\\mvarsmeer\\moleculator\\resources\\Elements.txt");
 		
 	}
 

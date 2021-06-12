@@ -13,16 +13,27 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
+import xyz.mvarsmeer.moleculator.buttons.Buttons;
+import xyz.mvarsmeer.moleculator.buttons.MouseButtons;
+
 public class Interface {
+	
+	ArrayList<DrawAtom> Atomos;
+	ArrayList<DrawLine> Enlaces;
+	ArrayList<String> Formulas;
+	
+	public Interface() {
+		
+		Atomos = new ArrayList<DrawAtom>();
+		Enlaces = new ArrayList<DrawLine>();
+		Formulas = new ArrayList<String>();
+		
+	}
 
 	public void initInterface() {
 		
-		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
-		ArrayList<DrawLine> Enlaces = new ArrayList<DrawLine>();
-		
-		ArrayList<ArrayList<DrawAtom>> Grupos = new ArrayList<ArrayList<DrawAtom>>();
-		ArrayList<String> Formulas = new ArrayList<String>();
-
 		Frame Window = new Frame("Moleculator");
 		Window.addWindowListener(new WindowListener());
 		Window.setSize(1064,480);
@@ -50,8 +61,6 @@ public class Interface {
 		Formula.setBackground(Color.decode("#7A8A99"));
 		Window.add(Formula);
 		
-		ScrollPanel Panel = new ScrollPanel();
-		
 		Buttons Boton = new Buttons(Atomos);
 		Boton.CrearBoton(Window, 32, 82, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 32, 112, "Alcalinoterreos", "#FFE6CC");
@@ -69,7 +78,6 @@ public class Interface {
 		MouseButtons Click = new MouseButtons(DrawingZone);
 		
 		Click.updateGraphics(Atomos, Enlaces);
-		Click.updateLists(Grupos, Formulas);
 		
 		DrawingZone.setBounds(226, 55, 596, 393);
 		DrawingZone.addMouseListener(Click);
@@ -84,9 +92,6 @@ public class Interface {
 		
 		int WindowsX = Window.getBounds().width;
 		int WindowsY = Window.getBounds().height;
-		
-		Grupos ObjetoGroup = new Grupos(Grupos);
-		Formula ListFormula = new Formula(Formulas);
 		
 		while(true) {
 			
@@ -113,8 +118,6 @@ public class Interface {
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
 				
-				Panel.updatePanel();
-				
 				try {
 
 					Thread.sleep(250);
@@ -139,13 +142,7 @@ public class Interface {
 				
 				if(Actual.Repaint && !Actual.Active) {
 					
-					ObjetoGroup.getGrupo(Enlaces);
-					ListFormula.getFormula(Grupos);
-					Panel.showPanel(Formulas, Grupos);
-					
 					Formula.removeAll();
-					Formula.add(Panel.Contenedor);
-					Panel.updatePanel();
 					
 				}
 				

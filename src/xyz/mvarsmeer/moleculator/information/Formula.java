@@ -3,6 +3,8 @@ package xyz.mvarsmeer.moleculator.information;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+
 public class Formula {
 	
 	ArrayList<String> Formulas = null;

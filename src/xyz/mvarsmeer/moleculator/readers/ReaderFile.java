@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.information.Atom;
+
 public class ReaderFile {
 
 	public ArrayList<Atom> LeerArchivo(String Path) {

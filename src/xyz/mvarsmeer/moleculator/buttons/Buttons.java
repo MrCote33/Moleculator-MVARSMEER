@@ -9,6 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+import xyz.mvarsmeer.moleculator.windows.Custom;
+import xyz.mvarsmeer.moleculator.windows.Windows;
+
 public class Buttons implements ActionListener {
 	
 	ArrayList<DrawAtom> ListaDibujo;
@@ -25,7 +30,7 @@ public class Buttons implements ActionListener {
 	public void CrearBoton(Frame Window, int x, int y, String Contenido, String color) {
 
 		FontReader SetFont = new FontReader();
-		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 10);
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 10);
 
 		JButton Boton = new JButton(Contenido);
 		Boton.setBackground(Color.decode(color));
@@ -41,7 +46,7 @@ public class Buttons implements ActionListener {
 	public void CrearFormula(Panel Zone, int x, int y, String Formula, Color color) {
 		
 		FontReader SetFont = new FontReader();
-		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\JetBrainsMono-Bold.ttf", 10);
+		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 10);
 		
 		JButton Boton = new JButton(Formula);
 		Boton.setBackground(color);
@@ -58,7 +63,7 @@ public class Buttons implements ActionListener {
 		
 		JButton Actual = (JButton) e.getSource();
 
-		if(Atomos.Active ) {
+		if(Atomos.Active) {
 
 			Atomos.WindowActive.dispose();
 			Atomos.Active = false;

@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.windows;
 
 import java.awt.Canvas;
 import java.awt.Color;

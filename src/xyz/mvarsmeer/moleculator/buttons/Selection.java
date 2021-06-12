@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.buttons;
 
 import java.awt.Color;
 import java.awt.Font;

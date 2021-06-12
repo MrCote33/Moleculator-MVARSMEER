@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.readers;
 
 import java.awt.Font;
 import java.io.File;

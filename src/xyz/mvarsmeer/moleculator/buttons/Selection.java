@@ -18,8 +18,8 @@ public class Selection implements ActionListener  {
 	ArrayList<DrawAtom> Dibujar;
 	ArrayList<Atom> Elementos;
 	
-	public Selection(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
-
+	public void updateObject(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
+		
 		this.Dibujar = Lista;
 		this.Elementos = Elementos;
 		this.Activo = Window;
@@ -62,7 +62,8 @@ public class Selection implements ActionListener  {
 			}
 
 		}
-
+		
+		Activo.removeAll();
 		this.Activo.dispose();
 		
 	}

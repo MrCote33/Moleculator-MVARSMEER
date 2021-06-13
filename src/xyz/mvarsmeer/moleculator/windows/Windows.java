@@ -2,6 +2,7 @@ package xyz.mvarsmeer.moleculator.windows;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
@@ -12,7 +13,9 @@ import xyz.mvarsmeer.moleculator.readers.ReaderFile;
 
 public class Windows {
 	
-	ArrayList<Atom> Elementos = new ArrayList<Atom>();
+	ArrayList<ArrayList<Atom>> Elementos = new ArrayList<ArrayList<Atom>>();
+	Selection Botones = new Selection();
+	
 	public Boolean Active = false;
 	public JFrame WindowActive;
 	
@@ -23,7 +26,7 @@ public class Windows {
 		
 	}
 
-	public void CreateWindow(String Seccion, Color color, ArrayList<DrawAtom> Dibujar) {
+	public void CreateWindow(JButton Boton, String Seccion, Color color, ArrayList<DrawAtom> Dibujar) {
 		
 		JFrame Window = new JFrame(Seccion);
 		
@@ -41,29 +44,25 @@ public class Windows {
 		Window.setLayout(null);
 		Window.setVisible(true);
 		
-		Selection boton = new Selection(Dibujar, Elementos, Window);
+		ArrayList<Atom> Atomos = Elementos.get((Boton.getY()-82)/30);
+		Botones.updateObject(Dibujar, Atomos, Window);
 		
 		int x = 10;
 		int y = 10;
 		
-		for(int cont = 0; cont < Elementos.size(); cont++) {
+		for(int cont = 0; cont < Atomos.size(); cont++) {
 			
-			Atom Actual = Elementos.get(cont);
-			
-			if(Actual.getTipo().equals(Seccion)) {
+			Atom Actual = Atomos.get(cont);
+			Botones.CrearBoton(x, y, Actual, color);
 				
-				boton.CrearBoton(x, y, Actual, color);
-				
-				if(x < 550) {
+			if(x < 550) {
 
-					x += 85;
+				x += 85;
 
-				} else {
+			} else {
 
-					x = 10;
-					y += 85;
-
-				}
+				x = 10;
+				y += 85;
 				
 			}
 			

@@ -5,7 +5,7 @@ Potasio,K,1
 Rubidio,Rb,1
 Cesio,Cs,1
 Francio,Fr,1
-
+END
 Alcalinoterreos
 Berilio,Be,2
 Magnesio,Mg,2
@@ -13,7 +13,7 @@ Calcio,Ca,2
 Estroncio,Sr,2
 Bario,Ba,2
 Radio,Ra,2
-
+END
 Otros metales
 Aluminio,Al,3
 Galio,Ga,3
@@ -26,7 +26,7 @@ Nihonio,Nh,3
 Flerovio,Fl,4
 Moscovio,Mc,5
 Livermorio,Lv,6
-
+END
 Metales de transicion
 Escandio,Sc,3
 Titanio,Ti,4
@@ -68,7 +68,7 @@ Meitnerio,Mt,9
 Darmstatio,Ds,10
 Roentgenio,Rg,11
 Copernicio,Cn,12
-
+END
 Lantanidos
 Lantano,La,3
 Cerio,Ce,4
@@ -84,7 +84,7 @@ Holmio,Ho,13
 Erbio,Er,14
 Tulio,Tm,15
 Iterbio,Yb,16
-
+END
 Actinidos
 Actinio,Ac,3
 Torio,Th,4
@@ -100,7 +100,7 @@ Einstenio,Es,13
 Fermio,Fm,14
 Mendelevio,Md,15
 Nobelio,No,16
-
+END
 Metaloides
 Boro,B,3
 Silicio,Si,4
@@ -109,7 +109,7 @@ Arsenio,As,5
 Antimonio,Sb,5
 Telurio,Te,6
 Polonio,Po,6
-
+END
 No metales
 Hidrogeno,H,1
 Carbono,C,4
@@ -118,7 +118,7 @@ Oxigeno,O,6
 Fosforo,P,5
 Azufre,S,6
 Selenio,Se,6
-
+END
 Halogenos
 Fluor,F,7
 Cloro,Cl,7
@@ -126,7 +126,7 @@ Bromo,Br,7
 Yodo,I,7
 Astato,At,7
 Teneso,Ts,7
-
+END
 Gases nobles
 Helio,He,2
 Neon,Ne,8
@@ -135,3 +135,4 @@ Kripton,Kr,8
 Xenon,Xe,8
 Radon,Rn,8
 Oganesón,Og,8
+END

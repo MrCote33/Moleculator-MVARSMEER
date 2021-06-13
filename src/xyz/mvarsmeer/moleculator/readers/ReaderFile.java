@@ -10,10 +10,11 @@ import xyz.mvarsmeer.moleculator.information.Atom;
 
 public class ReaderFile {
 
-	public ArrayList<Atom> LeerArchivo(String Path) {
+	public ArrayList<ArrayList<Atom>> LeerArchivo(String Path) {
 
 		FileReader Archivo;
-
+		
+		ArrayList<ArrayList<Atom>> ListaDeTipos = new ArrayList<ArrayList<Atom>>();
 		ArrayList<Atom> ListaDeAtomos = new ArrayList<Atom>();
 
 		try {
@@ -28,27 +29,36 @@ public class ReaderFile {
 
 			while ((Actual = Lector.readLine()) != null) {
 
-			if (!Actual.contains(",")) {
-
-				Tipo = Actual;
-
-			} else {
-
-				String Datos[] = Actual.split(",", 3);
-
-				String Nombre = new String(Datos[0].getBytes("ISO-8859-1"),"UTF-8");
-				String Simbolo = new String(Datos[1].getBytes("ISO-8859-1"),"UTF-8");
-				int Enlaces = Integer.parseInt(Datos[2]);
-
-				Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);
-				ListaDeAtomos.add(Atomo);
+				if (!Actual.contains(",")) {
+					
+					if(Actual.equals("END")) {
+						
+						ListaDeTipos.add(ListaDeAtomos);
+						ListaDeAtomos = new ArrayList<Atom>();
+						
+					} else {
+						
+						Tipo = Actual;
+						
+					}
+					
+				} else {
+					
+					String Datos[] = Actual.split(",", 3);
+					
+					String Nombre = new String(Datos[0].getBytes("ISO-8859-1"),"UTF-8");
+					String Simbolo = new String(Datos[1].getBytes("ISO-8859-1"),"UTF-8");
+					int Enlaces = Integer.parseInt(Datos[2]);
+					
+					Atomo = new Atom(Tipo, Nombre, Simbolo, Enlaces);
+					ListaDeAtomos.add(Atomo);
 
 				}
 
 			}
 
 			Lector.close();
-			return ListaDeAtomos;
+			return ListaDeTipos;
 
 		} catch (FileNotFoundException e) {
 
@@ -60,7 +70,7 @@ public class ReaderFile {
 
 		}
 
-	return ListaDeAtomos;
+	return ListaDeTipos;
 
 	}
 

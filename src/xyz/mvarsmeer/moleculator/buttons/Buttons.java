@@ -83,7 +83,7 @@ public class Buttons implements ActionListener {
 
 		} else {
 
-			Atomos.CreateWindow(Actual.getText(),Actual.getBackground(),ListaDibujo);
+			Atomos.CreateWindow(Actual,Actual.getText(),Actual.getBackground(),ListaDibujo);
 
 		}
 

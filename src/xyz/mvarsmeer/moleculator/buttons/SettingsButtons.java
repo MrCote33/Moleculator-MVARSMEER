@@ -1,6 +1,7 @@
 package xyz.mvarsmeer.moleculator.buttons;
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Color;
 import java.awt.AWTException;
 import java.awt.Canvas;
@@ -18,10 +19,12 @@ public class SettingsButtons implements ActionListener {
 	Settings Config = new Settings();
 	Font Fuente;
 	Canvas PanelDibujo;
+	Frame MainFrame;
 
-	public void SetCanvas(Canvas PanelDibujo) {
+	public void SetCanvas(Canvas PanelDibujo, Frame MainFrame) {
 
-		this.PanelDibujo=PanelDibujo;
+		this.PanelDibujo = PanelDibujo;
+		this.MainFrame = MainFrame;
 	
 	}
 
@@ -63,7 +66,7 @@ public class SettingsButtons implements ActionListener {
 
 			try {
 
-				export.GuardadoPNG(PanelDibujo);
+				export.GuardadoPNG(PanelDibujo,MainFrame);
 
 			} catch (AWTException e1) {
 

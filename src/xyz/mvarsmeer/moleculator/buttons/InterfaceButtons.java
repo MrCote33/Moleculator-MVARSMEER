@@ -19,13 +19,14 @@ import xyz.mvarsmeer.moleculator.windows.Windows;
 import xyz.mvarsmeer.moleculator.windows.Settings;
 
 public class InterfaceButtons implements ActionListener {
-
+	
 	ArrayList<DrawAtom> ListaDibujo;
 	Windows Atomos = new Windows();
 	Custom NewAtom = new Custom(null);
 	Settings Config = new Settings();
 	Font Fuente;
 	Canvas PanelDibujo;
+	Frame MainFrame;
 	String[] Categorias ={"Metales alcainos","Alcalinoterreos","Otros metales","Metales de transicion",
 						  "Lantanidos","Actinidos","Metaloides","No metales","Halogenos","Gases nobles"};
 
@@ -60,7 +61,8 @@ public class InterfaceButtons implements ActionListener {
 		Boton.setFocusPainted(false);
 		Boton.addActionListener(this);
 
-		PanelDibujo=Panel;
+		PanelDibujo = Panel;
+		MainFrame = Window;
 
 		Window.add(Boton);
 
@@ -108,7 +110,7 @@ public class InterfaceButtons implements ActionListener {
 
 		if(Actual.getText() == "Configuracion"){
 
-			Config.CreateWindow(PanelDibujo);
+			Config.CreateWindow(PanelDibujo,MainFrame);
 
 		}
 

@@ -1,6 +1,7 @@
 package xyz.mvarsmeer.moleculator.windows;
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +15,7 @@ public class Settings {
 	public Boolean Active = false;
 	public JFrame WindowActive;
 
-	public void CreateWindow(Canvas PanelDibujo) {
+	public void CreateWindow(Canvas PanelDibujo, Frame MainFrame) {
 		
 		FontReader Fuentes = new FontReader();
 		Font Fuente = Fuentes.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 14);
@@ -29,6 +30,8 @@ public class Settings {
 			Active = true;
 
 		}
+		
+		Boton.SetCanvas(PanelDibujo,MainFrame);
 
 		Window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Window.setSize(new Dimension(280, 274));
@@ -50,8 +53,6 @@ public class Settings {
 
 		Boton.CrearBoton(Window, 30, 150, 200, 32, "Exportar a PNG", "#8AB3FF");
 		Boton.CrearBoton(Window, 30, 182, 200, 32, "Exportar a PDF", "#8AB3FF");
-
-		Boton.SetCanvas(PanelDibujo);
 
 		Window.add(Archivo);
 		Window.add(Exportar);

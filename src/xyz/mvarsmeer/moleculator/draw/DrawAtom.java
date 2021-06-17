@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.draw;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,16 +6,19 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+
 public class DrawAtom {
 	
-	int x;
-	int y;
-	int Diametro;
-	int Enlaces;
-	Color Paint;
-	Atom Atomo;
-	Boolean Active = true;
-	Boolean Repaint = false;
+	public int x;
+	public int y;
+	public int Diametro;
+	public int Enlaces;
+	public Color Paint;
+	public Atom Atomo;
+	public Boolean Active = true;
+	public Boolean Repaint = false;
 
 	
 	public DrawAtom(int X, int Y,int Diametro, Color Paint, Atom Atomo) {
@@ -32,8 +35,8 @@ public class DrawAtom {
 	public void paint(Graphics g) {
 
 		FontReader Fuente = new FontReader();
-		Font FuenteSimbolo = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", Diametro/3);
-		Font FuenteEnl = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", Diametro/6);
+		Font FuenteSimbolo = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\ParadroidMono-Light.ttf", Diametro/3);
+		Font FuenteEnl = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\ParadroidMono-Light.ttf", Diametro/6);
 
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

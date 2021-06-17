@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.windows;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -12,17 +12,30 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
+import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
+import xyz.mvarsmeer.moleculator.buttons.MouseButtons;
 
 public class Interface {
+	
+	ArrayList<DrawAtom> Atomos;
+	ArrayList<DrawLine> Enlaces;
+	ArrayList<String> Formulas;
+	
+	public Interface() {
+		
+		Atomos = new ArrayList<DrawAtom>();
+		Enlaces = new ArrayList<DrawLine>();
+		Formulas = new ArrayList<String>();
+		
+	}
 
 	public void initInterface() {
 		
-		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
-		ArrayList<DrawLine> Enlaces = new ArrayList<DrawLine>();
-		
-		ArrayList<ArrayList<DrawAtom>> Grupos = new ArrayList<ArrayList<DrawAtom>>();
-		ArrayList<String> Formulas = new ArrayList<String>();
-
 		Frame Window = new Frame("Moleculator");
 		Window.addWindowListener(new WindowListener());
 		Window.setSize(1064,480);
@@ -50,9 +63,7 @@ public class Interface {
 		Formula.setBackground(Color.decode("#7A8A99"));
 		Window.add(Formula);
 		
-		ScrollPanel Panel = new ScrollPanel();
-		
-		Buttons Boton = new Buttons(Atomos);
+		InterfaceButtons Boton = new InterfaceButtons(Atomos);
 		Boton.CrearBoton(Window, 32, 82, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 32, 112, "Alcalinoterreos", "#FFE6CC");
 		Boton.CrearBoton(Window, 32, 142, "Otros metales", "#FFF2CC");
@@ -64,12 +75,14 @@ public class Interface {
 		Boton.CrearBoton(Window, 32, 322, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 32, 352, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 32, 382, "Custom", "#E9E4E3");
-		
+
 		Canvas DrawingZone = new Canvas();
 		MouseButtons Click = new MouseButtons(DrawingZone);
-		
+
+		Icon settings = new ImageIcon("src\\xyz\\mvarsmeer\\moleculator\\resources\\Settings.png");
+		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, settings,"Configuracion", "#FFFFFF");
+
 		Click.updateGraphics(Atomos, Enlaces);
-		Click.updateLists(Grupos, Formulas);
 		
 		DrawingZone.setBounds(226, 55, 596, 393);
 		DrawingZone.addMouseListener(Click);
@@ -84,9 +97,6 @@ public class Interface {
 		
 		int WindowsX = Window.getBounds().width;
 		int WindowsY = Window.getBounds().height;
-		
-		Grupos ObjetoGroup = new Grupos(Grupos);
-		Formula ListFormula = new Formula(Formulas);
 		
 		while(true) {
 			
@@ -113,8 +123,6 @@ public class Interface {
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();
 				
-				Panel.updatePanel();
-				
 				try {
 
 					Thread.sleep(250);
@@ -139,13 +147,7 @@ public class Interface {
 				
 				if(Actual.Repaint && !Actual.Active) {
 					
-					ObjetoGroup.getGrupo(Enlaces);
-					ListFormula.getFormula(Grupos);
-					Panel.showPanel(Formulas, Grupos);
-					
 					Formula.removeAll();
-					Formula.add(Panel.Contenedor);
-					Panel.updatePanel();
 					
 				}
 				

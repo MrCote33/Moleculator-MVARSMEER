@@ -1,9 +1,13 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.buttons;
 
 import java.awt.Canvas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import xyz.mvarsmeer.moleculator.addons.Menu;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
 
 public class MouseButtons extends MouseAdapter {
 	

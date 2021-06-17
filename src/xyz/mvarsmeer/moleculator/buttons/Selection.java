@@ -1,4 +1,4 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.buttons;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -8,14 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.readers.FontReader;
+
 public class Selection implements ActionListener  {
 	
 	JFrame Activo;
 	ArrayList<DrawAtom> Dibujar;
 	ArrayList<Atom> Elementos;
 	
-	public Selection(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
-
+	public void updateObject(ArrayList<DrawAtom> Lista, ArrayList<Atom> Elementos, JFrame Window) {
+		
 		this.Dibujar = Lista;
 		this.Elementos = Elementos;
 		this.Activo = Window;
@@ -25,7 +29,7 @@ public class Selection implements ActionListener  {
 	public void CrearBoton(int x, int y, Atom Contenido, Color color) {
 
 		FontReader Fuente = new FontReader();
-		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\ParadroidMono-Light.ttf", 10);
+		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\ParadroidMono-Light.ttf", 10);
 
 		JButton Boton = new JButton();
 
@@ -58,7 +62,8 @@ public class Selection implements ActionListener  {
 			}
 
 		}
-
+		
+		Activo.removeAll();
 		this.Activo.dispose();
 		
 	}

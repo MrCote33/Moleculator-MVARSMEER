@@ -1,6 +1,9 @@
-package xyz.mvarsmeer.moleculator;
+package xyz.mvarsmeer.moleculator.information;
 
 import java.util.ArrayList;
+
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
 
 public class Grupos {
 	

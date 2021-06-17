@@ -5,7 +5,7 @@ import java.awt.Panel;
 import java.util.ArrayList;
 import javax.swing.JScrollBar;
 
-import xyz.mvarsmeer.moleculator.buttons.Buttons;
+import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 
 public class ScrollPanel {
@@ -22,7 +22,7 @@ public class ScrollPanel {
 	
 	public void showPanel(ArrayList<String> Formulas, ArrayList<ArrayList<DrawAtom>> Grupos) {
 		
-		Buttons Boton = new Buttons(null);
+		InterfaceButtons Boton = new InterfaceButtons(null);
 		Contenedor.removeAll();
 		
 		for(int i = 0; i < Formulas.size(); i++) {

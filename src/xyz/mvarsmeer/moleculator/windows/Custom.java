@@ -195,7 +195,6 @@ public class Custom {
 					} else {
 
 						Rellenar2.setText("Error");
-						
 
 					}
 
@@ -207,7 +206,7 @@ public class Custom {
 				
 			}
 
-		});	
+		});
 
 		Window.add(Texto);
 		Window.add(Rellenar);

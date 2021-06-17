@@ -12,10 +12,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
-import xyz.mvarsmeer.moleculator.buttons.Buttons;
+import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
 import xyz.mvarsmeer.moleculator.buttons.MouseButtons;
 
 public class Interface {
@@ -61,7 +63,7 @@ public class Interface {
 		Formula.setBackground(Color.decode("#7A8A99"));
 		Window.add(Formula);
 		
-		Buttons Boton = new Buttons(Atomos);
+		InterfaceButtons Boton = new InterfaceButtons(Atomos);
 		Boton.CrearBoton(Window, 32, 82, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 32, 112, "Alcalinoterreos", "#FFE6CC");
 		Boton.CrearBoton(Window, 32, 142, "Otros metales", "#FFF2CC");
@@ -73,10 +75,13 @@ public class Interface {
 		Boton.CrearBoton(Window, 32, 322, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 32, 352, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 32, 382, "Custom", "#E9E4E3");
-		
+
 		Canvas DrawingZone = new Canvas();
 		MouseButtons Click = new MouseButtons(DrawingZone);
-		
+
+		Icon settings = new ImageIcon("src\\xyz\\mvarsmeer\\moleculator\\resources\\Settings.png");
+		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, settings,"Configuracion", "#FFFFFF");
+
 		Click.updateGraphics(Atomos, Enlaces);
 		
 		DrawingZone.setBounds(226, 55, 596, 393);

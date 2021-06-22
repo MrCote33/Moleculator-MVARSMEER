@@ -80,7 +80,7 @@ public class SettingsButtons implements ActionListener {
 
 			try {
 
-				export.GuardadoPDF(PanelDibujo);
+				export.GuardadoPDF(PanelDibujo,MainFrame);
 
 			} catch (AWTException e1) {
 

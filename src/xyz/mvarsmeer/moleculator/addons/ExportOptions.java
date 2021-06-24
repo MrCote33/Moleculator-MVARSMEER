@@ -5,18 +5,18 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Robot;
+import java.awt.image.BufferedImage;
 import java.awt.AWTException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class ExportOptions {
 	
@@ -96,12 +96,35 @@ public class ExportOptions {
 				BufferedImage image = Captura.createScreenCapture(SizeCaptura);
 				
 				ImageIO.write(image, "png", VisualGuardadoPDF.getSelectedFile());
-
-				String Dest = "HOLA.pdf"; 
-				File file = new File(Dest);
-
-				createPdf(Dest);
-
+				
+				try {
+					
+					Thread.sleep(250);
+					
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+					
+				}
+				
+				try (PDDocument Doc = new PDDocument()) {
+					
+					PDPage pagina = new PDPage(PDRectangle.A2);
+					Doc.addPage(pagina);
+					PDImageXObject pdImage = PDImageXObject.createFromFile(VisualGuardadoPDF.getSelectedFile().getAbsolutePath(), Doc);
+					
+					try (PDPageContentStream cont = new PDPageContentStream(Doc, pagina)) {
+		                
+		                cont.drawImage(pdImage, 10,1015);
+		                cont.close();
+		                
+		            }
+					
+					Doc.save(VisualGuardadoPDF.getSelectedFile());
+					Doc.close();
+					
+				}
+				
 				System.out.println("Se ha guardado correctamente");
 				
 				MainFrame.setAlwaysOnTop(false);
@@ -118,24 +141,6 @@ public class ExportOptions {
 
 		}
 
-	}
-
-	public void createPdf(String dest) throws IOException {
-		//Initialize PDF writer
-		PdfWriter writer = new PdfWriter(dest);
-
-		//Initialize PDF document
-		PdfDocument pdf = new PdfDocument(writer);
-		
-		pdf.addNewPage();
-		// Initialize document
-		Document document = new Document(pdf);
-
-		//Add paragraph to the document
-		document.add(new Paragraph("Hello World!"));
-
-		//Close document
-		document.close();
 	}
 
 }

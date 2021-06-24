@@ -10,7 +10,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 
 public class ExportOptions {
 	
@@ -90,6 +96,12 @@ public class ExportOptions {
 				BufferedImage image = Captura.createScreenCapture(SizeCaptura);
 				
 				ImageIO.write(image, "png", VisualGuardadoPDF.getSelectedFile());
+
+				String Dest = "HOLA.pdf"; 
+				File file = new File(Dest);
+
+				createPdf(Dest);
+
 				System.out.println("Se ha guardado correctamente");
 				
 				MainFrame.setAlwaysOnTop(false);
@@ -106,6 +118,24 @@ public class ExportOptions {
 
 		}
 
+	}
+
+	public void createPdf(String dest) throws IOException {
+		//Initialize PDF writer
+		PdfWriter writer = new PdfWriter(dest);
+
+		//Initialize PDF document
+		PdfDocument pdf = new PdfDocument(writer);
+		
+		pdf.addNewPage();
+		// Initialize document
+		Document document = new Document(pdf);
+
+		//Add paragraph to the document
+		document.add(new Paragraph("Hello World!"));
+
+		//Close document
+		document.close();
 	}
 
 }

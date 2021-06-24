@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class SelectColor {
 
 	Color color;
-    Boolean Active = false;
+	Boolean Active = false;
 	JFrame WindowActive;
 
 	public SelectColor(Color Base){

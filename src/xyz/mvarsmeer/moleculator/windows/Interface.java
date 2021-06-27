@@ -156,9 +156,9 @@ public class Interface {
 				
 				if(Actual.Repaint && !Actual.Active) {
 					
-					/*Grupo.getGrupo(Enlaces);
+					Grupo.getGrupo(Enlaces);
 					TextFormula.getFormula(ListaGrupos);
-					PanelFormula.showPanel(Formulas, ListaGrupos);*/
+					PanelFormula.showPanel(Formulas, ListaGrupos);
 					
 				}
 				

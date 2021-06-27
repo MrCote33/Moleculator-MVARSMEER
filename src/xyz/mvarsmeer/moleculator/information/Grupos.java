@@ -18,10 +18,10 @@ public class Grupos {
 	public void getGrupo(ArrayList<DrawLine> Enlaces) {
 		
 		Grupos.clear();
-		ArrayList<DrawAtom> Atomos = new ArrayList<DrawAtom>();
+		ArrayList<DrawAtom> Atomos;
 		
 		for(int i = 0; i < Enlaces.size(); i++) {
-				
+			
 			boolean uno = false;
 			boolean dos = false;
 			
@@ -29,23 +29,19 @@ public class Grupos {
 				
 				ArrayList<DrawAtom> Grupo = Grupos.get(j);
 				
-				for(int k = 0; k < Grupo.size(); k++) {
-					
-					if(Grupo.get(k) == Enlaces.get(i).Primero) {
-						uno = true;
-					}
-					
-					if(Grupo.get(k) == Enlaces.get(i).Segundo) {
-						dos = true;
-					}
-					
+				if(Grupo.contains(Enlaces.get(i).Primero)) {
+					uno = true;
+				}
+				
+				if(Grupo.contains(Enlaces.get(i).Segundo)) {
+					dos = true;
 				}
 				
 				if(uno && dos == false) {
 					Grupo.add(Enlaces.get(i).Segundo);
 					break;
 				}
-					
+				
 				if(dos && uno == false) {
 					Grupo.add(Enlaces.get(i).Primero);
 					break;
@@ -61,10 +57,12 @@ public class Grupos {
 				Atomos.add(Enlaces.get(i).Segundo);
 				
 				Grupos.add(Atomos);
-					
-			}
 				
+			}
+			
 		}
+		
+		boolean update = false;
 		
 		if(Grupos != null) {
 			
@@ -72,35 +70,33 @@ public class Grupos {
 			
 			for(int i = 0; i < LargoGrupos; i++) {
 				
-				ArrayList<DrawAtom> Grupo = Grupos.get(i);
+				ArrayList<DrawAtom> Grupo1 = Grupos.get(i);
 				
 				for(int j = 0; j < LargoGrupos; j++) {
 					
-					ArrayList<DrawAtom> GrupoAux = Grupos.get(j);
+					ArrayList<DrawAtom> Grupo2 = Grupos.get(j);
 					
-					for(int k = 0; k < Grupo.size(); k++) {
+					if(i != j) {
 						
-						for(int l = 0; l < GrupoAux.size(); l++) {
+						for(int k = 0; k < Grupo2.size(); k++) {
 							
-							if(i != j) {
+							if(Grupo1.contains(Grupo2.get(k))) {
 								
-								if(Grupo.get(k) == GrupoAux.get(l)) {
-									
-									GrupoAux.remove(l);
-									Grupo.addAll(GrupoAux);
-									
-									if(GrupoAux.size() == 0) {
-										
-										Grupos.remove(j);
-										LargoGrupos--;
-										
-									}
-									
-								}
+								Grupo2.remove(k);
+								update = true;
 								
 							}
 							
 						}
+						
+					}
+					
+					if(update) {
+						
+						Grupo1.addAll(Grupo2);
+						Grupos.remove(j);
+						LargoGrupos = Grupos.size();
+						update = false;
 						
 					}
 					

@@ -30,7 +30,7 @@ public class Formula {
 				
 			}
 			
-			Collections.sort(Elementos); 
+			Collections.sort(Elementos);
 			
 			String Formula = "";
 			int Largo = Elementos.size();

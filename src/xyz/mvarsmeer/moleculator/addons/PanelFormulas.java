@@ -3,20 +3,17 @@ package xyz.mvarsmeer.moleculator.addons;
 import java.awt.Color;
 import java.awt.Panel;
 import java.util.ArrayList;
-import javax.swing.JScrollBar;
 
 import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 
-public class ScrollPanel {
+public class PanelFormulas {
 	
-	Panel Contenedor = new Panel();
-	JScrollBar Scroll = new JScrollBar();
+	Panel Contenedor;
 	
-	public void updatePanel() {
+	public PanelFormulas(Panel Contenedor) {
 		
-		Contenedor.setBounds(0,0,186,450);
-		Scroll.setBounds(170, 0, 16, 330);
+		this.Contenedor = Contenedor;
 		
 	}
 	

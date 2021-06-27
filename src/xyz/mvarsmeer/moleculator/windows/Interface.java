@@ -17,6 +17,9 @@ import javax.swing.ImageIcon;
 
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
+import xyz.mvarsmeer.moleculator.information.Formula;
+import xyz.mvarsmeer.moleculator.information.Grupos;
+import xyz.mvarsmeer.moleculator.addons.PanelFormulas;
 import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
 import xyz.mvarsmeer.moleculator.buttons.MouseButtons;
 
@@ -25,12 +28,14 @@ public class Interface {
 	ArrayList<DrawAtom> Atomos;
 	ArrayList<DrawLine> Enlaces;
 	ArrayList<String> Formulas;
+	ArrayList<ArrayList<DrawAtom>> ListaGrupos;
 	
 	public Interface() {
 		
 		Atomos = new ArrayList<DrawAtom>();
 		Enlaces = new ArrayList<DrawLine>();
 		Formulas = new ArrayList<String>();
+		ListaGrupos = new ArrayList<ArrayList<DrawAtom>>();
 		
 	}
 
@@ -98,6 +103,10 @@ public class Interface {
 		int WindowsX = Window.getBounds().width;
 		int WindowsY = Window.getBounds().height;
 		
+		Grupos Grupo = new Grupos(ListaGrupos);
+		Formula TextFormula = new Formula(Formulas);
+		PanelFormulas PanelFormula = new PanelFormulas(Formula);
+		
 		while(true) {
 			
 			try {
@@ -147,7 +156,9 @@ public class Interface {
 				
 				if(Actual.Repaint && !Actual.Active) {
 					
-					Formula.removeAll();
+					/*Grupo.getGrupo(Enlaces);
+					TextFormula.getFormula(ListaGrupos);
+					PanelFormula.showPanel(Formulas, ListaGrupos);*/
 					
 				}
 				

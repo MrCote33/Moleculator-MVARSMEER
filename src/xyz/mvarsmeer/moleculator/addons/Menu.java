@@ -27,7 +27,7 @@ public class Menu {
 		
 	}
 	
-	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) {
+	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e)  {
 
 		FontReader Fuente = new FontReader();
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf",11);
@@ -116,67 +116,105 @@ public class Menu {
 
 			public void actionPerformed(ActionEvent e) {
 				
-				if(Linea == null) {
+				if(Lineas.size() == 0) {
 					
-					Linea = new DrawLine();
+					if(Element.Enlaces > 0) {
 					
-				}
-
-				if(Element.Enlaces > 0) {
-					
-					if(Linea.Primero == null) {
-						
-						Linea.setFirst(Element);
-						
-					}
-					
-					if(Linea.Segundo == null && Linea.Primero != Element) {
-						
-						Linea.setSecond(Element);
-						Linea.Primero.Enlaces -= 1;
-						Linea.Segundo.Enlaces -= 1;
-						
-						for(int cont = 0; cont < Lineas.size(); cont++) {
-							
-							if(Linea.Primero.equals(Lineas.get(cont).Primero)) {
-								
-								if(Linea.Segundo.equals(Lineas.get(cont).Segundo)) {
-									
-									Lineas.get(cont).EnlEfectivos += 1;
-									Linea = null;
-									
-								}
-								
-							}
-								
-							if(Linea != null && Linea.Primero.equals(Lineas.get(cont).Segundo)) {
-								
-								if(Linea.Segundo.equals(Lineas.get(cont).Primero)) {
-									
-									Lineas.get(cont).EnlEfectivos += 1;
-									Linea = null;
-									
-								}
-								
-							}
-							
+						if(Linea == null) {
+							Linea = new DrawLine();	
 						}
 						
-						if(Linea != null) {
+						if(Linea.Primero == null) {
+							Linea.setFirst(Element);
+						}
+						
+						if(Linea.Segundo == null && Linea.Primero != Element) {
 							
+							Linea.setSecond(Element);
+							Linea.Primero.Enlaces -= 1;
+							Linea.Segundo.Enlaces -= 1;
 							Lineas.add(Linea);
 							Linea = null;
 							
 						}
 						
+					} else {
+						
+						Error.NewMessage("Link Atom");
+						
 					}
 					
 				} else {
 					
-					Error.NewMessage("Link Atom");
+					if(Element.Enlaces > 0) {
+						
+						if(Linea == null) {
+							Linea = new DrawLine();	
+						}
+						
+						if(Linea.Primero == null) {
+							Linea.setFirst(Element);
+						}
+						
+						if(Linea.Segundo == null && Linea.Primero != Element) {
+							
+							Linea.setSecond(Element);
+							Linea.Primero.Enlaces -= 1;
+							Linea.Segundo.Enlaces -= 1;
+							
+						}
+						
+						if(Linea.Segundo != null) {
+							
+							for(int cont = 0; cont < Lineas.size(); cont++) {
+								
+								if(Linea != null) {
+									
+									if(Linea.Primero.equals(Lineas.get(cont).Primero)) {
+										
+										if(Linea.Segundo.equals(Lineas.get(cont).Segundo)) {
+											
+											Lineas.get(cont).EnlEfectivos += 1;
+											Linea = null;
+											break;
+											
+										}
+										
+									}
+									
+									if(Linea.Primero.equals(Lineas.get(cont).Segundo)) {
+										
+										if(Linea.Segundo.equals(Lineas.get(cont).Primero)) {
+											
+											Lineas.get(cont).EnlEfectivos += 1;
+											Linea = null;
+											break;
+											
+										}
+										
+									}
+									
+								}
+								
+							}
+							
+							if(Linea != null) {
+								
+								Lineas.add(Linea);
+								Linea = null;
+								
+							}
+							
+						}
+						
+					} else {
+						
+						Error.NewMessage("Link Atom");
+						
+					}
 					
 				}
-
+				
 			}
 
 		});

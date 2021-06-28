@@ -62,8 +62,6 @@ public class Grupos {
 			
 		}
 		
-		boolean update = false;
-		
 		if(Grupos != null) {
 			
 			int LargoGrupos = Grupos.size();
@@ -83,7 +81,9 @@ public class Grupos {
 							if(Grupo1.contains(Grupo2.get(k))) {
 								
 								Grupo2.remove(k);
-								update = true;
+								mergeGrupo(i,j);
+								LargoGrupos = Grupos.size();
+								break;
 								
 							}
 							
@@ -91,17 +91,45 @@ public class Grupos {
 						
 					}
 					
-					if(update) {
-						
-						Grupo1.addAll(Grupo2);
-						Grupos.remove(j);
-						LargoGrupos = Grupos.size();
-						update = false;
-						
-					}
-					
 				}
 				
+			}
+			
+		}
+		
+	}
+	
+	public void mergeGrupo(int i, int j) {
+		
+		ArrayList<DrawAtom> Fusion = new ArrayList<DrawAtom>();
+		
+		for(DrawAtom Elemento : Grupos.get(i)) {
+			
+			if(!Fusion.contains(Elemento)) {
+				Fusion.add(Elemento);
+			}
+			
+		}
+		
+		for(DrawAtom Elemento : Grupos.get(j)) {
+			
+			if(!Fusion.contains(Elemento)) {
+				Fusion.add(Elemento);
+			}
+			
+		}
+		
+		ArrayList<ArrayList<DrawAtom>> CopiaGrupos = new ArrayList<ArrayList<DrawAtom>>(Grupos);
+		Grupos.clear();
+		
+		for(int cont = 0; cont < CopiaGrupos.size(); cont++) {
+			
+			if(cont == i) {
+				Grupos.add(Fusion);
+			}
+			
+			if(cont != i && cont != j) {
+				Grupos.add(CopiaGrupos.get(cont));
 			}
 			
 		}

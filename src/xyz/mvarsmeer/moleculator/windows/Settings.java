@@ -2,6 +2,7 @@ package xyz.mvarsmeer.moleculator.windows;
 
 import java.awt.Font;
 import java.awt.Frame;
+import java.util.ArrayList;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,13 +10,15 @@ import java.awt.Canvas;
 
 import xyz.mvarsmeer.moleculator.buttons.SettingsButtons;
 import xyz.mvarsmeer.moleculator.readers.FontReader;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
 
 public class Settings {
 
 	public Boolean Active = false;
 	public JFrame WindowActive;
 
-	public void CreateWindow(Canvas PanelDibujo, Frame MainFrame) {
+	public void CreateWindow(Canvas PanelDibujo, Frame MainFrame, ArrayList<DrawAtom> Atomos, ArrayList<DrawLine> Enlaces) {
 		
 		FontReader Fuentes = new FontReader();
 		Font Fuente = Fuentes.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 14);
@@ -46,6 +49,8 @@ public class Settings {
 
 		Boton.CrearBoton(Window, 30, 44, 100, 32, "Guardar", "#F1AE53");
 		Boton.CrearBoton(Window, 30, 76, 100, 32, "Cargar", "#F1AE53");
+		
+		Boton.setLists(Atomos, Enlaces);
 
 		JLabel Exportar = new JLabel("Modelo");
 		Exportar.setFont(Fuente);

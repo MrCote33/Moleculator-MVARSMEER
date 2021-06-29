@@ -9,21 +9,19 @@ public class ArchiveOptions {
 	
 	ArrayList<DrawAtom> ListaElemento;
 	ArrayList<DrawLine> ListaLineas;
-	ArrayList<ArrayList<DrawAtom>> ListaGrupos;
-	ArrayList<String> ListaFormulas;
 
-	public ArchiveOptions(){
+	public ArchiveOptions(ArrayList<DrawAtom> ListaElemento, ArrayList<DrawLine> ListaLineas){
 
 		this.ListaElemento = ListaElemento;
 		this.ListaLineas = ListaLineas;
 
 	}
 
-	public void GuardarJson(){
+	public void GuardarCanvas(){
 		
 	}
 
-	public void CargarJson() {
+	public void CargarCanvas() {
 		
 	}
 }

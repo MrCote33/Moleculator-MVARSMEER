@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
 import xyz.mvarsmeer.moleculator.readers.FontReader;
 import xyz.mvarsmeer.moleculator.windows.Custom;
 import xyz.mvarsmeer.moleculator.windows.Windows;
@@ -21,6 +22,7 @@ import xyz.mvarsmeer.moleculator.windows.Settings;
 public class InterfaceButtons implements ActionListener {
 	
 	ArrayList<DrawAtom> ListaDibujo;
+	ArrayList<DrawLine> ListaLineas;
 	Windows Atomos = new Windows();
 	Custom NewAtom = new Custom(null);
 	Settings Config = new Settings();
@@ -30,9 +32,10 @@ public class InterfaceButtons implements ActionListener {
 	String[] Categorias ={"Metales alcainos","Alcalinoterreos","Otros metales","Metales de transicion",
 						  "Lantanidos","Actinidos","Metaloides","No metales","Halogenos","Gases nobles"};
 
-	public InterfaceButtons(ArrayList<DrawAtom> ListaDibujo) {
+	public InterfaceButtons(ArrayList<DrawAtom> ListaDibujo, ArrayList<DrawLine> ListaLineas) {
 
 		this.ListaDibujo = ListaDibujo;
+		this.ListaLineas = ListaLineas;
 
 	}
 
@@ -110,7 +113,7 @@ public class InterfaceButtons implements ActionListener {
 
 		if(Actual.getText() == "Configuracion"){
 
-			Config.CreateWindow(PanelDibujo,MainFrame);
+			Config.CreateWindow(PanelDibujo,MainFrame,ListaDibujo,ListaLineas);
 
 		}
 

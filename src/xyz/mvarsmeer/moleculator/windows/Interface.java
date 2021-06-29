@@ -68,7 +68,7 @@ public class Interface {
 		Formula.setBackground(Color.decode("#7A8A99"));
 		Window.add(Formula);
 		
-		InterfaceButtons Boton = new InterfaceButtons(Atomos);
+		InterfaceButtons Boton = new InterfaceButtons(Atomos,Enlaces);
 		Boton.CrearBoton(Window, 32, 82, "Metales alcainos", "#FFC8B0");
 		Boton.CrearBoton(Window, 32, 112, "Alcalinoterreos", "#FFE6CC");
 		Boton.CrearBoton(Window, 32, 142, "Otros metales", "#FFF2CC");

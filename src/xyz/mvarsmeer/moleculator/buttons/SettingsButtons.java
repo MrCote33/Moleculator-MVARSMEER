@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 
 import xyz.mvarsmeer.moleculator.readers.FontReader;
 import xyz.mvarsmeer.moleculator.windows.Settings;
+import xyz.mvarsmeer.moleculator.addons.ArchiveOptions;
 import xyz.mvarsmeer.moleculator.addons.ExportOptions;
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
@@ -60,19 +61,15 @@ public class SettingsButtons implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		ExportOptions export = new ExportOptions();
-
+		ArchiveOptions archive = new ArchiveOptions(ListaElemento, ListaLineas);
 		JButton Actual = (JButton) e.getSource();
 
 		if(Actual.getText() == "Guardar"){
-
-			System.out.println("Aca va el guardar");
-
+			archive.GuardarCanvas();
 		}
 
 		if(Actual.getText() == "Cargar"){
-
-			System.out.println("Aca va el Cargar");
-
+			archive.CargarCanvas();
 		}
 
 		if(Actual.getText() == "Exportar a PNG"){

@@ -7,25 +7,39 @@ import java.awt.AWTException;
 import java.awt.Canvas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import xyz.mvarsmeer.moleculator.readers.FontReader;
 import xyz.mvarsmeer.moleculator.windows.Settings;
+import xyz.mvarsmeer.moleculator.addons.ArchiveOptions;
 import xyz.mvarsmeer.moleculator.addons.ExportOptions;
+import xyz.mvarsmeer.moleculator.draw.DrawAtom;
+import xyz.mvarsmeer.moleculator.draw.DrawLine;
 
 public class SettingsButtons implements ActionListener {
 	
 	Settings Config = new Settings();
-	Font Fuente;
+	ArrayList<DrawAtom> ListaElemento;
+	ArrayList<DrawLine> ListaLineas;
 	Canvas PanelDibujo;
 	Frame MainFrame;
+	Font Fuente;
 
 	public void SetCanvas(Canvas PanelDibujo, Frame MainFrame) {
 
 		this.PanelDibujo = PanelDibujo;
 		this.MainFrame = MainFrame;
 	
+	}
+	
+	public void setLists(ArrayList<DrawAtom> ListaElemento, ArrayList<DrawLine> ListaLineas) {
+		
+		this.ListaElemento = ListaElemento;
+		this.ListaLineas = ListaLineas;
+		
 	}
 
 	public void CrearBoton(JFrame Window, int x, int y,int Ancho, int Alto, String Contenido, String color) {
@@ -47,19 +61,15 @@ public class SettingsButtons implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		ExportOptions export = new ExportOptions();
-
+		ArchiveOptions archive = new ArchiveOptions(ListaElemento, ListaLineas);
 		JButton Actual = (JButton) e.getSource();
 
 		if(Actual.getText() == "Guardar"){
-
-			System.out.println("Aca va el guardar");
-
+			archive.GuardarCanvas();
 		}
 
 		if(Actual.getText() == "Cargar"){
-
-			System.out.println("Aca va el Cargar");
-
+			archive.CargarCanvas();
 		}
 
 		if(Actual.getText() == "Exportar a PNG"){

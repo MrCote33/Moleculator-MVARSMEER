@@ -19,7 +19,7 @@ public class DrawAtom {
 	public Atom Atomo;
 	public Boolean Active = true;
 	public Boolean Repaint = false;
-
+	public int ID;
 	
 	public DrawAtom(int X, int Y,int Diametro, Color Paint, Atom Atomo) {
 		

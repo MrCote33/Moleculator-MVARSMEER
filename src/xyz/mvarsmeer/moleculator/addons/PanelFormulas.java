@@ -19,7 +19,7 @@ public class PanelFormulas {
 	
 	public void showPanel(ArrayList<String> Formulas, ArrayList<ArrayList<DrawAtom>> Grupos) {
 		
-		InterfaceButtons Boton = new InterfaceButtons(null);
+		InterfaceButtons Boton = new InterfaceButtons(null,null);
 		Contenedor.removeAll();
 		
 		for(int i = 0; i < Formulas.size(); i++) {

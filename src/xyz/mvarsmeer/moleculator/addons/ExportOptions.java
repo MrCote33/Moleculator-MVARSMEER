@@ -114,11 +114,11 @@ public class ExportOptions {
 					PDImageXObject pdImage = PDImageXObject.createFromFile(VisualGuardadoPDF.getSelectedFile().getAbsolutePath(), Doc);
 					
 					try (PDPageContentStream cont = new PDPageContentStream(Doc, pagina)) {
-		                
-		                cont.drawImage(pdImage, 10,1015);
-		                cont.close();
-		                
-		            }
+						
+						cont.drawImage(pdImage, 10,1015);
+						cont.close();
+						
+					}
 					
 					Doc.save(VisualGuardadoPDF.getSelectedFile());
 					Doc.close();

@@ -69,7 +69,9 @@ public class SettingsButtons implements ActionListener {
 		}
 
 		if(Actual.getText() == "Cargar"){
+
 			archive.CargarCanvas();
+			
 		}
 
 		if(Actual.getText() == "Exportar a PNG"){

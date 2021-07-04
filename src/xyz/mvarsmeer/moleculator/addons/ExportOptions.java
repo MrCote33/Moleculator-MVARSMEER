@@ -33,8 +33,11 @@ public class ExportOptions {
 				
 				File RutaArchivo = VisualGuardado.getSelectedFile();
 				
-				if(!VisualGuardado.getSelectedFile().getAbsolutePath().endsWith(".png")){
-				    RutaArchivo = new File(VisualGuardado.getSelectedFile() + ".png");
+				if(!RutaArchivo.getAbsolutePath().endsWith(".png")){
+					
+					String Ruta = RutaArchivo.getAbsolutePath();
+				    RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".png");
+
 				}
 				
 				MainFrame.setAlwaysOnTop(true);

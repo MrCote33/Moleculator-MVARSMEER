@@ -13,7 +13,7 @@ import xyz.mvarsmeer.moleculator.readers.ReaderFile;
 
 public class Windows {
 	
-	ArrayList<ArrayList<Atom>> Elementos = new ArrayList<ArrayList<Atom>>();
+	public ArrayList<ArrayList<Atom>> Elementos = new ArrayList<ArrayList<Atom>>();
 	Selection Botones = new Selection();
 	
 	public Boolean Active = false;

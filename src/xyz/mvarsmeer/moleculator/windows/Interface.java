@@ -8,17 +8,20 @@ import java.awt.Panel;
 import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.Point;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
 import xyz.mvarsmeer.moleculator.information.Formula;
 import xyz.mvarsmeer.moleculator.information.Grupos;
+import xyz.mvarsmeer.moleculator.addons.EnterFormula;
 import xyz.mvarsmeer.moleculator.addons.PanelFormulas;
 import xyz.mvarsmeer.moleculator.buttons.InterfaceButtons;
 import xyz.mvarsmeer.moleculator.buttons.MouseButtons;
@@ -80,13 +83,33 @@ public class Interface {
 		Boton.CrearBoton(Window, 32, 322, "Halogenos", "#D8A4DE");
 		Boton.CrearBoton(Window, 32, 352, "Gases nobles", "#DAE8FC");
 		Boton.CrearBoton(Window, 32, 382, "Custom", "#E9E4E3");
+		
+		TextField IngresaFormula = new TextField();
+		IngresaFormula.setBounds(846, 412, 141, 36);
+		Window.add(IngresaFormula);
+		
+		JButton BotonIngresa = new JButton();
+		BotonIngresa.setBounds(987, 412, 45, 35);
+		BotonIngresa.setFocusPainted(false);
+		BotonIngresa.setBackground(Color.decode("#DAE8FC"));
+		BotonIngresa.setText("↩");
+		Window.add(BotonIngresa);
+		
+		BotonIngresa.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				EnterFormula Enter = new EnterFormula();
+				Enter.insertFormula(Atomos, Enlaces,Boton.Atomos.Elementos, IngresaFormula);
+				
+			}
+		});
 
 		Canvas DrawingZone = new Canvas();
 		MouseButtons Click = new MouseButtons(DrawingZone);
-
-		Icon settings = new ImageIcon("src\\xyz\\mvarsmeer\\moleculator\\resources\\Settings.png");
-		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, settings,"Configuracion", "#FFFFFF");
-
+		
+		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, null,"🔧  Configuracion", "#FFFFFF");
+		
 		Click.updateGraphics(Atomos, Enlaces);
 		
 		DrawingZone.setBounds(226, 55, 596, 393);
@@ -128,6 +151,8 @@ public class Interface {
 				Group.setBounds(WindowsX-186, 51, 150, 20);
 				Formula.setBounds(WindowsX-218, 82, 186, 330);
 				Equipo.setBounds((WindowsX/2)-35, WindowsY-30, 100, 20);
+				IngresaFormula.setBounds(WindowsX-218, 412, 141, 36);
+				BotonIngresa.setBounds(WindowsX-77, 412, 45, 35);
 				
 				Buffer = DrawingZone.getBufferStrategy();
 				Drawing = Buffer.getDrawGraphics();

@@ -23,7 +23,7 @@ public class InterfaceButtons implements ActionListener {
 	
 	ArrayList<DrawAtom> ListaDibujo;
 	ArrayList<DrawLine> ListaLineas;
-	Windows Atomos = new Windows();
+	public Windows Atomos = new Windows();
 	Custom NewAtom = new Custom(null);
 	Settings Config = new Settings();
 	Font Fuente;
@@ -111,7 +111,7 @@ public class InterfaceButtons implements ActionListener {
 
 		}
 
-		if(Actual.getText() == "Configuracion"){
+		if(Actual.getText() == "🔧  Configuracion"){
 
 			Config.CreateWindow(PanelDibujo,MainFrame,ListaDibujo,ListaLineas);
 

@@ -10,6 +10,8 @@ import java.awt.AWTException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -23,12 +25,17 @@ public class ExportOptions {
 	public void GuardadoPNG(Canvas panel,Frame MainFrame) throws AWTException {
 
 		JFileChooser VisualGuardado = new JFileChooser();
-		
-		VisualGuardado.setFileFilter(new FileNameExtensionFilter("Png images(.png)", "png"));
+		VisualGuardado.setFileFilter(new FileNameExtensionFilter("PNG Images(.png)", "png"));
 
 		if(VisualGuardado.showSaveDialog(panel) == JFileChooser.APPROVE_OPTION){
 
 			try {
+				
+				File RutaArchivo = VisualGuardado.getSelectedFile();
+				
+				if(!VisualGuardado.getSelectedFile().getAbsolutePath().endsWith(".png")){
+				    RutaArchivo = new File(VisualGuardado.getSelectedFile() + ".png");
+				}
 				
 				MainFrame.setAlwaysOnTop(true);
 				
@@ -48,20 +55,14 @@ public class ExportOptions {
 				Robot Captura = new Robot();
 				BufferedImage image = Captura.createScreenCapture(SizeCaptura);
 				
-				ImageIO.write(image, "png", VisualGuardado.getSelectedFile());
-				System.out.println("Se ha guardado correctamente");
-				
+				ImageIO.write(image, "png", RutaArchivo);
 				MainFrame.setAlwaysOnTop(false);
 	
 			} catch (IOException e) {
 	
-				System.out.println("No se ha puesto ningun nombre");
+				e.printStackTrace();
 
 			}
-
-		}else{
-
-			System.out.println("No se ha guardado ningun archivo");
 
 		}
 
@@ -70,12 +71,28 @@ public class ExportOptions {
 	public void GuardadoPDF(Canvas panel, Frame MainFrame) throws AWTException {
 
 		JFileChooser VisualGuardadoPDF = new JFileChooser();
-		
-		VisualGuardadoPDF.setFileFilter(new FileNameExtensionFilter("PDF files(.pdf)", "pdf"));
+		VisualGuardadoPDF.setFileFilter(new FileNameExtensionFilter("PDF Files(.pdf)", "pdf"));
 
 		if(VisualGuardadoPDF.showSaveDialog(panel) == JFileChooser.APPROVE_OPTION){
 
 			try {
+				
+				File RutaArchivo = VisualGuardadoPDF.getSelectedFile();
+				
+				if(!VisualGuardadoPDF.getSelectedFile().getAbsolutePath().endsWith(".png")){
+				    
+					if(VisualGuardadoPDF.getSelectedFile().getAbsolutePath().endsWith(".pdf")) {
+						
+						String Ruta = VisualGuardadoPDF.getSelectedFile().getAbsolutePath();
+						RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".png");
+						
+					} else {
+						
+						RutaArchivo = new File(VisualGuardadoPDF.getSelectedFile() + ".png");
+						
+					}
+					
+				}
 				
 				MainFrame.setAlwaysOnTop(true);
 				
@@ -95,7 +112,7 @@ public class ExportOptions {
 				Robot Captura = new Robot();
 				BufferedImage image = Captura.createScreenCapture(SizeCaptura);
 				
-				ImageIO.write(image, "png", VisualGuardadoPDF.getSelectedFile());
+				ImageIO.write(image, "png", RutaArchivo);
 				
 				try {
 					
@@ -111,7 +128,7 @@ public class ExportOptions {
 					
 					PDPage pagina = new PDPage(PDRectangle.A2);
 					Doc.addPage(pagina);
-					PDImageXObject pdImage = PDImageXObject.createFromFile(VisualGuardadoPDF.getSelectedFile().getAbsolutePath(), Doc);
+					PDImageXObject pdImage = PDImageXObject.createFromFile(RutaArchivo.getAbsolutePath(), Doc);
 					
 					try (PDPageContentStream cont = new PDPageContentStream(Doc, pagina)) {
 						
@@ -120,24 +137,27 @@ public class ExportOptions {
 						
 					}
 					
-					Doc.save(VisualGuardadoPDF.getSelectedFile());
+					RutaArchivo.delete();
+					
+					if(!RutaArchivo.getAbsolutePath().endsWith(".pdf")){
+						
+						String Ruta = RutaArchivo.getAbsolutePath();
+					    RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".pdf");
+					    
+					}
+					
+					Doc.save(RutaArchivo);
 					Doc.close();
 					
 				}
-				
-				System.out.println("Se ha guardado correctamente");
 				
 				MainFrame.setAlwaysOnTop(false);
 	
 			} catch (IOException e) {
 	
-				System.out.println("No se ha puesto ningun nombre");
+				e.printStackTrace();
 
 			}
-
-		}else{
-
-			System.out.println("No se ha guardado ningun archivo");
 
 		}
 

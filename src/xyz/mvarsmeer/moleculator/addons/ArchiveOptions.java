@@ -28,17 +28,23 @@ public class ArchiveOptions {
 	}
 
 	public void GuardarCanvas(){
-		JFileChooser Save = new JFileChooser();
 		
-		Save.setFileFilter(new FileNameExtensionFilter("MVARSMEER File", "txt"));
+		JFileChooser Save = new JFileChooser();
+		Save.setFileFilter(new FileNameExtensionFilter("MVARSMEER File", "mvarsmeer"));
 		
 		if(Save.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){
 			
 			try {
+				
+				File RutaArchivo = Save.getSelectedFile();
+				
+				if(!Save.getSelectedFile().getAbsolutePath().endsWith(".mvarsmeer")){
+				    RutaArchivo = new File(Save.getSelectedFile() + ".mvarsmeer");
+				}
 
-				FileWriter myWriter = new FileWriter(Save.getSelectedFile());
+				FileWriter myWriter = new FileWriter(RutaArchivo);
 			
-				for(int i = 0; i<ListaElemento.size(); i++){
+				for(int i = 0; i < ListaElemento.size(); i++){
 
 					String datos = "";
 

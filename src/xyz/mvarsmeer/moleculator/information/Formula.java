@@ -22,46 +22,53 @@ public class Formula {
 		for(int i = 0; i < Grupos.size(); i++) {
 			
 			ArrayList<DrawAtom> Grupo = Grupos.get(i);
-			ArrayList<String> Elementos = new ArrayList<String>();
+			ArrayList<String> Repetidos = new ArrayList<String>();
 			
 			for(int j = 0; j < Grupo.size(); j++) {
-				
-				Elementos.add(Grupo.get(j).Atomo.getSimbolo());
-				
+				Repetidos.add(Grupo.get(j).Atomo.getSimbolo());
 			}
 			
-			Collections.sort(Elementos);
+			Collections.sort(Repetidos);
 			
-			String Formula = "";
-			int Largo = Elementos.size();
+			ArrayList<String> Elementos = new ArrayList<String>();
+			ArrayList<Integer> Veces = new ArrayList<Integer>();
 			
-			for(int j = 0; j < Largo; j++) {
+			String Actual = Repetidos.get(0);
+			int NumVeces = 0;
+			
+			for(int j = 0; j < Repetidos.size(); j++) {
 				
-				int Numero = 1;
-				
-				for(int k = 0; k < Largo; k++) {
+				if(Actual.equals(Repetidos.get(j))) {
 					
-					if(j != k) {
-						
-						if(Elementos.get(j) == Elementos.get(k)) {
-							
-							Elementos.remove(k);
-							Numero++;
-							Largo--;
-							
-						}
-						
-					}
+					NumVeces += 1;
+					
+				} else {
+					
+					Elementos.add(Actual);
+					Veces.add(NumVeces);
+					
+					Actual = Repetidos.get(j);
+					NumVeces = 1;
 					
 				}
 				
-				if(Numero == 1) {
-
+			}
+			
+			Elementos.add(Actual);
+			Veces.add(NumVeces);
+			
+			String Formula = "";
+			
+			for(int j = 0; j < Elementos.size(); j++) {
+				
+				if(Veces.get(j) > 1) {
+					
 					Formula += Elementos.get(j);
-
+					Formula += Veces.get(j);
+					
 				} else {
-
-					Formula += Elementos.get(j)+Numero;
+					
+					Formula += Elementos.get(j);
 					
 				}
 				

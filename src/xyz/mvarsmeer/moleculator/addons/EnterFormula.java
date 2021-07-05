@@ -10,9 +10,12 @@ import xyz.mvarsmeer.moleculator.information.Atom;
 
 public class EnterFormula {
 	
+	String[] Colores = {"#FFC8B0","#FFE6CC","#FFF2CC","#D0E882","#D1E8A2","#B8E8B3","#D5E8D4","#E1D5E7","#D8A4DE","#DAE8FC"};
+	
 	public void insertFormula(ArrayList<DrawAtom> Elementos,ArrayList<DrawLine> Enlaces,ArrayList<ArrayList<Atom>> Atomos,TextField Formula) {
 		
 		String Texto = Formula.getText();
+		ArrayList<Integer> ListElementos = new ArrayList<Integer>();
 		int NumElementos = Elementos.size();
 		
 		int CoordX = 30;
@@ -113,12 +116,12 @@ public class EnterFormula {
 							
 							while(Veces < Repetir) {
 								
-								DrawAtom Elemento = new DrawAtom(CoordX, CoordY, 60, Color.decode("#FFD1F8"), Atomo);
-								NumElementos += 1;
+								DrawAtom Elemento = new DrawAtom(CoordX, CoordY, 60,Color.decode(Colores[j]), Atomo);
 								Elemento.ID = NumElementos;
+								ListElementos.add(Elemento.ID);
 								Elemento.Active = false;
-								Elemento.Repaint = true;
 								Elementos.add(Elemento);
+								NumElementos += 1;
 								Veces += 1;
 								
 								if(CoordX < 500) {
@@ -139,12 +142,12 @@ public class EnterFormula {
 				if(Encontrado == false) {
 					
 					Atom Atomo = new Atom("Custom",Simbolo,Simbolo,16);
-					DrawAtom Elemento = new DrawAtom(CoordX, CoordY, 60, Color.decode("#FFD1F8"), Atomo);
-					NumElementos += 1;
+					DrawAtom Elemento = new DrawAtom(CoordX, CoordY, 60, Color.decode("#E9E4E3"), Atomo);
 					Elemento.ID = NumElementos;
+					ListElementos.add(Elemento.ID);
 					Elemento.Active = false;
-					Elemento.Repaint = true;
 					Elementos.add(Elemento);
+					NumElementos += 1;
 					
 					if(CoordX < 500) {
 						CoordX += 90;
@@ -156,6 +159,47 @@ public class EnterFormula {
 				}
 				
 			}
+			
+		}
+		
+		int MaxNumEnlaces = Elementos.get(ListElementos.get(0)).Enlaces;
+		int Mayor = ListElementos.get(0);
+		
+		for(int i = 1; i < ListElementos.size(); i++) {
+			
+			if(MaxNumEnlaces < Elementos.get(ListElementos.get(i)).Enlaces) {
+				Mayor = ListElementos.get(i);
+			}
+			
+		}
+		
+		for(int i = 0; i < ListElementos.size(); i++) {
+			
+			if(i != Mayor) {
+				
+				DrawLine Linea = new DrawLine();
+				
+				Linea.setFirst(Elementos.get(ListElementos.get(i)));
+				Linea.setSecond(Elementos.get(Mayor));
+				Linea.EnlEfectivos = 1;
+				
+				Elementos.get(ListElementos.get(i)).Enlaces -= 1;
+				Elementos.get(Mayor).Enlaces -= 1;
+				
+				Enlaces.add(Linea);
+				
+			}
+			
+		}
+		
+		DrawAtom Grande = Elementos.get(Mayor);
+		Grande.Repaint = true;
+		
+		if(Grande.Enlaces < 0) {
+			
+			Atom Nuevo = new Atom("Custom",Grande.Atomo.getNombre(),Grande.Atomo.getSimbolo(),Grande.Atomo.getTotalEnl()-Grande.Enlaces);
+			Grande.Atomo = Nuevo;
+			Grande.Enlaces = 0;
 			
 		}
 		

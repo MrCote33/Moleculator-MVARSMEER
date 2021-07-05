@@ -164,50 +164,54 @@ public class EnterFormula {
 				
 			}
 			
-			int MaxNumEnlaces = Elementos.get(ListElementos.get(0)).Enlaces;
-			int Mayor = ListElementos.get(0);
-			
-			for(int i = 1; i < ListElementos.size(); i++) {
+			if(Elementos.size() != 0) {
 				
-				if(MaxNumEnlaces < Elementos.get(ListElementos.get(i)).Enlaces) {
-					Mayor = ListElementos.get(i);
-				}
+				int MaxNumEnlaces = Elementos.get(ListElementos.get(0)).Enlaces;
+				int Mayor = ListElementos.get(0);
 				
-			}
-			
-			for(int i = 0; i < ListElementos.size(); i++) {
-				
-				if(i != Mayor) {
+				for(int i = 1; i < ListElementos.size(); i++) {
 					
-					DrawLine Linea = new DrawLine();
-					
-					Linea.setFirst(Elementos.get(ListElementos.get(i)));
-					Linea.setSecond(Elementos.get(Mayor));
-					Linea.EnlEfectivos = 1;
-					
-					Elementos.get(ListElementos.get(i)).Enlaces -= 1;
-					Elementos.get(Mayor).Enlaces -= 1;
-					
-					Enlaces.add(Linea);
+					if(MaxNumEnlaces < Elementos.get(ListElementos.get(i)).Enlaces) {
+						Mayor = ListElementos.get(i);
+					}
 					
 				}
 				
-			}
-			
-			DrawAtom Grande = Elementos.get(Mayor);
-			Grande.Repaint = true;
-			
-			if(Grande.Enlaces < 0) {
+				for(int i = 0; i < ListElementos.size(); i++) {
+					
+					if(i != Mayor) {
+						
+						DrawLine Linea = new DrawLine();
+						
+						Linea.setFirst(Elementos.get(ListElementos.get(i)));
+						Linea.setSecond(Elementos.get(Mayor));
+						Linea.EnlEfectivos = 1;
+						
+						Elementos.get(ListElementos.get(i)).Enlaces -= 1;
+						Elementos.get(Mayor).Enlaces -= 1;
+						
+						Enlaces.add(Linea);
+						
+					}
+					
+				}
 				
-				Atom Nuevo = new Atom("Custom",Grande.Atomo.getNombre(),Grande.Atomo.getSimbolo(),Grande.Atomo.getTotalEnl()-Grande.Enlaces);
-				Grande.Atomo = Nuevo;
-				Grande.Enlaces = 0;
+				DrawAtom Grande = Elementos.get(Mayor);
+				Grande.Repaint = true;
+				
+				if(Grande.Enlaces < 0) {
+					
+					Atom Nuevo = new Atom("Custom",Grande.Atomo.getNombre(),Grande.Atomo.getSimbolo(),Grande.Atomo.getTotalEnl()-Grande.Enlaces);
+					Grande.Atomo = Nuevo;
+					Grande.Enlaces = 0;
+					
+				}
 				
 			}
-			
-			Formula.setText("");
 			
 		}
+	
+		Formula.setText("");
 		
 	}
 

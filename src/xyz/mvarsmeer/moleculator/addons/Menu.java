@@ -27,7 +27,7 @@ public class Menu {
 		
 	}
 	
-	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e)  {
+	public void Pop(ArrayList<DrawAtom> Elements, int Active, Canvas Dibujo, MouseEvent e) throws IndexOutOfBoundsException{
 
 		FontReader Fuente = new FontReader();
 		Font Fuente1 = Fuente.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf",11);

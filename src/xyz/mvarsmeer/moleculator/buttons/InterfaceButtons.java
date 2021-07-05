@@ -111,9 +111,17 @@ public class InterfaceButtons implements ActionListener {
 
 		}
 
-		if(Actual.getText() == "🔧  Configuracion"){
+		if(Actual.getText() == "Configuracion"){
+
+			if(Config.Active){
+
+				Config.WindowActive.dispose();
+				Config.Active = false;
+
+			}
 
 			Config.CreateWindow(PanelDibujo,MainFrame,ListaDibujo,ListaLineas);
+			
 
 		}
 

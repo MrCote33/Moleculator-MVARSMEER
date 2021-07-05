@@ -20,8 +20,12 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import xyz.mvarsmeer.moleculator.windows.ErrorMessage;
+
 public class ExportOptions {
 	
+	ErrorMessage Mensaje = new ErrorMessage();
+
 	public void GuardadoPNG(Canvas panel,Frame MainFrame) throws AWTException {
 
 		JFileChooser VisualGuardado = new JFileChooser();
@@ -36,7 +40,7 @@ public class ExportOptions {
 				if(!RutaArchivo.getAbsolutePath().endsWith(".png")){
 					
 					String Ruta = RutaArchivo.getAbsolutePath();
-				    RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".png");
+					RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".png");
 
 				}
 				
@@ -60,9 +64,11 @@ public class ExportOptions {
 				
 				ImageIO.write(image, "png", RutaArchivo);
 				MainFrame.setAlwaysOnTop(false);
+				Mensaje.NewMessage("Archive");
 	
 			} catch (IOException e) {
 	
+				Mensaje.NewMessage("");
 				e.printStackTrace();
 
 			}
@@ -83,7 +89,7 @@ public class ExportOptions {
 				File RutaArchivo = VisualGuardadoPDF.getSelectedFile();
 				
 				if(!VisualGuardadoPDF.getSelectedFile().getAbsolutePath().endsWith(".png")){
-				    
+					
 					if(VisualGuardadoPDF.getSelectedFile().getAbsolutePath().endsWith(".pdf")) {
 						
 						String Ruta = VisualGuardadoPDF.getSelectedFile().getAbsolutePath();
@@ -145,8 +151,8 @@ public class ExportOptions {
 					if(!RutaArchivo.getAbsolutePath().endsWith(".pdf")){
 						
 						String Ruta = RutaArchivo.getAbsolutePath();
-					    RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".pdf");
-					    
+						RutaArchivo = new File(Ruta.substring(0, Ruta.length()-4) + ".pdf");
+						
 					}
 					
 					Doc.save(RutaArchivo);
@@ -155,9 +161,11 @@ public class ExportOptions {
 				}
 				
 				MainFrame.setAlwaysOnTop(false);
+				Mensaje.NewMessage("Archive");
 	
 			} catch (IOException e) {
-	
+				
+				Mensaje.NewMessage("");
 				e.printStackTrace();
 
 			}

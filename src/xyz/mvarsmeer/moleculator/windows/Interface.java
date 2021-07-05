@@ -15,6 +15,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
@@ -87,12 +90,13 @@ public class Interface {
 		TextField IngresaFormula = new TextField();
 		IngresaFormula.setBounds(846, 412, 141, 36);
 		Window.add(IngresaFormula);
-		
+
+		Icon enter = new ImageIcon("src\\xyz\\mvarsmeer\\moleculator\\resources\\Enter.png");
 		JButton BotonIngresa = new JButton();
 		BotonIngresa.setBounds(987, 412, 45, 35);
 		BotonIngresa.setFocusPainted(false);
 		BotonIngresa.setBackground(Color.decode("#DAE8FC"));
-		BotonIngresa.setText("↩");
+		BotonIngresa.setIcon(enter);
 		Window.add(BotonIngresa);
 		
 		BotonIngresa.addActionListener(new ActionListener() {
@@ -108,7 +112,8 @@ public class Interface {
 		Canvas DrawingZone = new Canvas();
 		MouseButtons Click = new MouseButtons(DrawingZone);
 		
-		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, null,"🔧  Configuracion", "#FFFFFF");
+		Icon settings = new ImageIcon("src\\xyz\\mvarsmeer\\moleculator\\resources\\Settings.png");
+		Boton.CrearIcono(Window, DrawingZone, 32, 412, 170, 35, settings,"Configuracion", "#FFFFFF");
 		
 		Click.updateGraphics(Atomos, Enlaces);
 		

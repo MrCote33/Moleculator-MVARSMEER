@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
 import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.windows.ErrorMessage;
 
 public class EnterFormula {
+
+	ErrorMessage Mensaje = new ErrorMessage();
 	
 	String[] Colores = {"#FFC8B0","#FFE6CC","#FFF2CC","#D0E882","#D1E8A2","#B8E8B3","#D5E8D4","#E1D5E7","#D8A4DE","#DAE8FC"};
 	
@@ -209,6 +212,10 @@ public class EnterFormula {
 				
 			}
 			
+		}else{
+
+			Mensaje.NewMessage("");
+
 		}
 	
 		Formula.setText("");

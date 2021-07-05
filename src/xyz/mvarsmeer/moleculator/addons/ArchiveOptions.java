@@ -14,9 +14,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import xyz.mvarsmeer.moleculator.draw.DrawAtom;
 import xyz.mvarsmeer.moleculator.draw.DrawLine;
 import xyz.mvarsmeer.moleculator.information.Atom;
+import xyz.mvarsmeer.moleculator.windows.ErrorMessage;
 
 public class ArchiveOptions {
-	
+
+	ErrorMessage Mensaje = new ErrorMessage();
 	ArrayList<DrawAtom> ListaElemento;
 	ArrayList<DrawLine> ListaLineas;
 
@@ -39,7 +41,7 @@ public class ArchiveOptions {
 				File RutaArchivo = Save.getSelectedFile();
 				
 				if(!Save.getSelectedFile().getAbsolutePath().endsWith(".mvarsmeer")){
-				    RutaArchivo = new File(Save.getSelectedFile() + ".mvarsmeer");
+					RutaArchivo = new File(Save.getSelectedFile() + ".mvarsmeer");
 				}
 
 				FileWriter myWriter = new FileWriter(RutaArchivo);
@@ -77,10 +79,12 @@ public class ArchiveOptions {
 
 				}
 
+				Mensaje.NewMessage("Archive");
 				myWriter.close();
 				
 			} catch(IOException e) {
 
+				Mensaje.NewMessage("");
 				e.printStackTrace();
 
 			}
@@ -161,11 +165,11 @@ public class ArchiveOptions {
 							Elemento.Active=false;
 
 							ListaElemento.add(Elemento);
-							
+
 						}
-		
+
 					}
-		
+
 				}
 
 			ListaElemento.get(0).Repaint = true;
@@ -173,6 +177,7 @@ public class ArchiveOptions {
 
 			} catch(IOException e) {
 
+				Mensaje.NewMessage("");
 				e.printStackTrace();
 
 			}

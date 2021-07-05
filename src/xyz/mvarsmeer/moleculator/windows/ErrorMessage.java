@@ -13,7 +13,7 @@ import xyz.mvarsmeer.moleculator.readers.FontReader;
 
 public class ErrorMessage {
 
-    Boolean Active = false;
+	Boolean Active = false;
 	JFrame WindowActive;
 
 	public void NewMessage(String Area){
@@ -21,7 +21,7 @@ public class ErrorMessage {
 		FontReader SetFont = new FontReader();
 		Font Fuente = SetFont.CreateFont("src\\xyz\\mvarsmeer\\moleculator\\resources\\JetBrainsMono-Bold.ttf", 12);
 
-		JFrame Window = new JFrame("Error");
+		JFrame Window = new JFrame("Mensaje");
 		Window.setSize(new Dimension(400, 200));
 		Window.setLocationRelativeTo(null);
 		Window.setIgnoreRepaint(false);
@@ -42,13 +42,13 @@ public class ErrorMessage {
 
 		if(Area == "Magnify"){
 
-			Error.setText("El atomo ha alcanzado su tamaño maximo");
+			Error.setText("El atomo ha alcanzado su tamaï¿½o maximo");
 
 		}
 
 		if(Area == "Minimaze"){
 
-			Error.setText("El atomo ha alcanzado su tamaño minimo");
+			Error.setText("El atomo ha alcanzado su tamaï¿½o minimo");
 
 		}
 
@@ -56,6 +56,12 @@ public class ErrorMessage {
 
 			Error.setText("El atomo ya no tiene enlaces libres");
 
+		}
+
+		if(Area == "Archive"){
+
+			Error.setText("El archivo se ha guardado correctamente");
+			
 		}
 		
 		JButton Acept = new JButton("Aceptar");

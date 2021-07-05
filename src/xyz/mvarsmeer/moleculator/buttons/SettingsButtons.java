@@ -65,7 +65,9 @@ public class SettingsButtons implements ActionListener {
 		JButton Actual = (JButton) e.getSource();
 
 		if(Actual.getText() == "Guardar"){
+
 			archive.GuardarCanvas();
+
 		}
 
 		if(Actual.getText() == "Cargar"){
@@ -79,6 +81,7 @@ public class SettingsButtons implements ActionListener {
 			try {
 
 				export.GuardadoPNG(PanelDibujo,MainFrame);
+				
 
 			} catch (AWTException e1) {
 
